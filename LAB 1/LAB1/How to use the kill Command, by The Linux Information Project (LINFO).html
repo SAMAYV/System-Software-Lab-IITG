@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="How%20to%20use%20the%20kill%20Command,%20by%20The%20Linux%20Information%20Project%20(LINFO)_files/belug1.css">
+
+<title>How to use the kill Command, by The Linux Information Project (LINFO)</title></head>
+
+<body bgcolor="#ffffff">
+
+<a href="http://www.linfo.org/index.html">LINFO</a>
+
+<br><center><h1>The kill Command</h1></center><br>
+
+<table width="100%"><tbody><tr><td width="10%"></td><td width="80%">
+
+<br>
+
+<p>
+The <i>kill</i> <a href="http://www.linfo.org/command.html">command</a> is used on <a href="http://www.linfo.org/linuxdef.html">Linux</a> and other <a href="http://www.linfo.org/unix-like.html">Unix-like</a> <a href="http://www.linfo.org/operating_systems_list.html">operating systems</a> to terminate <a href="http://www.linfo.org/process.html"><i>processes</i></a> without having to log out or <i>reboot</i> (i.e., restart) the computer. Thus, it is particularly important to the stability of such systems.
+</p>
+
+<p>
+A process, also referred to as a <i>task</i>, is an <i>executing</i> (i.e., running) instance of a <a href="http://www.linfo.org/program.html">program</a>. Each process is automatically assigned a unique <a href="http://www.linfo.org/pid.html"><i>process identification number</i></a> (PID) when it is created for use by the system to reference the process. 
+</p>
+
+<p>
+The syntax for kill is
+
+</p><blockquote>
+<p>
+<code>kill [signal</code> or <code>option] PID(s)</code>
+</p>
+</blockquote>
+
+<p>
+The only <a href="http://www.linfo.org/argument.html"><i>argument</i></a> (i.e., input) that is required is a PID, and as many PIDs as desired can be used in a single command. Typically no signal or <a href="http://www.linfo.org/option.html">option</a> is used. 
+</p>
+
+<p>
+Thus, if it is desired to terminate a process with a PID of 485, the following will usually be sufficient:
+</p>
+
+<blockquote>
+<p>
+<code>kill 485</code>
+</p>
+</blockquote>
+
+<p>
+The kill command has a misleading name because it does not actually <i>kill</i> processes. Rather, it sends signals to them. Each process is supplied with a set of standard <i>signal handlers</i> by the operating system in order to deal with incoming signals. When no signal is explicitly included in the command, <i>signal 15</i>, named SIGTERM, is sent by default. If this fails, the stronger <i>signal 9</i>, called SIGKILL, should be used. For example, the following command would nearly guarantee that process 485 would be killed: 
+</p>
+
+<blockquote>
+<p>
+<code>kill -9 485</code>
+</p>
+</blockquote>
+
+<p>
+The only situation in which signal 9 will fail is if the process is in the midst of making a <i>system call</i>, which is a request to the <a href="http://www.linfo.org/kernel.html"><i>kernel</i></a>
+ (i.e., the core of the operating system) for some action such as 
+process creation. In this situation, the process will die once it has 
+returned from the system call.
+</p>
+
+<p> 
+There are more than 60 signals that can be used with kill, but, 
+fortunately, most users will only need to be aware of signal 9. The full
+ list is contained in the file <i>/usr/include/linux/signal.h</i> and can be viewed by using kill with its <i>-l</i> option, i.e., 
+</p>
+
+<blockquote>
+<p>
+<code>kill -l</code>
+</p>
+</blockquote>
+
+<p>
+Obvious signs of misbehaving processes are programs that <a href="http://www.linfo.org/crash.html"><i>crash</i></a> (i.e., appear to <i>freeze</i>
+ or otherwise stop operating as expected) or that cannot be shut down 
+normally (e.g., by clicking on a button or using using a menu command). 
+The first step in such situation is to obtain the PID(s) of the 
+offending process(es). This can often be accomplished with the help of 
+the <a href="http://www.linfo.org/ps.html"><i>ps</i></a> command, usually with its <i>-a</i>, <i>-u</i> and <i>-x</i> options (which tell it to list all processes and provide detailed information about them), i.e., 
+</p>
+
+<blockquote>
+<p>
+<code>ps -aux | less</code>
+</p>
+</blockquote>
+
+<p>
+As the list of processes can be quite long, the output of <i>ps -aux</i> can be <a href="http://www.linfo.org/pipes.html"><i>piped</i></a> (i.e., transferred) to the <i>less</i>
+ command, which lets it be viewed one screenful at a time. The list can 
+be advanced one screen forward by pressing the SPACE bar and one screen 
+backward by pressing the <i>b</i> key.
+</p>
+
+<p>
+Often it is obvious which is the offending process. However, sometimes 
+it is not, particularly when the running of a program involves multiple 
+processes, and thus it might be necessary to terminate several processes
+ in order to close the offending program. 
+</p>
+
+<p>
+The <a href="http://www.linfo.org/pstree.html"><i>pstree</i></a> command
+ can also be a useful tool for finding offending processes. This is 
+because it displays the names of all processes on the system in the form
+ of a <i>tree diagram</i>, thereby showing all of their <i>parent/child</i> relationships. When used with its <i>-p</i> option, pstree also shows the PIDs of the processes, i.e.,
+</p>
+
+<blockquote>
+<p>
+<code>pstree -p | less</code>
+</p>
+</blockquote>
+
+<p>
+pstree can simplify terminating a series of related processes (i.e., a 
+process and all of its descendants) because it makes it immediately 
+clear which process is the parent; all that is necessary is to kill the 
+parent in order to also terminate all of its descendant processes. That 
+is, it is not necessary to manually search through a list of processes 
+to find and individually terminate each one as would be necessary using 
+ps. 
+</p>
+
+<p>
+Because Unix-like operating systems and many of their <a href="http://www.linfo.org/appslist.html">application programs</a> are inherently very <a href="http://www.linfo.org/robust.html"><i>robust</i></a>
+ (i.e., stable and resistant to crashing), it is not necessary to use 
+the kill command as often as it is to terminate programs or reboot on 
+some other operating systems. However, it does occasionally come in 
+quite handy.
+</p>
+
+<p>
+Despite its usefulness, however, there are situations in which the kill 
+command even with its strongest signal is insufficient to terminate a 
+process and rescue a frozen system or in which it is difficult to 
+determine what is the offending process (or processes). In such case it 
+is often easier to just reboot the system. 
+</p>
+
+
+
+
+
+
+
+
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+<p><br></p>
+
+<p class="copy">Created June 10, 2005. Updated April 11, 2006.<br>
+Copyright © 2005 - 2006 The Linux Information Project. All Rights Reserved.</p>
+
+</td><td width="10%"></td></tr></tbody></table>
+
+
+</body></html>

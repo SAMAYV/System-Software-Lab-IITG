@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-US">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="alexaVerifyID" content="qqxQUyWSeUfqZOencfEoRM9vrVk" />
+<meta name="msvalidate.01" content="E8C9208AD2F47ED874ED18E35FC370CE" />
+<meta name="google-translate-customization" content="c567e5d7624a883b-609bf053fa02c58b-g01de0b1961de0feb-f"></meta>
+<meta property="article:publisher" content="https://facebook.com/tecmint" />
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.tecmint.com/xmlrpc.php">
+<title>10 Practical Examples Using Wildcards to Match Filenames in Linux</title>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+
+<meta name="description" content="Wildcards are special characters that represent other characters and can be used with ls or rm command to list or remove files matching a given criteria." />
+<meta name="keywords" content="linux wildcard examples,linux match file names,use wildcards in linux,linux tricks" />
+<script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.tecmint.com/#organization","url":"https://www.tecmint.com/","name":"Tecmint: Linux Howtos, Tutorials &amp; Guides","sameAs":[]},{"@type":"WebSite","@id":"https://www.tecmint.com/#website","url":"https://www.tecmint.com/","name":"Tecmint: Linux Howtos, Tutorials &amp; Guides","publisher":{"@id":"https://www.tecmint.com/#organization"}},{"@type":"WebPage","@id":"https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#webpage","url":"https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/","inLanguage":"en-US","name":"10 Practical Examples Using Wildcards to Match Filenames in Linux","isPartOf":{"@id":"https://www.tecmint.com/#website"},"image":{"@type":"ImageObject","@id":"https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#primaryimage","url":"https://www.tecmint.com/wp-content/uploads/2017/10/Linux-Wildcards-Command-Examples.png","width":720,"height":340,"caption":"Linux Wildcards Command Examples"},"primaryImageOfPage":{"@id":"https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#primaryimage"},"datePublished":"2017-10-06T05:53:49+00:00","dateModified":"2017-10-06T05:54:00+00:00","description":"Wildcards are special characters that represent other characters and can be used with ls or rm command to list or remove files matching a given criteria."},{"@type":"Article","@id":"https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#article","isPartOf":{"@id":"https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#webpage"},"author":{"@id":"https://www.tecmint.com/author/aaronkili/#author"},"headline":"10 Practical Examples Using Wildcards to Match Filenames in Linux","datePublished":"2017-10-06T05:53:49+00:00","dateModified":"2017-10-06T05:54:00+00:00","commentCount":"2","mainEntityOfPage":{"@id":"https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#webpage"},"publisher":{"@id":"https://www.tecmint.com/#organization"},"articleSection":"Linux Commands, Linux Tricks","image":{"@type":"ImageObject","@id":"https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#primaryimage","url":"https://www.tecmint.com/wp-content/uploads/2017/10/Linux-Wildcards-Command-Examples.png","width":720,"height":340,"caption":"Linux Wildcards Command Examples"}},{"@type":"Person","@id":"https://www.tecmint.com/author/aaronkili/#author","name":"Aaron Kili","sameAs":[],"image":{"@type":"ImageObject","@id":"https://www.tecmint.com/#personlogo","url":"https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=96&d=blank&r=g","width":96,"height":96,"caption":"Aaron Kili"}}]}</script>
+<link rel="canonical" href="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/" />
+
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides &raquo; Feed" href="https://feeds.feedburner.com/tecmint" />
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides &raquo; Comments Feed" href="https://www.tecmint.com/comments/feed/" />
+<link href="//fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,300,400italic,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides &raquo; 10 Practical Examples Using Wildcards to Match Filenames in Linux Comments Feed" href="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/feed/" />
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="//www.tecmint.com/wp-content/cache/wpfc-minified/erci2ct/2s0c9.css" media="all" />
+<script src='//www.tecmint.com/wp-content/cache/wpfc-minified/2dg3vtye/2s0c9.js' type="47ddfd0a03b30e34eebe00d5-text/javascript"></script>
+
+
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+/* <![CDATA[ */
+var ajaxurl = "https:\/\/www.tecmint.com\/wp-admin\/admin-ajax.php";
+var QBP_PUBLIC_GLOBALS = {"QBP_PUBLIC_NONCE":"495bdede04","USER_TYPE":"public","VISIBILITY_DATA":{"is_page":false,"is_post":true,"is_homepage":false,"is_archive":false,"is_custom_post_type":false,"id":27490}};
+/* ]]> */
+</script>
+<script src='//www.tecmint.com/wp-content/cache/wpfc-minified/m93vw4rz/2s0c9.js' type="47ddfd0a03b30e34eebe00d5-text/javascript"></script>
+
+<link rel='https://api.w.org/' href='https://www.tecmint.com/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.tecmint.com/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.tecmint.com/wp-includes/wlwmanifest.xml" />
+<link rel='prev' title='Arch Linux Installation and Configuration on UEFI Machines' href='https://www.tecmint.com/arch-linux-installation-and-configuration-guide/' />
+<link rel='next' title='TMOUT &#8211; Auto Logout Linux Shell When There Isn&#8217;t Any Activity' href='https://www.tecmint.com/tmout-auto-logout-linux-shell-idle-sessions/' />
+<meta name="generator" content="WordPress 5.2.2" />
+<link rel='shortlink' href='https://www.tecmint.com/?p=27490' />
+<link rel="alternate" type="application/json+oembed" href="https://www.tecmint.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tecmint.com%2Fuse-wildcards-to-match-filenames-in-linux%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.tecmint.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tecmint.com%2Fuse-wildcards-to-match-filenames-in-linux%2F&#038;format=xml" />
+
+<meta property="og:image" content="https://www.tecmint.com/wp-content/uploads/2017/10/Linux-Wildcards-Command-Examples.png" />
+
+
+<link rel="shortcut icon" href="/wp-content/themes/tecmint/images/favicon.ico" />
+<!--[if lt IE 9]>
+<script src="https://www.tecmint.com/wp-content/themes/tecmint/js/ie/html5.js"></script>
+<script src="https://www.tecmint.com/wp-content/themes/tecmint/js/ie/selectivizr.js"></script>
+<![endif]-->
+<link rel="amphtml" href="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/amp/"><link rel="icon" href="https://www.tecmint.com/wp-content/uploads/2015/01/tecmint_square_logo.png" sizes="32x32" />
+<link rel="icon" href="https://www.tecmint.com/wp-content/uploads/2015/01/tecmint_square_logo.png" sizes="192x192" />
+<link rel="apple-touch-icon-precomposed" href="https://www.tecmint.com/wp-content/uploads/2015/01/tecmint_square_logo.png" />
+<meta name="msapplication-TileImage" content="https://www.tecmint.com/wp-content/uploads/2015/01/tecmint_square_logo.png" />
+<style type="text/css">
+/* Dynamic CSS: For no styles in head, copy and put the css below in your custom.css or child theme's style.css, disable dynamic styles */
+body { font-family: "Roboto Condensed", Arial, sans-serif; }
+.boxed #wrapper, .container-inner { max-width: 1280px; }
+.sidebar .widget { padding-left: 20px; padding-right: 20px; padding-top: 20px; }
+.search-expand,
+#nav-topbar.nav-container { background-color: #23588c; }
+@media only screen and (min-width: 720px) {
+#nav-topbar .nav ul { background-color: #23588c; }
+}			
+#header { background-color: #075b88; }
+@media only screen and (min-width: 720px) {
+#nav-header .nav ul { background-color: #075b88; }
+}			
+#nav-header.nav-container { background-color: #2f6dab; }
+@media only screen and (min-width: 720px) {
+#nav-header .nav ul { background-color: #2f6dab; }
+}			
+#footer-bottom { background-color: #2f6dab; }
+.site-title a img { max-height: 90px; }
+img { -webkit-border-radius: 2px; border-radius: 2px; }
+</style>
+<link rel="author" href="https://plus.google.com/107665449243972690526/posts" />
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="47ddfd0a03b30e34eebe00d5-text/javascript"></script>
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "WebSite",
+"url": "https://www.tecmint.com/",
+"potentialAction": {
+"@type": "SearchAction",
+"target": "https://www.tecmint.com/?s={search_term}",
+"query-input": "required name=search_term"
+}
+}
+</script>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+this.randomtip=function(){var e=jQuery("#tips li").length,t=Math.floor(Math.random()*e)+1;jQuery("#tips li:nth-child("+t+")").show()},jQuery(document).ready(function($){randomtip()});</script>
+<script data-cfasync="false" type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-33207530-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="47ddfd0a03b30e34eebe00d5-text/javascript"></script>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-2601749019656699",
+enable_page_level_ads: true
+});
+</script>
+</head>
+<body data-rsssl=1 class="post-template-default single single-post postid-27490 single-format-standard col-2cl full-width topbar-enabled unknown">
+<div id="wrapper">
+<header id="header">
+<nav class="nav-container group" id="nav-topbar">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"></div>
+<div class="nav-wrap container"><ul id="menu-home" class="nav container-inner group"><li id="menu-item-334" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-334"><a href="https://www.tecmint.com">Home</a></li>
+<li id="menu-item-10774" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10774"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/who-we-are/">About</a></li>
+<li id="menu-item-3912" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3912"><a title="Free Linux eBooks" target="_blank" rel="noopener noreferrer" href="http://tecmint.tradepub.com/category/information-technology-servers-and-linux-server-os/806/">Free eBooks</a></li>
+<li id="menu-item-17151" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17151"><a title="Discover and save on the best gear, gadgets, and software" target="_blank" rel="noopener noreferrer" href="https://deals.tecmint.com">Deals</a></li>
+<li id="menu-item-18575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18575"><a title="Support Us" href="https://www.tecmint.com/donate-to-tecmint/">Donate</a></li>
+<li id="menu-item-10775" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10775"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/submit-articles/">Join TecMint</a></li>
+<li id="menu-item-11736" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11736"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/linux-online-training-courses/">Linux Online Courses</a></li>
+<li id="menu-item-11907" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11907"><a title="Subscribe to Daily Updates" target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/subscribe-to-blog/">Subscribe</a></li>
+<li id="menu-item-13338" class="hosting menu-item menu-item-type-custom menu-item-object-custom menu-item-13338"><a title="Best Web Hosting Companies" target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/best-web-hosting-for-linux/">Linux Hosting</a></li>
+<li id="menu-item-24734" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24734"><a title="Linux Commands &#8211; A Beginners Cheat Sheet" target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/linux-commands-cheat-sheet/">A-Z Linux Commands</a></li>
+</ul></div>
+<div class="container">
+<div class="container-inner">
+<div class="toggle-search"><i class="fa fa-search"></i></div>
+<div class="search-expand">
+<div class="search-expand-inner">
+<form action="https://www.tecmint.com/search/" id="cse-search-box">
+<div>
+<input type="hidden" name="cx" value="partner-pub-2601749019656699:2173448976" />
+<input type="hidden" name="cof" value="FORID:10" />
+<input type="hidden" name="ie" value="UTF-8" />
+<input type="text" class="search" name="q" size="20" />
+<input type="submit" name="sa" value="Search" />
+</div>
+</form>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript" src="https://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="container group">
+<div class="container-inner">
+<div class="group pad">
+<p class="site-title"><a href="https://www.tecmint.com/" rel="home"><img src="/wp-content/themes/tecmint/images/logo.png" alt="Tecmint: Linux Howtos, Tutorials &amp; Guides"></a></p>
+<div id="header-ads">
+<div id="text-17" class="widget widget_text"> <div class="textwidget">
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2601749019656699" data-ad-slot="8210224606"></ins>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div> </div>
+</div>
+<nav class="nav-container group" id="nav-header">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"></div>
+<div class="nav-wrap container"><ul id="menu-header" class="nav container-inner group"><li id="menu-item-20410" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20410"><a target="_blank" rel="noopener noreferrer" href="https://www.fossmint.com">Linux News</a></li>
+<li id="menu-item-10770" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10770"><a href="https://www.tecmint.com/best-linux-distributions/">Linux Distro&#8217;s</a></li>
+<li id="menu-item-10771" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10771"><a href="https://www.tecmint.com/category/interview-questions/">Interview Questions</a></li>
+<li id="menu-item-20869" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-20869"><a href="https://www.tecmint.com/#">Programming</a>
+<ul class="sub-menu">
+<li id="menu-item-10772" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10772"><a title="Learn Linux Shell Scripting" href="https://www.tecmint.com/category/bash-shell/">Shell Scripting</a></li>
+<li id="menu-item-20870" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20870"><a href="https://www.tecmint.com/category/python/">Learn Python</a></li>
+<li id="menu-item-20871" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20871"><a href="https://www.tecmint.com/category/awk-command/">Learn Awk</a></li>
+</ul>
+</li>
+<li id="menu-item-10773" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-10773"><a href="https://www.tecmint.com/category/linux-commands/">Linux Commands</a></li>
+<li id="menu-item-14795" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14795"><a href="https://www.tecmint.com/tag/linux-tricks/">Linux Tricks</a></li>
+<li id="menu-item-19684" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-19684"><a href="https://www.tecmint.com/category/top-tools/">Best Linux Tools</a></li>
+<li id="menu-item-10443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-10443"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/#">Certifications</a>
+<ul class="sub-menu">
+<li id="menu-item-14880" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14880"><a href="https://www.tecmint.com/how-to-setup-and-configure-static-network-routing-in-rhel/">RHCE Exam</a></li>
+<li id="menu-item-11906" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11906"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/rhcsa-exam-reviewing-essential-commands-system-documentation/">RHCSA Exam</a></li>
+<li id="menu-item-10444" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10444"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/installing-network-services-and-configuring-services-at-system-boot/">LFCE Exam</a></li>
+<li id="menu-item-14793" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14793"><a href="https://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/">LFCS Exam</a></li>
+</ul>
+</li>
+<li id="menu-item-12399" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-12399"><a href="https://www.tecmint.com/#">Guides</a>
+<ul class="sub-menu">
+<li id="menu-item-18564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18564"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/install-docker-and-learn-containers-in-centos-rhel-7-6/">Docker Series</a></li>
+<li id="menu-item-17150" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17150"><a href="https://www.tecmint.com/setup-postfix-mail-server-and-dovecot-with-mariadb-in-centos/">Postfix Mail</a></li>
+<li id="menu-item-15041" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15041"><a href="https://www.tecmint.com/citrix-xenserver-installation-and-network-configuration-in-linux/">XenServer Series</a></li>
+<li id="menu-item-14794" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14794"><a href="https://www.tecmint.com/install-redhat-virtualization-rhev/">RHEV Series</a></li>
+<li id="menu-item-14805" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14805"><a href="https://www.tecmint.com/what-is-clustering-and-advantages-disadvantages-of-clustering-in-linux/">Clustering Series</a></li>
+<li id="menu-item-12400" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12400"><a href="https://www.tecmint.com/create-lvm-storage-in-linux/">LVM Series</a></li>
+<li id="menu-item-12402" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12402"><a href="https://www.tecmint.com/understanding-raid-setup-in-linux/">RAID Series</a></li>
+<li id="menu-item-12403" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12403"><a href="https://www.tecmint.com/install-and-configure-kvm-in-linux/">KVM Series</a></li>
+<li id="menu-item-12401" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12401"><a href="https://www.tecmint.com/create-centralized-secure-storage-using-iscsi-targetin-linux/">iSCSI Series</a></li>
+<li id="menu-item-12406" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12406"><a href="https://www.tecmint.com/install-zentyal-as-primary-domain-controller-and-integrate-windows-system/">Zentyal Series</a></li>
+<li id="menu-item-16084" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16084"><a href="https://www.tecmint.com/install-and-configure-ansible-automation-tool-in-linux/">Ansible Series</a></li>
+<li id="menu-item-16395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16395"><a href="https://www.tecmint.com/install-and-configure-django-web-framework-in-centos-debian-ubuntu/">Django Series</a></li>
+<li id="menu-item-14603" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14603"><a href="https://www.tecmint.com/create-gui-applications-in-linux/">Create GUI Apps</a></li>
+</ul>
+</li>
+<li id="menu-item-14796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-14796"><a href="https://www.tecmint.com/command-line-tools-to-monitor-linux-performance/">Monitoring Tools</a>
+<ul class="sub-menu">
+<li id="menu-item-14797" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14797"><a href="https://www.tecmint.com/install-nagios-in-linux/">Nagios</a></li>
+<li id="menu-item-14798" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14798"><a href="https://www.tecmint.com/install-and-configure-zabbix-monitoring-on-debian-centos-rhel/">Zabbix</a></li>
+<li id="menu-item-14799" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14799"><a href="https://www.tecmint.com/install-cacti-network-monitoring-on-rhel-centos-6-3-5-8-and-fedora-17-12/">Cacti</a></li>
+<li id="menu-item-14800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14800"><a href="https://www.tecmint.com/install-observium-in-centos/">Observium</a></li>
+<li id="menu-item-14801" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14801"><a href="https://www.tecmint.com/monitorix-a-lightweight-system-and-network-monitoring-tool-for-linux/">Monitorix</a></li>
+<li id="menu-item-14802" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14802"><a href="https://www.tecmint.com/install-collectd-and-collectd-web-to-monitor-server-resources-in-linux/">Collectd</a></li>
+<li id="menu-item-14803" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14803"><a href="https://www.tecmint.com/linux-performance-monitoring-with-collectl-tool/">Collectl</a></li>
+<li id="menu-item-14804" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14804"><a href="https://www.tecmint.com/mysql-performance-monitoring/">MySQL Monitoring</a></li>
+</ul>
+</li>
+</ul></div>
+</nav>
+</div>
+</div>
+</header>
+<div class="container" id="page">
+<div class="container-inner">
+<div class="main">
+<div class="main-inner group">
+<section class="content">
+<div class="page-title pad group">
+<ul class="meta-single group">
+<li class="category"><a href="https://www.tecmint.com/category/linux-commands/" rel="category tag">Linux Commands</a></li>
+<li class="comments"><a href="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#comments"><i class="fa fa-comments-o"></i>2</a></li>
+</ul>
+</div>
+<div class="pad group">
+<article class="post-27490 post type-post status-publish format-standard has-post-thumbnail hentry category-linux-commands tag-linux-tricks">
+<div class="post-inner group">
+<h1 class="post-title">10 Practical Examples Using Wildcards to Match Filenames in Linux</h1>
+<p class="post-byline">by <a href="https://www.tecmint.com/author/aaronkili/" title="Posts by Aaron Kili" rel="author">Aaron Kili</a> | Published: October 6, 2017 | 
+Last Updated: October 6, 2017 </p>
+<div class="add-box">
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2601749019656699" data-ad-slot="2902592253" data-ad-format="link"></ins>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="clear"></div>
+<div id="exam_announcement">
+<i style="color:#28557a; font-size:20px;" class="fa fa-book"></i>
+<b>Download Your Free eBooks NOW</b> - <a target="_blank" style="text-decoration:underline;" href="https://www.tecmint.com/10-useful-free-linux-ebooks-for-newbies-and-administrators/" style="color:#dd3333;font-weight:400; font-size:16px;">10 Free Linux eBooks for Administrators</a> | <a style="text-decoration:underline;" target="_blank" href="https://www.tecmint.com/free-linux-shell-scripting-books/" style="color:#e54e7e;font-weight:400; font-size:16px;">4 Free Shell Scripting eBooks</a>
+</div>
+<div class="clear"></div>
+<div class="ads-inner-mobile">
+<center>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2601749019656699" data-ad-slot="9946480174"></ins>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+</div>
+<div class="clear"></div>
+<div class="entry share">
+<div class="entry-inner">
+<p><strong>Wildcards</strong> (also referred to as meta characters) are symbols or special characters that represent other characters. You can use them with any command such as <a href="https://www.tecmint.com/tag/linux-ls-command/" target="_blank" rel="noopener">ls command</a> or <strong>rm command</strong> to list or remove files matching a given criteria, receptively.</p>
+<p>Read Also: <a href="https://www.tecmint.com/chaining-operators-in-linux-with-practical-examples/" target="_blank" rel="noopener">10 Useful Practical Examples on Chaining Operators in Linux</a></p>
+<p>These wildcards are interpreted by the shell and the results are returned to the command you run. There are three main wildcards in Linux:</p>
+<ul>
+<li>An asterisk <code>(*)</code> &#8211; matches one or more occurrences of any character, including no character.</li>
+<li>Question mark <code>(?)</code> &#8211; represents or matches a single occurrence of any character.</li>
+<li>Bracketed characters <code>([ ])</code> &#8211; matches any occurrence of character enclosed in the square brackets. It is possible to use different types of characters (alphanumeric characters): numbers, letters, other special characters etc.</li>
+</ul>
+<p>You need to carefully choose which wildcard to use to match correct filenames: it is also possible to combine all of them in one operation as explained in the examples below.</p>
+<h3>How to Match Filenames Using Wildcards in Linux</h3>
+<center style="padding-bottom: 20px;padding-top: 10px;"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2601749019656699" data-ad-slot="5590002574" data-ad-format="auto" data-full-width-responsive="true"></ins><script type="47ddfd0a03b30e34eebe00d5-text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script></center><p>For the purpose of this article, we will use following files to demonstrate each example.</p>
+<pre>createbackup.sh  list.sh  lspace.sh        speaker.sh
+listopen.sh      lost.sh  rename-files.sh  topprocs.sh
+</pre>
+<p><strong>1.</strong> This command matches all files with names starting with <code>l</code> (which is the prefix) and ending with one or more occurrences of any character.</p>
+<pre>$ ls -l l*	
+</pre>
+<div id="attachment_27491" style="width: 652px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/List-Files-with-Character.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/List-Files-with-Character.png" aria-describedby="caption-attachment-27491" class="size-full wp-image-27491" alt="List Files with Character" width="642" height="116"><noscript><img aria-describedby="caption-attachment-27491" class="size-full wp-image-27491" src="https://www.tecmint.com/wp-content/uploads/2017/10/List-Files-with-Character.png" alt="List Files with Character" width="642" height="116" /></noscript></a><p id="caption-attachment-27491" class="wp-caption-text">List Files with Character</p></div>
+<p><strong>2.</strong> This example shows another use of <code>*</code> to copy all filenames prefixed with <code>users-0</code> and ending with one or more occurrences of any character.</p>
+<pre>$ mkdir -p users-info
+$ ls users-0*
+$ mv -v users-0* users-info/	# Option <strong>-v</strong> flag enables verbose output
+</pre>
+<div id="attachment_27492" style="width: 652px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/List-and-Copy-All-Files.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/List-and-Copy-All-Files.png" aria-describedby="caption-attachment-27492" class="size-full wp-image-27492" alt="List and Copy All Files" width="642" height="287"><noscript><img aria-describedby="caption-attachment-27492" class="size-full wp-image-27492" src="https://www.tecmint.com/wp-content/uploads/2017/10/List-and-Copy-All-Files.png" alt="List and Copy All Files" width="642" height="287" /></noscript></a><p id="caption-attachment-27492" class="wp-caption-text">List and Copy All Files</p></div>
+<p><strong>3.</strong> The following command matches all files with names beginning with <code>l</code> followed by any single character and ending with <code>st.sh</code> (which is the suffix).</p>
+<pre>$ ls l?st.sh	
+</pre>
+<div id="attachment_27493" style="width: 652px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/Match-File-with-Character-Name.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/Match-File-with-Character-Name.png" aria-describedby="caption-attachment-27493" class="size-full wp-image-27493" alt="Match File with Character Name" width="642" height="78"><noscript><img aria-describedby="caption-attachment-27493" class="size-full wp-image-27493" src="https://www.tecmint.com/wp-content/uploads/2017/10/Match-File-with-Character-Name.png" alt="Match File with Character Name" width="642" height="78" /></noscript></a><p id="caption-attachment-27493" class="wp-caption-text">Match File with Character Name</p></div>
+<p><strong>4.</strong> The command below matches all files with names starting with <code>l</code> followed by any of the characters in the square bracket but ending with <code>st.sh</code>.</p>
+<pre>$ ls l[abdcio]st.sh 
+</pre>
+<div id="attachment_27494" style="width: 652px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/Matching-Files-with-Names.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/Matching-Files-with-Names.png" aria-describedby="caption-attachment-27494" class="size-full wp-image-27494" alt="Matching Files with Names" width="642" height="78"><noscript><img aria-describedby="caption-attachment-27494" class="size-full wp-image-27494" src="https://www.tecmint.com/wp-content/uploads/2017/10/Matching-Files-with-Names.png" alt="Matching Files with Names" width="642" height="78" /></noscript></a><p id="caption-attachment-27494" class="wp-caption-text">Matching Files with Names</p></div>
+<h3>How to Combine Wildcards to Match Filenames in Linux</h3>
+<p>You can combine wildcards to build a complex filename matching criteria as described in the following examples.</p>
+<p><strong>5.</strong> This command will match all filenames prefixed with any two characters followed by <code>st</code> but ending with one or more occurrence of any character.</p>
+<pre>$ ls
+$ ls ??st*
+</pre>
+<div id="attachment_27495" style="width: 682px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/Find-File-Names-with-Prefix.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/Find-File-Names-with-Prefix.png" aria-describedby="caption-attachment-27495" class="size-full wp-image-27495" alt="Match File Names with Prefix" width="672" height="154"><noscript><img aria-describedby="caption-attachment-27495" class="size-full wp-image-27495" src="https://www.tecmint.com/wp-content/uploads/2017/10/Find-File-Names-with-Prefix.png" alt="Match File Names with Prefix" width="672" height="154" /></noscript></a><p id="caption-attachment-27495" class="wp-caption-text">Match File Names with Prefix</p></div>
+<p><strong>6.</strong> This example matches filenames starting with any of these characters <code>[clst]</code> and ending with one or more occurrence of any character.</p>
+<pre>$ ls
+$ ls [clst]*
+</pre>
+<div id="attachment_27497" style="width: 682px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/Match-Files-with-Characters.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/Match-Files-with-Characters.png" aria-describedby="caption-attachment-27497" class="size-full wp-image-27497" alt="Match Files with Characters" width="672" height="154"><noscript><img aria-describedby="caption-attachment-27497" class="size-full wp-image-27497" src="https://www.tecmint.com/wp-content/uploads/2017/10/Match-Files-with-Characters.png" alt="Match Files with Characters" width="672" height="154" /></noscript></a><p id="caption-attachment-27497" class="wp-caption-text">Match Files with Characters</p></div>
+<p><strong>7.</strong> In this examples, only filenames starting with any of these characters <code>[clst]</code> followed by one of these <code>[io]</code> and then any single character, followed by a <code>t</code> and lastly, one or more occurrence of any character will be listed.</p>
+<pre>$ ls
+$ ls [clst][io]?t*
+</pre>
+<div id="attachment_27498" style="width: 642px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/List-Files-with-Multiple-Characters.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/List-Files-with-Multiple-Characters.png" aria-describedby="caption-attachment-27498" class="size-full wp-image-27498" alt="List Files with Multiple Characters" width="632" height="135"><noscript><img aria-describedby="caption-attachment-27498" class="size-full wp-image-27498" src="https://www.tecmint.com/wp-content/uploads/2017/10/List-Files-with-Multiple-Characters.png" alt="List Files with Multiple Characters" width="632" height="135" /></noscript></a><p id="caption-attachment-27498" class="wp-caption-text">List Files with Multiple Characters</p></div>
+<p><strong>8.</strong> Here, filenames prefixed with one or more occurrence of any character, followed by the letters <code>tar</code> and ending with one or more occurrence of any character will be removed.</p>
+<pre>$ ls
+$ rm *tar*
+$ ls
+</pre>
+<div id="attachment_27499" style="width: 752px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/Remove-Files-with-Letters.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/Remove-Files-with-Letters.png" aria-describedby="caption-attachment-27499" class="size-full wp-image-27499" alt="Remove Files with Character Letters" width="742" height="211"><noscript><img aria-describedby="caption-attachment-27499" class="size-full wp-image-27499" src="https://www.tecmint.com/wp-content/uploads/2017/10/Remove-Files-with-Letters.png" alt="Remove Files with Character Letters" width="742" height="211" /></noscript></a><p id="caption-attachment-27499" class="wp-caption-text">Remove Files with Character Letters</p></div>
+<h3>How to Match Characters Set in Linux</h3>
+<p><strong>9.</strong> Now lets look at how to specify a set of characters. Consider the filenames below containing system users information.</p>
+<pre>$ ls
+
+users-111.list  users-1AA.list  users-22A.list  users-2aB.txt   users-2ba.txt
+users-111.txt   users-1AA.txt   users-22A.txt   users-2AB.txt   users-2bA.txt
+users-11A.txt   users-1AB.list  users-2aA.txt   users-2ba.list
+users-12A.txt   users-1AB.txt   users-2AB.list  users-2bA.list
+</pre>
+<p>This command will match all files whose name starts with <code>users-i</code>, followed by a number, a lower case letter or number, then a number and ends with one or more occurrences of any character.</p>
+<pre>$ ls users-[0-9][a-z0-9][0-9]*
+</pre>
+<p>The next command matches filenames beginning with <code>users-i</code>, followed by a number, a lower or upper case letter or number, then a number and ends with one or more occurrences of any character.</p>
+<pre>$ ls users-[0-9][a-zA-Z0-9][0-9]*
+</pre>
+<p>This command that follows will match all filenames beginning with <code>users-i</code>, followed by a number, a lower or upper case letter or number, then a lower or upper case letter and ends with one or more occurrences of any character.</p>
+<pre>$ ls users-[0-9][a-zA-Z0-9][a-zA-Z]*
+</pre>
+<div id="attachment_27500" style="width: 792px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2017/10/Match-Characters-in-Filenames.png"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/10/Match-Characters-in-Filenames.png" aria-describedby="caption-attachment-27500" class="size-full wp-image-27500" alt="Match Characters in Filenames" width="782" height="325" srcset="https://www.tecmint.com/wp-content/uploads/2017/10/Match-Characters-in-Filenames.png 782w, https://www.tecmint.com/wp-content/uploads/2017/10/Match-Characters-in-Filenames-768x319.png 768w" sizes="(max-width: 782px) 100vw, 782px"><noscript><img aria-describedby="caption-attachment-27500" class="size-full wp-image-27500" src="https://www.tecmint.com/wp-content/uploads/2017/10/Match-Characters-in-Filenames.png" alt="Match Characters in Filenames" width="782" height="325" srcset="https://www.tecmint.com/wp-content/uploads/2017/10/Match-Characters-in-Filenames.png 782w, https://www.tecmint.com/wp-content/uploads/2017/10/Match-Characters-in-Filenames-768x319.png 768w" sizes="(max-width: 782px) 100vw, 782px" /></noscript></a><p id="caption-attachment-27500" class="wp-caption-text">Match Characters in Filenames</p></div>
+<h3>How to Negate a Set of Characters in Linux</h3>
+<p><strong>10.</strong> You can as well negate a set of characters using the <code>!</code> symbol. The following command lists all filenames starting with <code>users-i</code>, followed by a number, any valid file naming character apart from a number, then a lower or upper case letter and ends with one or more occurrences of any character.</p>
+<pre>$ ls users-[0-9][!0-9][a-zA-Z]*
+</pre>
+<p>That’s all for now! If you have tried out the above examples, you should now have a good understanding of how wildcards work to match filenames in Linux.</p>
+<p>You might also like to read these following articles that shows examples of using wildcards in Linux:</p>
+<ol>
+<li><a href="https://www.tecmint.com/extract-tar-files-to-specific-or-different-directory-in-linux/" target="_blank" rel="noopener">How to Extract Tar Files to Specific or Different Directory in Linux</a></li>
+<li><a href="https://www.tecmint.com/delete-all-files-in-directory-except-one-few-file-extensions/" target="_blank" rel="noopener">3 Ways to Delete All Files in a Directory Except One or Few Files with Extensions</a></li>
+<li><a href="https://www.tecmint.com/useful-tips-for-writing-bash-scripts-in-linux/" target="_blank" rel="noopener">10 Useful Tips for Writing Effective Bash Scripts in Linux</a></li>
+<li><a href="https://www.tecmint.com/use-linux-awk-command-to-filter-text-string-in-files/" target="_blank" rel="noopener">How to Use Awk and Regular Expressions to Filter Text or String in Files</a></li>
+</ol>
+<p>If you have any thing to share or a question(s) to ask, use the comment form below.</p>
+</div>
+<div class="sharrre-container">
+<span>Share</span>
+<div id="twitter" data-url="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/" data-text="10 Practical Examples Using Wildcards to Match Filenames in Linux" data-title="Tweet"><a class="box" href="#"><div class="count" href="#">+</div><div class="share"><i class="fa fa-twitter"></i></div></a></div>
+<div id="facebook" data-url="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/" data-text="10 Practical Examples Using Wildcards to Match Filenames in Linux" data-title="Like"><a class="box" href="#"><div class="count" href="#">+</div><div class="share"><i class="fa fa-facebook"></i></div></a></div>
+<div id="googleplus" data-url="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/" data-text="10 Practical Examples Using Wildcards to Match Filenames in Linux" data-title="+1"></div>
+<div id="linkedin" data-url="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/" data-text="10 Practical Examples Using Wildcards to Match Filenames in Linux" data-title="Share It"></div>
+<div style="font-weight: 600; padding-top: 10px; width: 55px;"><a href="#comments"><img alt="Ask Anything" src="https://www.tecmint.com/wp-content/themes/tecmint/images/help.png"></a></div>
+</div>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+// Sharrre
+jQuery(document).ready(function(){
+jQuery('#twitter').sharrre({
+share: {
+twitter: true
+},
+template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-twitter"></i></div></a>',
+enableHover: false,
+enableTracking: true,
+buttons: { twitter: {via: 'tecmint'}},
+click: function(api, options){
+api.simulateClick();
+api.openPopup('twitter');
+}
+});
+jQuery('#facebook').sharrre({
+share: {
+facebook: true
+},
+template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-facebook-square"></i></div></a>',
+enableHover: false,
+enableTracking: true,
+click: function(api, options){
+api.simulateClick();
+api.openPopup('facebook');
+}
+});
+jQuery('#googleplus').sharrre({
+share: {
+googlePlus: true
+},
+template: '<a class="box" href="#"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-google-plus-square"></i></div></a>',
+enableHover: false,
+enableTracking: true,
+urlCurl: 'https://www.tecmint.com/wp-content/themes/tecmint/js/sharrre.php',
+click: function(api, options){
+api.simulateClick();
+api.openPopup('googlePlus');
+}
+});
+jQuery('#linkedin').sharrre({
+share: {
+linkedin: true
+},
+template: '<a class="box" href="#" rel="nofollow"><div class="count" href="#">{total}</div><div class="share"><i class="fa fa-linkedin"></i></div></a>',
+enableHover: false,
+enableTracking: true,
+buttons: {
+linkedin: {
+description: '10 Practical Examples Using Wildcards to Match Filenames in Linux',media: 'https://www.tecmint.com/wp-content/uploads/2017/10/Linux-Wildcards-Command-Examples.png'				}
+},
+click: function(api, options){
+api.simulateClick();
+api.openPopup('linkedin');
+}
+});
+// Scrollable sharrre bar, contributed by Erik Frye. Awesome!
+var shareContainer = jQuery(".sharrre-container"),
+header = jQuery('#header'),
+postEntry = jQuery('.entry'),
+$window = jQuery(window),
+distanceFromTop = 20,
+startSharePosition = shareContainer.offset(),
+contentBottom = postEntry.offset().top + postEntry.outerHeight(),
+topOfTemplate = header.offset().top;
+getTopSpacing();
+shareScroll = function(){
+if($window.width() > 719){	
+var scrollTop = $window.scrollTop() + topOfTemplate,
+stopLocation = contentBottom - (shareContainer.outerHeight() + topSpacing);
+if(scrollTop > stopLocation){
+shareContainer.offset({top: contentBottom - shareContainer.outerHeight(),left: startSharePosition.left});
+}
+else if(scrollTop >= postEntry.offset().top-topSpacing){
+shareContainer.offset({top: scrollTop + topSpacing, left: startSharePosition.left});
+}else if(scrollTop < startSharePosition.top+(topSpacing-1)){
+shareContainer.offset({top: startSharePosition.top,left:startSharePosition.left});
+}
+}
+},
+shareMove = function(){
+startSharePosition = shareContainer.offset();
+contentBottom = postEntry.offset().top + postEntry.outerHeight();
+topOfTemplate = header.offset().top;
+getTopSpacing();
+};
+/* As new images load the page content body gets longer. The bottom of the content area needs to be adjusted in case images are still loading. */
+setTimeout(function() {
+contentBottom = postEntry.offset().top + postEntry.outerHeight();
+}, 2000);
+if (window.addEventListener) {
+window.addEventListener('scroll', shareScroll, false);
+window.addEventListener('resize', shareMove, false);
+} else if (window.attachEvent) {
+window.attachEvent('onscroll', shareScroll);
+window.attachEvent('onresize', shareMove);
+}
+function getTopSpacing(){
+if($window.width() > 1024)
+topSpacing = distanceFromTop + jQuery('.nav-wrap').outerHeight();
+else
+topSpacing = distanceFromTop;
+}
+});
+</script>
+<div class="clear"></div>
+</div>
+</div>
+</article>
+<div class="clear"></div>
+<div class="clear"></div>
+<div class="ads-inner-mobile">
+<center style="padding-top:30px;">
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2601749019656699" data-ad-slot="7807254572"></ins>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+</div>
+<div class="clear"></div>
+<div id="fosswork_support"><center><em><b style="color:#d80a0a;text-shadow: 0 1px 0 #fff;text-decoration:underline;"><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Linux and WordPress Support','FossWork')" href="https://www.fosswork.com" target="_blank" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">Best Affordable Linux and WordPress Services For Your Business</a></b><br>Outsource Your Linux and WordPress Project and Get it Promptly Completed Remotely and Delivered Online.</em></center></div>
+<div class="clear"></div>
+<div class="after-post-box">
+<h2>If You Appreciate What We Do Here On TecMint, You Should Consider:</h2>
+<ol>
+<li>Stay Connected to: <strong><a target="_blank" rel="nofollow" href="https://bit.ly/1TP6lcM" title="Follow TecMint on Twitter">Twitter</a></strong> | <strong><a target="_blank" rel="nofollow" href="https://bit.ly/1rDYrdj" title="Like Us on Facebook">Facebook</a></strong> | <strong><a target="_blank" rel="nofollow" href="https://bit.ly/24J6lna" title="Join Us On Google+">Google Plus</a></strong></li>
+<li>Subscribe to our email updates: <strong><a target="_blank" rel="nofollow" href="https://bit.ly/2dhBpWQ" title="Subscribe to TecMint Email Updates">Sign Up Now</a></strong></li>
+<li>Get your own <strong><a target="_blank" rel="nofollow" title="WordPress Hosting" href="https://www.bluehost.com/track/tecmint/">self-hosted blog with a Free Domain</a></strong> at (<strong>$3.45/month</strong>).</li>
+<li>Become a Supporter - <strong><a target="_blank" href="https://www.tecmint.com/donate-to-tecmint/">Make a contribution via PayPal</a></strong></li>
+<li>Support us by <strong><a href="https://www.tecmint.com/linux-books-in-pdf-format/" target="_blank">purchasing our premium books</a></strong> in PDF format.</li>
+<li>Support us by taking our <strong><a rel="nofollow" target="_blank" href="https://deals.tecmint.com/search?utf8=%E2%9C%93&query=linux">online Linux courses</a></strong></li>
+</ol>
+<p style="text-align: center;"><strong style=" color:#fe3300;font-size:20px;">We are thankful for your never ending support.</strong></p>
+</div>
+<div class="clear"></div>
+<p class="post-tags"><span>Tags:</span> <a href="https://www.tecmint.com/tag/linux-tricks/" rel="tag">Linux Tricks</a></p> <div class="author-bio">
+<div class="bio-avatar"><img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=128&#038;d=blank&#038;r=g" alt srcset="https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=256&#038;d=blank&#038;r=g 2x" class="avatar avatar-128 photo" height="128" width="128"><noscript><img alt='' src='https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=128&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=256&#038;d=blank&#038;r=g 2x' class='avatar avatar-128 photo' height='128' width='128' /></noscript></div>
+<p style="float:right; font-weight:600;"><a target="_blank" class="author-link" href="https://www.tecmint.com/author/aaronkili/" rel="author">View all Posts</a></p>
+<p class="bio-name">Aaron Kili</p>
+<p class="bio-desc">Aaron Kili is a Linux and F.O.S.S enthusiast, an upcoming Linux SysAdmin, web developer, and currently a content creator for TecMint who loves working with computers and strongly believes in sharing knowledge.</p>
+<p><span style="font-size:20px;font-weight:400;color:#a2042e">Your name can also be listed here. Got a tip? <a style="text-decoration:underline;" target="_blank" href="https://www.tecmint.com/submit-articles/">Submit it here</a> to become an <b>TecMint</b> author.</span></p>
+<div class="clear"></div>
+</div>
+<div class="hr"></div>
+<div class="grid one-fourth">
+<a href="https://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/" target="_blank"><img alt="RedHat RHCE and RHCSA Certification Book" width="200" src="https://www.tecmint.com/wp-content/themes/tecmint/images/RedHat-RHCSA-RHCE-Exam-Study-Ebook.png" style="margin-right:10px;"></a>
+</div>
+<div class="grid one-fourth">
+<a href="https://www.tecmint.com/linux-foundation-lfcs-lfce-certification-exam-book/" target="_blank"><img alt="Linux Foundation LFCS and LFCE Certification Preparation Guide" width="200" src="https://www.tecmint.com/wp-content/themes/tecmint/images/Linux-Foundation-LFCS-LFCE-Certification-Ebook.png"></a>
+</div>
+<div class="grid one-fourth">
+<a href="https://deals.tecmint.com/sales/complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensuse?utm_source=tecmint.com&utm_medium=referral&utm_campaign=complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensu" rel="nofollow" target="_blank"><img width="200" src="https://www.tecmint.com/wp-content/themes/tecmint/images/Linux-System-Administrator-Course.png" style="margin-right:10px;"></a>
+</div>
+<div class="grid one-fourth last">
+<a href="https://deals.tecmint.com/sales/become-an-ethical-hacker-bonus-bundle?utm_source=tecmint.com&utm_medium=referral&utm_campaign=become-an-ethical-hacker-bonus-bundle_090216" rel="nofollow" target="_blank"><img width="200" src="https://www.tecmint.com/wp-content/themes/tecmint/images/Become-an-Ethical-Hacker.png"></a>
+</div>
+<div class="clear"></div>
+<div class="hr"></div>
+<ul class="post-nav group">
+<li class="next"><a href="https://www.tecmint.com/tmout-auto-logout-linux-shell-idle-sessions/" rel="next"><i class="fa fa-chevron-right"></i><strong>Next story</strong> <span>TMOUT &#8211; Auto Logout Linux Shell When There Isn&#8217;t Any Activity</span></a></li>
+<li class="previous"><a href="https://www.tecmint.com/arch-linux-installation-and-configuration-guide/" rel="prev"><i class="fa fa-chevron-left"></i><strong>Previous story</strong> <span>Arch Linux Installation and Configuration on UEFI Machines</span></a></li>
+</ul>
+<h4 class="heading">
+<i class="fa fa-hand-o-right"></i>You may also like...</h4>
+<ul class="related-posts group">
+<li class="related post-hover">
+<article class="post-28789 post type-post status-publish format-standard has-post-thumbnail hentry category-linux-commands tag-commandline-tools">
+<div class="post-thumbnail">
+<a href="https://www.tecmint.com/exodus-copy-linux-binaries-to-remote-linux-system/" title="Exodus &#8211; Safely Copy Linux Binaries From One Linux System to Another">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2018/03/Exodus-Copy-Linux-Binaries-to-Remote-Linux.png" width="720" height="340" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Exodus Copy Linux Binaries to Remote Linux"><noscript><img width="720" height="340" src="https://www.tecmint.com/wp-content/uploads/2018/03/Exodus-Copy-Linux-Binaries-to-Remote-Linux.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Exodus Copy Linux Binaries to Remote Linux" /></noscript> </a>
+<a class="post-comments" href="https://www.tecmint.com/exodus-copy-linux-binaries-to-remote-linux-system/#comments"><span><i class="fa fa-comments-o"></i>6</span></a>
+</div>
+<div class="related-inner">
+<h4 class="post-title">
+<a href="https://www.tecmint.com/exodus-copy-linux-binaries-to-remote-linux-system/" rel="bookmark" title="Exodus &#8211; Safely Copy Linux Binaries From One Linux System to Another">Exodus &#8211; Safely Copy Linux Binaries From One Linux System to Another</a>
+</h4>
+<div class="post-meta group">
+<p class="post-date">9 Mar, 2018</p>
+</div>
+</div>
+</article>
+</li>
+<li class="related post-hover">
+<article class="post-29647 post type-post status-publish format-standard has-post-thumbnail hentry category-linux-commands tag-procinfo-command-examples">
+<div class="post-thumbnail">
+<a href="https://www.tecmint.com/procinfo-shows-proc-system-information/" title="procinfo &#8211; Shows System Statistics from /proc Filesystem">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2018/06/procinfo-shows-proc-system-info.png" width="720" height="340" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Shows /proc System Information"><noscript><img width="720" height="340" src="https://www.tecmint.com/wp-content/uploads/2018/06/procinfo-shows-proc-system-info.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Shows /proc System Information" /></noscript> </a>
+<a class="post-comments" href="https://www.tecmint.com/procinfo-shows-proc-system-information/#comments"><span><i class="fa fa-comments-o"></i>5</span></a>
+</div>
+<div class="related-inner">
+<h4 class="post-title">
+<a href="https://www.tecmint.com/procinfo-shows-proc-system-information/" rel="bookmark" title="procinfo &#8211; Shows System Statistics from /proc Filesystem">procinfo &#8211; Shows System Statistics from /proc Filesystem</a>
+</h4>
+<div class="post-meta group">
+<p class="post-date">4 Jun, 2018</p>
+</div>
+</div>
+</article>
+</li>
+<li class="related post-hover">
+<article class="post-30303 post type-post status-publish format-standard has-post-thumbnail hentry category-linux-commands tag-commandline-tools tag-linux-calculator">
+<div class="post-thumbnail">
+<a href="https://www.tecmint.com/bc-command-examples/" title="How to Use GNU bc (Basic Calculator) in Linux">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2018/08/linux-bc-command-examples.png" width="720" height="340" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Linux bc Command Examples"><noscript><img width="720" height="340" src="https://www.tecmint.com/wp-content/uploads/2018/08/linux-bc-command-examples.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Linux bc Command Examples" /></noscript> </a>
+<a class="post-comments" href="https://www.tecmint.com/bc-command-examples/#comments"><span><i class="fa fa-comments-o"></i>5</span></a>
+</div>
+<div class="related-inner">
+<h4 class="post-title">
+<a href="https://www.tecmint.com/bc-command-examples/" rel="bookmark" title="How to Use GNU bc (Basic Calculator) in Linux">How to Use GNU bc (Basic Calculator) in Linux</a>
+</h4>
+<div class="post-meta group">
+<p class="post-date">17 Aug, 2018</p>
+</div>
+</div>
+</article>
+</li>
+</ul>
+<section id="comments" class="themeform">
+<h3 class="heading">2 Responses</h3>
+<ul class="comment-tabs group">
+<li class="active"><a href="#commentlist-container"><i class="fa fa-comments-o"></i>Comments<span>2</span></a></li>
+<li><a href="#pinglist-container"><i class="fa fa-share"></i>Pingbacks<span>0</span></a></li>
+</ul>
+<div id="commentlist-container" class="comment-tab">
+<ol class="commentlist">
+<li class="comment even thread-even depth-1 parent" id="comment-920283">
+<div id="div-comment-920283" class="comment-body">
+<div class="comment-author vcard">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://secure.gravatar.com/avatar/66982bce4557efe422acd606143f20a9?s=96&#038;d=blank&#038;r=g" alt srcset="https://secure.gravatar.com/avatar/66982bce4557efe422acd606143f20a9?s=192&#038;d=blank&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/66982bce4557efe422acd606143f20a9?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/66982bce4557efe422acd606143f20a9?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn">ks</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#comment-920283">
+October 9, 2017 at 7:25 am </a>
+</div>
+<p>An asterisk (*) – matches zero or more occurrences of any character, number.</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='/use-wildcards-to-match-filenames-in-linux/?replytocom=920283#respond' data-commentid="920283" data-postid="27490" data-belowelement="div-comment-920283" data-respondelement="respond" aria-label='Reply to ks'>Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2" id="comment-920556">
+<div id="div-comment-920556" class="comment-body">
+<div class="comment-author vcard">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=96&#038;d=blank&#038;r=g" alt srcset="https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=192&#038;d=blank&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/4e444ab611c7b8c7bcb76e58d2e82ae0?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn"><a href='https://fossmint.com' rel='external nofollow' class='url'>Aaron Kili</a></cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/use-wildcards-to-match-filenames-in-linux/#comment-920556">
+October 9, 2017 at 5:51 pm </a>
+</div>
+<p>@ks </p>
+<p>Here, a character means alphanumeric characters or all valid filename characters. It also matches no character(nothing).</p>
+<div class="reply"><a rel='nofollow' class='comment-reply-link' href='/use-wildcards-to-match-filenames-in-linux/?replytocom=920556#respond' data-commentid="920556" data-postid="27490" data-belowelement="div-comment-920556" data-respondelement="respond" aria-label='Reply to Aaron Kili'>Reply</a></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title">Got something to say? Join the discussion. <small><a rel="nofollow" id="cancel-comment-reply-link" href="/use-wildcards-to-match-filenames-in-linux/#respond" style="display:none;">Cancel reply</a></small></h3> <form action="https://www.tecmint.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" required='required' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" maxlength="100" aria-describedby="email-notes" required='required' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" maxlength="200" /></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes" /><label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class='comment-form-subscriptions'><label for='subscribe-reloaded'><input style='width:30px' type='checkbox' name='subscribe-reloaded' id='subscribe-reloaded' value='yes' /> Notify me of followup comments via e-mail. You can also <a href='https://www.tecmint.com/comment-subscriptions/?srp=27490&amp;srk=0b81c0e99cc43eb9ade2ba1b6ab240b4&amp;sra=s&amp;srsrc=f'>subscribe</a> without commenting.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='27490' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="fd7367915c" /></p><p style="display: none;"><input type="hidden" id="ak_js" name="ak_js" value="113" /></p> </form>
+</div>
+<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+</section>
+</div>
+</section>
+<div class="sidebar s1">
+<a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+<div class="sidebar-content">
+<div class="sidebar-top group">
+<span style="color:#002873; font-weight:600; font-size:20px;">I <i class="fa fa-heart col-love-l"></i> TecMint :</span>
+<ul class="social-links"><li><a rel="nofollow" class="social-tooltip" title="twitter" href="https://twitter.com/tecmint" target="Array"><i class="fa fa-twitter" style="color: #33ccff;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="facebook" href="https://www.facebook.com/TecMint" target="Array"><i class="fa fa-facebook" style="color: #3b5998;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Google+" href="https://plus.google.com/101049688653487009744" target="Array"><i class="fa fa-google-plus" style="color: #db4a39;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Feedly" href="https://feedly.com/i/subscription/feed/https://www.tecmint.com/feed/" target="Array"><i class="fa fa-rss" style="color: #87c040;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Youtube" href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="Array"><i class="fa fa fa-youtube-square" style="color: #c4302b;"></i></a></li></ul> </div>
+<div id="text-23" class="widget widget_text"> <div class="textwidget"> <div style="background:#db4455;" class="message">
+<center><a href="https://www.tecmint.com/free-online-linux-learning-guide-for-beginners/" target="_blank" rel="noopener noreferrer"><span style="font-weight:bold;font-size:18px;"><i class="fa fa-linux"></i> BEGINNER'S GUIDE FOR LINUX <i class="fa fa-linux"></i></span> <span style="font-weight:bold;font-size:16px;">Start learning Linux in minutes</span> <i class="fa fa-arrow-right"></i></a>
+</center>
+</div></div>
+</div><div id="text-21" class="widget widget_text"> <div class="textwidget"><center>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2601749019656699" data-ad-slot="7270921771"></ins>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center></div>
+</div><div id="text-25" class="widget widget_text"> <div class="textwidget"><div class="message"><center><a href="https://www.tecmint.com/vi-editor-usage/" target="_blank" rel="noopener noreferrer"><span style="font-weight:bold;font-size:17px;"><i class="fa fa-linux"></i> Vi/Vim Editor BEGINNER'S GUIDE <i class="fa fa-linux"></i></span> <span style="font-weight:bold;font-size:16px;">Learn vi/vim as a Full Text Editor</span> <i class="fa fa-file-text"></i>
+</a></center></div></div>
+</div><div id="text-24" class="widget widget_text"> <div class="textwidget">
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2601749019656699" data-ad-slot="8362602806"></ins>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+</div><div id="text-26" class="widget widget_text"> <div class="textwidget"><div class="message" style="background-color: #ab0619;"><center><span style="font-weight:bold;font-size:17px;"><i class="fa fa-linux"></i> Linux Foundation Certification <i class="fa fa-linux"></i></span> <span style="font-weight:bold;font-size:16px;">Exam Study Guide to <a style="text-decoration:underline;" target="_blank" href="https://www.tecmint.com/linux-foundation-lfcs-lfce-certification-exam-book/" rel="noopener noreferrer">LFCS and LFCE</a></span></center></div></div>
+</div><div id="alxtabs-3" class="widget widget_alx_tabs">
+<ul class="alx-tabs-nav group tab-count-2"><li class="alx-tab tab-popular"><a href="#tab-popular" title="Popular Posts"><i class="fa fa-star"></i><span>Popular Posts</span></a></li><li class="alx-tab tab-comments"><a href="#tab-comments" title="Recent Comments"><i class="fa fa-comments-o"></i><span>Recent Comments</span></a></li></ul>
+<div class="alx-tabs-container">
+<ul id="tab-popular" class="alx-tab group ">
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/how-to-add-linux-host-to-nagios-monitoring-server/" rel="bookmark" title="How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin">How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/install-nagios-in-linux/" rel="bookmark" title="How to Install Nagios 4.3.4 on RHEL, CentOS and Fedora">How to Install Nagios 4.3.4 on RHEL, CentOS and Fedora</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/install-cacti-network-monitoring-on-rhel-centos-6-3-5-8-and-fedora-17-12/" rel="bookmark" title="Install Cacti (Network Monitoring) on RHEL/CentOS 7.x/6.x/5.x and Fedora 24-12">Install Cacti (Network Monitoring) on RHEL/CentOS 7.x/6.x/5.x and Fedora 24-12</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/install-google-chrome-on-redhat-centos-fedora-linux/" rel="bookmark" title="How to Install Google Chrome 75 On RHEL/CentOS 7 and Fedora 30">How to Install Google Chrome 75 On RHEL/CentOS 7 and Fedora 30</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/install-ubuntu-alongside-with-windows-dual-boot/" rel="bookmark" title="How to Install Ubuntu Alongside With Windows 10 or 8 in Dual-Boot">How to Install Ubuntu Alongside With Windows 10 or 8 in Dual-Boot</a></p>
+</div>
+</li>
+</ul>
+<ul id="tab-comments" class="alx-tab group avatars-enabled">
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/install-vlc-media-player-in-rhel-centos-fedora/comment-page-6/#comment-1228554">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://secure.gravatar.com/avatar/7badddbc53297b2e8ed7011cf45df0c0?s=96&#038;d=blank&#038;r=g" alt srcset="https://secure.gravatar.com/avatar/7badddbc53297b2e8ed7011cf45df0c0?s=192&#038;d=blank&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/7badddbc53297b2e8ed7011cf45df0c0?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/7badddbc53297b2e8ed7011cf45df0c0?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Ravi Saive says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/install-vlc-media-player-in-rhel-centos-fedora/comment-page-6/#comment-1228554">@Warron, Thanks for the tip, but it didn't worked for...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/best-free-open-source-softwares-of-2018/comment-page-4/#comment-1228435">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=96&#038;d=blank&#038;r=g" alt srcset="https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=192&#038;d=blank&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Ganesh says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/best-free-open-source-softwares-of-2018/comment-page-4/#comment-1228435">Really helpful article. Thank you for sharing..</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/install-samba-on-ubuntu-for-file-sharing-on-windows/comment-page-1/#comment-1228434">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=96&#038;d=blank&#038;r=g" alt srcset="https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=192&#038;d=blank&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Ganesh says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/install-samba-on-ubuntu-for-file-sharing-on-windows/comment-page-1/#comment-1228434">Very grateful tutorial.</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/install-nagios-in-linux/comment-page-21/#comment-1228432">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=96&#038;d=blank&#038;r=g" alt srcset="https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=192&#038;d=blank&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/3961ef5d05df319eb912a24ad25a9d3b?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Ganesh says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/install-nagios-in-linux/comment-page-21/#comment-1228432">Thank you for this amazing article on setting up Nagios on...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/install-vlc-media-player-in-rhel-centos-fedora/comment-page-6/#comment-1228303">
+<img src="https://www.tecmint.com/wp-content/plugins/lazy-load/images/1x1.trans.gif" data-lazy-src="https://secure.gravatar.com/avatar/b1c82403fe4e58e3c09cc4156f192707?s=96&#038;d=blank&#038;r=g" alt srcset="https://secure.gravatar.com/avatar/b1c82403fe4e58e3c09cc4156f192707?s=192&#038;d=blank&#038;r=g 2x" class="avatar avatar-96 photo" height="96" width="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/b1c82403fe4e58e3c09cc4156f192707?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/b1c82403fe4e58e3c09cc4156f192707?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Warron French says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/install-vlc-media-player-in-rhel-centos-fedora/comment-page-6/#comment-1228303">Sorry. but these instructions did not work for me on my...</a></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="text-27" class="widget widget_text"> <div class="textwidget"><center>
+<a target="_blank" href="https://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/" rel="noopener noreferrer"><img alt="RedHat RHCSA and RHCE Certification Exam Study Ebook" src="https://www.tecmint.com/wp-content/uploads/2015/01/RedHat-RHCSA-RHCE-Exam.png" /></a>
+</center></div>
+</div><div id="text-28" class="widget widget_text"> <div class="textwidget"><div class="message" style="background-color: #0d7c39;"><center><p style="font-weight:bold;font-size:18px;">Linux System Administrator Bundle with 7-Courses (96% off)</p>
+<p style="background-color: #03441d;margin:6px 35px;padding:10px;"><a rel="nofollow noopener noreferrer" target="_blank" href="https://deals.tecmint.com/sales/complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensuse?utm_source=tecmint.com&amp;utm_medium=referral&amp;utm_campaign=complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensu&amp;_ga=1.95416024.550662903.1451974395" style="font-size:25px;font-weight:bold;">Add to Cart - $69</a></p>
+<p style="font-size:14px;font-weight:bold;"><i aria-hidden="true" class="fa fa-clock-o"></i> Ending In: 3 days
+</p></center></div>
+<div style="background-color: #f4403b;" class="message"><center><p style="font-weight:bold;font-size:18px;">Computer Hacker Professional Certification Course (96% Off)</p>
+<p style="background-color: #9d1815;margin:6px 35px;padding:10px;"><a style="font-size:25px;font-weight:bold;" href="https://deals.tecmint.com/sales/computer-hacker-professional-certification-package-2" target="_blank" rel="nofollow noopener noreferrer">Add to Cart - $59</a></p>
+<p style="font-size:14px;font-weight:bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Ending In: 4 days
+</p></center></div></div>
+</div><div id="text-4" class="widget widget_text"><h3>Linux eBooks</h3> <div class="textwidget"><ol class="custom-counter">
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Learn Linux in One Week','TecMint')" href="https://www.tecmint.com/learn-linux-in-one-week/" target="_blank" rel="noopener noreferrer" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">Introducing Learn Linux In One Week and Go from Zero to Hero</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','RedHat RHCE/RHCSA Guide','TecMint')" href="https://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/" target="_blank" rel="noopener noreferrer" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">RedHat RHCE/RHCSA Certification Preparation Guide</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Linux Foundation LFCS/LFCE Guide','TecMint')" href="https://www.tecmint.com/linux-foundation-lfcs-lfce-certification-exam-book/" target="_blank" rel="noopener noreferrer" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">Linux Foundations LFCS/LFCE Certification Guide</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Postfix Mail Server Setup','TecMint')" href="https://www.tecmint.com/postfix-mail-server-setup-linux-book/" target="_blank" rel="noopener noreferrer" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">Postfix Mail Server Setup Guide for Linux</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Ansible Setup Guide','TecMint')" href="https://www.tecmint.com/ansible-book-guide-for-linux/" target="_blank" rel="noopener noreferrer" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">Ansible Setup Guide for Linux</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Django Setup Guide','TecMint')" href="https://www.tecmint.com/django-web-framework-book/" target="_blank" rel="noopener noreferrer" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">Django Setup Guide for Linux</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Awk Guide for Beginners','TecMint')" href="https://www.tecmint.com/linux-awk-command-book-for-beginners/" target="_blank" rel="noopener noreferrer" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">Awk Getting Started Guide for Beginners</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Citrix XenServer Setup Guide','TecMint')" href="https://www.tecmint.com/citrix-xenserver-book-for-linux/" target="_blank" rel="noopener noreferrer" data-cf-modified-47ddfd0a03b30e34eebe00d5-="">Citrix XenServer Setup Guide for Linux</a></li>
+</ol></div>
+</div><div id="text-29" class="widget widget_text"> <div class="textwidget"><div style="background-color: rgb(25, 67, 87); color: rgb(255, 255, 255); border-radius: 5px; text-align: center; padding: 10px;">
+<div class="follow-subscribe-social">
+<ul>
+<li><a href="https://twitter.com/tecmint" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter"></i></a></li>
+<li><a href="https://www.facebook.com/TecMint" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook"></i></a></li>
+<li><a href="https://plus.google.com/101049688653487009744" target="_blank" rel="noopener noreferrer"><i class="fa fa-google"></i></a></li>
+<li><a href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="_blank" rel="noopener noreferrer"><i class="fa fa-youtube"></i></a></li>
+<li><a href="https://www.linkedin.com/company/tecmint" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li>
+</ul>
+</div>
+<p style="font-weight: bold; font-size: 20px; margin-bottom: 10px; margin-top: 10px;">Never Miss Any Linux Tutorials, Guides, Tips and Free eBooks</p>
+<p>Join Our Community Of <strong style="color:#fff;font-weight:bold;">150,000+ Linux Lovers</strong> and get a weekly newsletter in your inbox</p>
+<p style="background-color: rgb(0, 0, 0); border-radius: 5px; padding: 6px;"><a style="font-size:20px;font-weight:bold;color:#fff;" href="http://subscribe.tecmint.com/newsletter" target="_blank" rel="nofollow noopener noreferrer">YES! SIGN ME UP</a></p></div></div>
+</div><div id="text-32" class="widget widget_text"> <div class="textwidget"><p><br />
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="9838765188"></ins><br />
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer id="footer">
+<section class="container" id="footer-ads">
+<div class="container-inner">
+<div id="text-30" class="widget widget_text"> <div class="textwidget"><p><center><script type="47ddfd0a03b30e34eebe00d5-text/javascript">
+var total_images = 2;
+var random_number = Math.floor((Math.random()*total_images));
+var random_img = new Array();
+random_img[0] = '<a target="_blank" rel="nofollow noopener noreferrer" href="https://shareasale.com/r.cfm?b=1226423&#038;u=1260899&#038;m=59485&#038;urllink=&#038;afftrack="><img src="https://www.fossmint.com/wp-content/themes/fossmint/backupads/Linux-Foundation-LFCS-Certification.png"/></a>';
+random_img[1] = '<a target="_blank" rel="nofollow noopener noreferrer" href="https://shareasale.com/r.cfm?b=1226424&#038;u=1260899&#038;m=59485&#038;urllink=&#038;afftrack="><img src="https://www.fossmint.com/wp-content/themes/fossmint/backupads/Linux-Foundation-LFCE-Certification.png"/></a>';
+document.write(random_img[random_number]);
+</script></center></p>
+</div>
+</div> </div>
+</section>
+<section class="container" id="footer-widgets">
+<div class="container-inner">
+<div class="pad group">
+<div class="footer-widget-1 grid one-third ">
+<div id="alxposts-3" class="widget widget_alx_posts">
+<h3>Linux Monitoring Tools</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/20-netstat-commands-for-linux-network-management/" rel="bookmark" title="20 Netstat Commands for Linux Network Management">20 Netstat Commands for Linux Network Management</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/how-to-add-linux-host-to-nagios-monitoring-server/" rel="bookmark" title="How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin">How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/monitorix-a-lightweight-system-and-network-monitoring-tool-for-linux/" rel="bookmark" title="Monitorix 3.10.1 Released &#8211; A Lightweight System and Network Monitoring Tool for Linux">Monitorix 3.10.1 Released &#8211; A Lightweight System and Network Monitoring Tool for Linux</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/fsck-repair-file-system-errors-in-linux/" rel="bookmark" title="How to Use &#8216;fsck&#8217; to Repair File System Errors in Linux">How to Use &#8216;fsck&#8217; to Repair File System Errors in Linux</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/use-nmap-script-engine-nse-scripts-in-linux/" rel="bookmark" title="How to Use Nmap Script Engine (NSE) Scripts in Linux">How to Use Nmap Script Engine (NSE) Scripts in Linux</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-widget-2 grid one-third ">
+<div id="alxposts-4" class="widget widget_alx_posts">
+<h3>Linux Interview Questions</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/interview-questions-on-shell-scripting/" rel="bookmark" title="10 Useful &#8216;Interview Questions and Answers&#8217; on Linux Shell Scripting">10 Useful &#8216;Interview Questions and Answers&#8217; on Linux Shell Scripting</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/basic-mysql-interview-questions-for-database-administrators/" rel="bookmark" title="15 Basic MySQL Interview Questions for Database Administrators">15 Basic MySQL Interview Questions for Database Administrators</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/useful-interview-questions-on-linux-services-and-daemons/" rel="bookmark" title="10 Useful Interview Questions on Linux Services and Daemons">10 Useful Interview Questions on Linux Services and Daemons</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/linux-interview-questions-and-answers-for-linux-beginners/" rel="bookmark" title="10 Linux Interview Questions and Answers for Linux Beginners &#8211; Part 3">10 Linux Interview Questions and Answers for Linux Beginners &#8211; Part 3</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/linux-rpm-package-management-interview-questions/" rel="bookmark" title="Shilpa Nair Shares Her Interview Experience on RedHat Linux Package Management">Shilpa Nair Shares Her Interview Experience on RedHat Linux Package Management</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-widget-3 grid one-third last">
+<div id="alxposts-5" class="widget widget_alx_posts">
+<h3>Open Source Tools</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/online-cron-job-generator-and-tester-for-linux/" rel="bookmark" title="6 Online Tools for Generating and Testing Cron Jobs for Linux">6 Online Tools for Generating and Testing Cron Jobs for Linux</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/linux-tools-to-monitor-disk-partition-usage/" rel="bookmark" title="9 Tools to Monitor Linux Disk Partitions and Usage in Linux">9 Tools to Monitor Linux Disk Partitions and Usage in Linux</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/different-types-of-linux-shells/" rel="bookmark" title="5 Most Frequently Used Open Source Shells for Linux">5 Most Frequently Used Open Source Shells for Linux</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/best-commandline-email-clients-for-linux/" rel="bookmark" title="4 Best Command-Line Email Clients For Linux">4 Best Command-Line Email Clients For Linux</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/best-nodejs-frameworks-for-developers/" rel="bookmark" title="14 Best NodeJS Frameworks for Developers in 2019">14 Best NodeJS Frameworks for Developers in 2019</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<nav class="nav-container group" id="nav-footer">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"></div>
+<div class="nav-wrap"><ul id="menu-footer" class="nav container group"><li id="menu-item-18572" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18572"><a href="https://www.tecmint.com/donate-to-tecmint/">Donate to TecMint</a></li>
+<li id="menu-item-10437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10437"><a href="https://www.tecmint.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-10442" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10442"><a href="https://www.tecmint.com/advertise/">Advertise on TecMint</a></li>
+<li id="menu-item-10441" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10441"><a href="https://www.tecmint.com/services/">Linux Services</a></li>
+<li id="menu-item-10435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10435"><a href="https://www.tecmint.com/copyright-policy/">Copyright Policy</a></li>
+<li id="menu-item-10436" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10436"><a href="https://www.tecmint.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-13339" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13339"><a href="https://www.tecmint.com/career/">Career</a></li>
+<li id="menu-item-24288" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24288"><a href="https://www.tecmint.com/sponsored-post-guidelines-tecmint/">Sponsored Post</a></li>
+</ul></div>
+</nav>
+<section class="container" id="footer-bottom">
+<div class="container-inner">
+<a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+<div class="pad group">
+<div class="grid one-half">
+<div id="copyright">
+<p>Tecmint: Linux Howtos, Tutorials &amp; Guides &copy; 2019. All Rights Reserved.</p>
+<p>The material in this site cannot be republished either online or offline, without our permission.</p>
+<p>Hosting Sponsored by : <a style="font-weight:bold;color:yellow;" href="https://www.linode.com/?r=64ebb9f723fed8b32fda84b6594006df08ad24b6" target="_blank" rel="nofollow">Linode Cloud Hosting</a></p>
+</div>
+</div>
+<div class="grid one-half last">
+<ul class="social-links"><li><a rel="nofollow" class="social-tooltip" title="twitter" href="https://twitter.com/tecmint" target="Array"><i class="fa fa-twitter" style="color: #33ccff;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="facebook" href="https://www.facebook.com/TecMint" target="Array"><i class="fa fa-facebook" style="color: #3b5998;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Google+" href="https://plus.google.com/101049688653487009744" target="Array"><i class="fa fa-google-plus" style="color: #db4a39;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Feedly" href="https://feedly.com/i/subscription/feed/https://www.tecmint.com/feed/" target="Array"><i class="fa fa-rss" style="color: #87c040;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Youtube" href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="Array"><i class="fa fa fa-youtube-square" style="color: #c4302b;"></i></a></li></ul> </div>
+</div>
+</div>
+</section>
+</footer>
+</div>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript" src='https://www.tecmint.com/wp-content/plugins/light/js/jquery.fancybox.pack.js'></script>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript" src='https://www.tecmint.com/wp-content/plugins/light/js/light.js'></script>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript" src='https://www.tecmint.com/wp-content/themes/tecmint/js/scripts.js'></script>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript" src='https://www.tecmint.com/wp-content/themes/tecmint/js/jquery.sharrre.min.js'></script>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript" src='https://www.tecmint.com/wp-includes/js/comment-reply.min.js'></script>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript" src='https://www.tecmint.com/wp-content/plugins/lazy-load/js/jquery.sonar.min.js'></script>
+<script type="47ddfd0a03b30e34eebe00d5-text/javascript" src='https://www.tecmint.com/wp-content/plugins/lazy-load/js/lazy-load.js'></script>
+<script async="async" type="47ddfd0a03b30e34eebe00d5-text/javascript" src='https://www.tecmint.com/wp-content/plugins/akismet/_inc/form.js'></script>
+<!--[if lt IE 9]>
+<script src="https://www.tecmint.com/wp-content/themes/tecmint/js/ie/respond.js"></script>
+<![endif]-->
+<div class="fixedBar">
+<div class="boxfloat">
+<ul id="tips">
+<li><a href="https://www.tecmint.com/51-useful-lesser-known-commands-for-linux-users/">51 Useful Lesser Known Commands for Linux Users</a></li>
+<li><a href="https://www.tecmint.com/linux-server-hardening-security-tips/">25 Hardening Security Tips for Linux Servers</a></li>
+<li><a href="https://www.tecmint.com/60-commands-of-linux-a-guide-from-newbies-to-system-administrator/">60 Commands of Linux : A Guide from Newbies to System Administrator</a></li>
+<li><a href="https://www.tecmint.com/command-line-tools-to-monitor-linux-performance/">20 Command Line Tools to Monitor Linux Performance</a></li>
+<li><a href="https://www.tecmint.com/18-tar-command-examples-in-linux/">18 Tar Command Examples in Linux</a></li>
+<li><a href="https://www.tecmint.com/20-linux-yum-yellowdog-updater-modified-commands-for-package-mangement/">20 Linux YUM (Yellowdog Updater, Modified) Commands</a></li>
+<li><a href="https://www.tecmint.com/useful-basic-commands-of-apt-get-and-apt-cache-for-package-management/">25 Useful Basic Commands of APT-GET and APT-CACHE</a></li>
+<li><a href="https://www.tecmint.com/20-funny-commands-of-linux-or-linux-is-fun-in-terminal/">20 Funny Commands of Linux or Linux is Fun in Terminal</a></li>
+<li><a href="https://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/">Ebook: Introducing the RHCSA and RHCE Exam Preparation Guide</a></li>
+<li><a href="https://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/">Preparation for the LFCS (Linux Foundation Certified SysAdmin) Exam</a></li>
+<li><a href="https://www.tecmint.com/installing-network-services-and-configuring-services-at-system-boot/">Preparation for the LFCE (Linux Foundation Certified Engineer) Exam</a></li>
+<li><a href="https://www.tecmint.com/10-useful-free-linux-ebooks-for-newbies-and-administrators/">10 Useful Free Linux eBooks for Newbies and Administrators</a></li>
+<li><a href="https://www.tecmint.com/free-linux-shell-scripting-books/">4 Free Shell Scripting eBooks for Newbies and Administrators</a></li>
+</ul>
+</div>
+</div>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="47ddfd0a03b30e34eebe00d5-|49" defer=""></script></body>
+</html>

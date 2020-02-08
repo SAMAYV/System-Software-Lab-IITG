@@ -1,0 +1,21 @@
+--2019-09-10 21:36:12--  http://www.google.com/
+Connecting to 172.16.117.121:3128... connected.
+Proxy request sent, awaiting response... 
+  HTTP/1.1 200 OK
+  Date: Tue, 10 Sep 2019 16:27:18 GMT
+  Expires: -1
+  Cache-Control: private, max-age=0
+  Content-Type: text/html; charset=ISO-8859-1
+  P3P: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+  Server: gws
+  X-XSS-Protection: 0
+  X-Frame-Options: SAMEORIGIN
+  Set-Cookie: 1P_JAR=2019-09-10-16; expires=Thu, 10-Oct-2019 16:27:18 GMT; path=/; domain=.google.com; SameSite=none
+  Set-Cookie: NID=188=J56ZBenqbWfhnch6RqE3qG3fnDbyyPyF47sP2T6jE4j_q-qNMB0yKwVNve31DgetaWALXw_CHNyy474nhQHwjgnUu4ffBI68M2Qk5BF7IBLrKt6INzh7khFLMqnM89V70snl91UHeQJl00Alr9GSNYPaNd0lmA3ZGm4o4JKQEB0; expires=Wed, 11-Mar-2020 16:27:18 GMT; path=/; domain=.google.com; HttpOnly
+  Accept-Ranges: none
+  Vary: Accept-Encoding
+  Transfer-Encoding: chunked
+  Proxy-Connection: keep-alive
+Length: unspecified [text/html]
+Saving to: ‘index.html’
+

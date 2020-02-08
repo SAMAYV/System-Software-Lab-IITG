@@ -1,0 +1,40 @@
+## This is a makefile for the Quest game.
+## This makefile demonstrates how to use the 
+## vpath directive inside a makefile.
+##
+## This makefile assumes that the header 
+## files i.e. defs.h and AI.h are inside
+## a sub-directory named 'include' under
+## the 'Quest' directory. The C source
+## files are directly inside the 'Quest'
+## directory as usual.
+
+## Override the values of 
+## special variables
+CC = gcc
+
+## Object files
+OBJS = main.o single-player.o AI.o multi-player.o
+
+## For header files, look inside 
+## sub-directory 'include' under
+## the current directory
+INCLUDE_DIR = include
+vpath %.h $(INCLUDE_DIR)
+
+Quest: $(OBJS)
+	$(CC) -o Quest $(OBJS)
+	@echo "The making of the Quest executable is completed."
+
+## Define a pattern rule.
+## The 'vpath' directive helps 'make' to find the header files.
+## But it does not help 'gcc' to do so.
+## Therefore, 'gcc' will require the -I flag followed by 
+## the relative path to the header files.
+%.o: %.c defs.h AI.h
+	$(CC) -c $< -I$(INCLUDE_DIR)
+
+.PHONY: clean
+
+clean:
+	rm *.o

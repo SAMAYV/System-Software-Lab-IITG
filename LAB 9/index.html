@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS</title>
+	<script>
+		/* To run,
+			Start Browser => Inspect Element => Select console tab
+		*/  //multi-line comment
+		console.log("Hello World!")  // 1st ever javascript code : This is inline comment
+		
+
+		//Variable Declaration and initialization
+		var x = 5
+		console.log(x)
+		
+
+		//Data typ of Variable. (JS is loosly-typed)
+		console.log(typeof x);
+		
+		//Number data type
+		var x = 25;
+		console.log(x, typeof x);
+		
+		//String data type
+		var genre = 'rock and roll 1980s';
+		console.log(genre, typeof genre);
+		
+		//boolean data type
+		var iambatman = true;
+		console.log(iambatman, typeof iambatman);
+		
+		//undefined datatype
+		var robin;
+		console.log(robin, typeof robin);
+		
+		//null data type
+		var aquamanOnLand = null;
+		console.log(aquamanOnLand, typeof aquamanOnLand);
+		
+
+		//Number Expression
+		var x = 25 + 4;
+		var y;
+		y = x - 20
+		console.log(x, y);
+		
+		//String Expression
+		var name = 'Dany';
+		var greeting = 'Hello ' + name;
+		console.log(greeting)
+		
+
+		//alert pop-up box
+		alert('I am Ironman!')
+		
+		//confirmation pop-up box
+		var conf = confirm('Are you Sure?')
+		console.log(conf)
+		
+		//input pop-up box
+		var uid = prompt('Input Username')
+		console.log(uid)
+		
+
+		//function
+		function getName(){
+		    var name = prompt('Enter Name')
+		    console.log(name)
+		}
+		getName()
+		
+		//function with arguement
+		function getDetail(str){
+		    value = prompt('Enter '+str)
+		    console.log(value)
+		}
+		getDetail('roll')
+		
+		//function returning value
+		function getValidatedDetail(str){
+		    value = Number(prompt('Enter '+str))
+		    if (isNaN(value)){
+		    	alert('Entered Value is Not a Number!')
+		    }
+		    return value
+		}
+		var roll = getValidatedDetail('roll')
+		if (!isNaN(roll)){
+			confirm('Entered Roll Number is '+ String(roll));
+		}
+		
+
+		//Arrays
+		var stud = ['Peter', 123, 'Spiderman']
+		console.log(stud)
+		console.log(stud.length)
+		console.log(stud[stud.length-1])
+		stud[4] = ['jumping roofs', 'firing webs']
+		console.log(stud)
+		console.log(stud.length)
+		
+
+		//Objects
+		var aboutMe = {
+		  degree: 'PhD',
+		  department: 'CSE',
+		  university: 'IIT G',
+		  roll: function(){
+		  	r = prompt('Input Roll Number: ');
+		  	return r;
+		  }
+		};
+		
+		//Accessing Objects
+		var myDegree = aboutMe.degree
+		console.log(myDegree)
+		var myDegree = aboutMe['degree']
+		console.log(myDegree)
+		
+		//Updation
+		aboutMe.university = 'IIT Guwahati'
+		
+		//Adding property
+		aboutMe.name = 'A P'
+		console.log(aboutMe)
+		
+		//Deleting Property
+		delete aboutMe['name']
+		console.log(aboutMe)
+		
+		//Calling Object's method
+		rollNum = aboutMe.roll()
+		console.log(rollNum)
+		
+		//Fetching list of keys
+		console.log(Object.keys(aboutMe))
+	</script>
+</head>
+<body>
+
+</body>
+</html>

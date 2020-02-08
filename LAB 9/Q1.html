@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Q1</title>
+		<script>
+			function square(b){
+				var d = 0
+				while(b!=0){
+					var r = b%10
+					d = d + r*r
+					b = (b - r)/10
+				}
+				return d
+			}
+			function Happy(){
+				var a = Number(prompt('Enter Number'))
+				var b = a
+				while(1){
+					b = square(b)
+					if(b===4 || b===1)
+						break
+				}
+				if(b===1)
+					alert('Happy Number')
+				else
+					alert('Unhappy Number')
+			}
+			Happy()
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

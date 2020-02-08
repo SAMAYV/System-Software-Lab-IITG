@@ -1,0 +1,118 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\def\eq1{E=mc^2}
+\begin{document}
+	\title{ This is my first \LaTeX \ document}
+	\author{Aparajita Dutta}
+	\date{\today}
+\maketitle
+\tableofcontents
+\newpage
+\section{Lists}
+	Tools for making sketches:
+	
+\begin{itemize}
+	\item Pen
+	\item Pencil
+	\begin{itemize}
+		\item Graphite
+		\begin{itemize}
+			\item 4B
+			\item 8B
+		\end{itemize}
+		\item Charcoal
+		\item Pastel
+	\end{itemize}
+	\item Paper
+\end{itemize}
+
+\begin{enumerate}
+	\item Pen
+	\item Pencil
+	\begin{enumerate}
+		\item Graphite
+		\begin{enumerate}
+			\item 4B
+			\item 8B
+		\end{enumerate}
+		\item Charcoal
+		\item Pastel
+	\end{enumerate}
+	\item Paper
+\end{enumerate}
+
+\section{equations}
+\subsection{Inline equations}
+The function is: $f(x) = x+1$
+
+The second function is: $$f(y) = y+2$$
+
+The third function is:
+\begin{equation}
+ f(y) = y-5
+\end{equation}
+
+Superscript and subscript: $f_x = x^{y-1}$
+
+Fraction: $x = \frac{3}{4}$
+
+Area of a circle: $\pi r^2$
+
+Volume of a sphere: $(\frac{4}{3})\pi r^3$
+
+\subsection{Array of equations}
+Array of equation:
+\begin{eqnarray}
+f(x) = x+1\\
+f(y) = y+1
+\end{eqnarray}
+
+\section{Brackets}
+I have $\displaystyle\frac{2}{3}$ of a litre.
+
+$a = \left\{\frac{b}{c}+c\right\}+d$
+\\ \\
+\section{Table}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{|l|c|r|}
+	\hline
+	$x$ & 1 & 2\\\hline
+	$f(x)$ & 3 & 4\\\hline
+\end{tabular}
+\end{table}
+\section{Graphics}
+\begin{center}
+\includegraphics[height=4cm, width=7cm]{images.png}
+\end{center}
+
+\section{Macros}
+first use of \textsc{Einstein} equation \cite{ref1} is: $\eq1$
+
+another use of Einstein equation \cite{ref1} is: $\eq1$
+
+\begin{large} another use of Einstein equation is: $\eq1$ \end{large}
+
+\begin{Large} another use of Einstein equation is: $\eq1$ \end{Large}
+
+\begin{Huge} another use of Einstein equation is: $\eq1$ \end{Huge}
+
+\begin{small} another use of Einstein equation is: $\eq1$ \end{small}
+
+\begin{tiny} another use of Einstein equation is: $\eq1$ \end{tiny}
+
+\bibliographystyle{plain}
+\bibliography{testbib.bib}
+%\begin{thebibliography}{9}
+%	\bibitem{ref1}
+%	D.~Uthor.
+%	\newblock {\em D title}.
+%	\newblock D Company, 2014.
+%	
+%	\bibitem{ref2}
+%	D.~Uthor.
+%	\newblock {\em D title}.
+%	\newblock D Company, 2014.
+%\end{thebibliography}
+\end{document}

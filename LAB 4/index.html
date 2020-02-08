@@ -1,0 +1,1354 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- saved from url=(0066)https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dhp/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link type="text/css" rel="stylesheet" href="./index_files/default.css"><link type="text/css" rel="stylesheet" href="./index_files/www.css"><link type="text/css" rel="stylesheet" href="./index_files/dsc.css"><script language="javascript1.2" type="text/javascript" src="./index_files/sniff.js.download"></script>
+                    <script async="" src="./index_files/aksb.min.js.download"></script><script>var w=window;if(w.performance||w.mozPerformance||w.msPerformance||w.webkitPerformance){var d=document;AKSB=w.AKSB||{},AKSB.q=AKSB.q||[],AKSB.mark=AKSB.mark||function(e,_){AKSB.q.push(["mark",e,_||(new Date).getTime()])},AKSB.measure=AKSB.measure||function(e,_,t){AKSB.q.push(["measure",e,_,t||(new Date).getTime()])},AKSB.done=AKSB.done||function(e){AKSB.q.push(["done",e])},AKSB.mark("firstbyte",(new Date).getTime()),AKSB.prof={custid:"322179",ustr:"",originlat:"0",clientrtt:"261",ghostip:"23.11.215.109",ipv6:false,pct:"10",clientip:"14.139.196.11",requestid:"1374a9e1",region:"26813",protocol:"",blver:14,akM:"dsca",akN:"ae",akTT:"O",akTX:"1",akTI:"1374a9e1",ai:"206465",ra:"false",pmgn:"",pmgi:"",pmp:"",qc:""},function(e){var _=d.createElement("script");_.async="async",_.src=e;var t=d.getElementsByTagName("script"),t=t[t.length-1];t.parentNode.insertBefore(_,t)}(("https:"===d.location.protocol?"https:":"http:")+"//ds-aksb-a.akamaihd.net/aksb.min.js")}</script>
+                    <script>window.ohcglobal || document.write('<script src="/en/dcommon/js/global.js">\x3C/script>')</script><script src="./index_files/global.js.download"></script><script type="text/javascript" src="./index_files/ora_docs.js.download"></script></head><body><div id="a0v0" class="a0 a0v0"><div class="a2w0"><div id="a2v7" class="a2"><div class="a2w1"><div class="a2w2"><div class="a2w3"><div class="a2w4"><div class="a2topiclinks"><div class="a2x1"></div><a id="sunlogo" title="Oracle Home Page" href="http://www.oracle.com/"><img width="98" height="58" border="0" alt="Oracle Homeage" src="./index_files/a.gif"></a><img width="1" height="33" border="0" alt="test" src="./index_files/a.gif" id="venuespacer"></div></div></div></div></div></div></div><div id="breadcrumb"><a href="http://www.oracle.com/technetwork/indexes/documentation/index.html">Documentation Home</a> &nbsp;&gt; <a href="https://docs.oracle.com/cd/E19504-01/802-5880/index.html">Programming Utilities Guide </a>   &nbsp;&gt; Chapter 5 SCCS    Source Code Control System  </div><br><div class="pagetitle" id="sharepage">Programming Utilities Guide</div><div class="d8 d8v1" style="margin: 10px;"><div class="d8w1"><div class="d8w2"><div class="d8w3"><div class="d8w4"><ul><li class="d8left"><a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dhc/index.html"><em>Previous</em>: Chapter 4 make Utility </a></li><li class="d8right"><a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di4/index.html"><em>Next</em>: Chapter 6 m4 Macro Processor </a></li></ul></div></div></div></div></div><div class="pc11 imgMax-590" style="margin: 10px;"><a xmlns:str="http://xml.apache.org/xalan/java/java.lang.String" name="6i9k05dhp"></a><h1 class="sol">Chapter 5 <kbd>SCCS</kbd>    Source Code Control System  </h1>
+<a name="sccs-ix359"></a><a name="sccs-ix360"></a><a name=""></a><p>Coordinating write access to source files is important when changes can be made by several people.  Maintaining a record of updates allows you to determine when and why changes were made.   </p>
+<p>The Source Code Control System (<kbd>SCCS</kbd>) allows you to control write access to source files, and to monitor changes made to those files.  <kbd>SCCS</kbd> allows only one user at a time to update a file, and records all changes in a <b>history</b> file.  </p>
+<p>
+<kbd>SCCS</kbd> allows you to: </p>
+<a name=""></a><ul>
+<li>
+<p>Retrieve copies of any version of the file from the <kbd>SCCS</kbd> history.  </p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Check out and lock a version of the file for editing, so that only you can make changes to it.  <kbd>SCCS</kbd> prevents one user from unwittingly "clobbering" changes made by another.  </p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Check in your updates to the file.  When you check in a file, you can also supply comments that summarize your changes.  </p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Back out changes made to your checked-out copy.  </p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Inquire about the availability of a file for editing.  </p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Inquire about differences between selected versions.  </p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Display the <b>version log</b> summarizing the changes checked in so far.  </p>
+
+</li>
+</ul>
+<a name="sccs-ix361"></a><a name="sccs-ix362"></a><a name="sccs-ix363"></a><a name="sccs-ix364"></a><a name="sccs-ix365"></a><a name="6i9k05dhr"></a><h1 class="sol">The <kbd>sccs</kbd> Command   </h1>
+<a name="sccs-ix366"></a><a name="sccs-ix367"></a><p>The Source Code Control System is composed of the <tt>sccs(1)</tt> command, which is a front end for the utility programs in the <kbd>/usr/ccs/bin</kbd> directory.  The <kbd>SCCS</kbd> utility programs are listed in <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di3/index.html#sccs-89956">Table 5-2</a>.  </p>
+<a name="sccs-2"></a><h2 class="sol">The <kbd>sccs create</kbd> Command      </h2>
+<a name="sccs-ix368"></a><a name="sccs-ix369"></a><a name="sccs-ix370"></a><a name="sccs-ix371"></a><a name="sccs-ix372"></a><a name="sccs-ix373"></a><a name="sccs-ix374"></a><a name="sccs-ix375"></a><a name="sccs-ix376"></a><a name="sccs-ix377"></a><a name="sccs-ix378"></a><p>The <kbd>sccs create</kbd> command places your file under <kbd>SCCS</kbd> control.  It creates a new history file, and uses the complete text of your source file as the initial version.  By default, the history file resides in the <kbd>SCCS</kbd> subdirectory.  </p>
+<a name=""></a><pre>$ <b><kbd>sccs create program.c</kbd></b> 
+program.c: 
+1.1 
+87 lines</pre>
+<p>The output from <kbd>SCCS</kbd> tells you the name of the <b>created</b> file, its version number (1.1), and the count of lines.  </p>
+<p>To prevent the accidental loss or damage to an original, <kbd>sccs create</kbd> makes a second link to it, prefixing the new filename with a comma (referred to as the <b>comma-file</b>.)  When the history file has been initialized successfully, <kbd>SCCS</kbd> retrieves a new, read-only version.  After you have verified the version against its comma-file, you can remove that file.  <a name="sccs-ix379"></a> <a name="sccs-ix380"></a>
+</p>
+<a name=""></a><pre>$ <b><kbd>cmp ,program.c program.c</kbd></b> 
+(no output means that the files match exactly
+$ <b><kbd>rm ,program.c </kbd></b>
+</pre>
+<p>Do not try to edit the read-only version that <kbd>SCCS</kbd> retrieves.  Before you can edit the file, you must check it out using the <kbd>sccs edit</kbd> command described below.  </p>
+<p>To distinguish the history file from a current version, <kbd>SCCS</kbd> uses the `s.' prefix. Owing to this prefix, the history file is often referred to as the s.file (<b>s-dot-file</b>).  For historical reasons, it may also be referred to as the <b>SCCS-file</b>.   <a name="sccs-ix381"></a> <a name="sccs-ix382"></a> <a name="sccs-ix383"></a> <a name="sccs-ix384"></a>
+</p>
+<p>The format of an <kbd>SCCS</kbd> history file is described in <tt>sccsfile(4)</tt>.  </p>
+<a name="sccs-3"></a><h2 class="sol">Basic <kbd>sccs</kbd> Subcommands  </h2>
+<a name="sccs-ix385"></a><p>The following <tt>sccs</tt> subcommands perform the basic version-control functions.  They are summarized here, and, except for create, are described in detail under <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dht/index.html">"<kbd>sccs</kbd> Subcommands "</a>.</p>
+<a name=""></a><dl>
+<dt>
+<kbd>create</kbd>
+</dt>
+<dd>
+<p>Initialize the history file and first version, as described above.</p>
+
+</dd>
+</dl>
+<a name=""></a><dl>
+<dt>
+<kbd>edit</kbd>
+</dt>
+<dd>
+<p>Check out a writable version (for editing).  <kbd>SCCS</kbd> retrieves a writable copy with you as the owner, and places a lock on the history file so that no one else can check in changes.</p>
+
+</dd>
+</dl>
+<a name=""></a><dl>
+<dt>
+<kbd>delta</kbd>
+</dt>
+<dd>
+<p>Check in your changes.  This is the complement to the <kbd>sccs edit</kbd> operation.  Before recording your changes, <kbd>SCCS</kbd> prompts for a comment, which it then stores in the history file version log.</p>
+
+</dd>
+</dl>
+<a name=""></a><dl>
+<dt>
+<kbd>get</kbd>
+</dt>
+<dd>
+<p>Retrieve a read-only copy of the file from the s.file.  By default, this is the most recent version.  While the retrieved version can be used as a source file for compilation, formatting, or display, it is <b>not</b> intended to be edited or changed in any way.  (Attempting to bend the rules by changing permissions of a read-only version can result in your changes being lost.) <a name="sccs-ix398"></a> <a name="sccs-ix399"></a> <a name="sccs-ix400"></a> <a name="sccs-ix401"></a>
+</p>
+
+<p>If you give a directory as a filename argument, <kbd>sccs</kbd> attempts to perform the subcommand on each <kbd>s.file</kbd> in that directory.  Thus, the command: </p>
+
+<a name=""></a>
+<pre>sccs get SCCS</pre>
+
+<p>retrieves a read-only version for every <kbd>s.file</kbd> in the <kbd>SCCS</kbd> subdirectory. </p>
+
+</dd>
+</dl>
+<a name=""></a><dl>
+<dt>
+<kbd>prt</kbd>
+</dt>
+<dd>
+<p>Display the version log, including comments associated with each version.</p>
+
+</dd>
+</dl>
+<a name="sccs-4"></a><h2 class="sol">Deltas and Versions    </h2>
+<a name="sccs-ix405"></a><a name="sccs-ix406"></a><a name="sccs-ix407"></a><p>When you check in a version, <kbd>SCCS</kbd> records only the line-by-line differences between the text you check in and the previous version.  This set of differences is known as a <b>delta</b>.  The version that is retrieved by an edit or get is constructed from the accumulated deltas checked in so far.  </p>
+<p>The terms "delta" and "version" are often used synonymously.  However, their meanings aren't exactly the same; it is possible to retrieve a version that omits selected deltas (see <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dht/index.html#sccs-93550">"Excluding Deltas from a Retrieved Version     "</a>).  </p>
+<a name="sccs-5"></a><h3 class="sol">SIDs     </h3>
+<a name="sccs-ix408"></a><a name="sccs-ix409"></a><a name="sccs-ix410"></a><a name="sccs-ix411"></a><p>An <kbd>SCCS</kbd> delta <tt>ID</tt>, or <tt>SID</tt>, is the number used to represent a specific delta.  This is a two-part number, with the parts separated by a dot ( .  ).  The SID of the initial delta is 1.1 by default.  The first part of the SID is referred to as the <b>release</b>  number, and the second, the <b>level</b>  number.  When you check in a delta, the level number is incremented automatically.  The release number can be incremented as needed.  <kbd>SCCS</kbd> also recognizes two additional fields for <b>branch</b> deltas (described under <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di1/index.html">"Branches  "</a>).  <a name="sccs-ix412"></a> <a name="sccs-ix413"></a>
+</p>
+<p>Strictly speaking, an <tt>SID</tt> refers directly to a delta.  However, it is often used to indicate the version constructed from a delta and its predecessors.  </p>
+<a name="sccs-6"></a><h3 class="sol">ID Keywords </h3>
+<p>
+<kbd>SCCS</kbd> recognizes and expands certain keywords in a source file, which you can use to include version-dependent information (such as the <tt>SID</tt>) into the text of the checked-in version.  When the file is checked out for editing, <tt>ID</tt> keywords take the following form: </p>
+<a name=""></a><pre>%C%</pre>
+<p>where <var>C</var> is a capital letter.  When you check in the file, <kbd>SCCS</kbd> replaces the keywords with the information they stand for.  For example, <tt>%I%</tt> expands to the <tt>SID</tt> of the current version.  </p>
+<p>You would typically include <tt>ID</tt> keywords either in a comment or in a string definition.  If you do not include at least one <tt>ID</tt> keyword in your source file, <kbd>SCCS</kbd> issues the diagnostic: </p>
+<a name=""></a><pre>No Id Keywords (cm7)</pre>
+<p>For more information about ID keywords, refer to <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dht/index.html#sccs-15316">"Incorporating Version-Dependent Information by Using ID Keywords    "</a>.  </p>
+<a name="6i9k05dht"></a><h1 class="sol">
+<kbd>sccs</kbd> Subcommands </h1>
+<a name="sccs-7"></a><h2 class="sol">Checking Files In and Out </h2>
+<p>The following subcommands are useful when retrieving versions or checking in changes.  </p>
+<a name="sccs-8"></a><h3 class="sol">Checking Out a File for Editing: <kbd>sccs edit</kbd>      
+</h3>
+<a name="sccs-ix414"></a><a name="sccs-ix415"></a><a name="sccs-ix416"></a><a name="sccs-ix417"></a><a name="sccs-ix418"></a><p>To edit a source file, you must check it out first using <kbd>sccs edit</kbd>. (The <kbd>sccs edit c</kbd>ommand is equivalent to using the <kbd><b>-c</b></kbd> option to <kbd>sccs get</kbd>.)</p>
+<p>
+<kbd>SCCS</kbd> responds with the delta ID of the version just retrieved, and the delta ID it assigna when you check in your changes.  </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit program.c</kbd></b>
+1.1
+new delta 1.2
+87</pre>
+<p>You can then edit it using a text editor. If a writable copy of the file is present, <kbd>sccs edit</kbd> issues an error message; it does not overwrite the file if anyone has write access to it.  </p>
+<a name="sccs-9"></a><h3 class="sol">Checking in a New Version: <kbd>sccs delta</kbd>     
+</h3>
+<a name="sccs-ix419"></a><a name="sccs-ix420"></a><a name="sccs-ix421"></a><a name="sccs-ix422"></a><p>Having first checked out your file and completed your edits, you can check in the changes using <kbd>sccs delta</kbd>.  </p>
+<p> Checking a file in is also referred to as <b>making a delta</b>.  Before checking in your updates, <kbd>SCCS</kbd> prompts you for comments.  These typically include a brief summary of your changes.  <a name="sccs-ix423"></a> <a name="sccs-ix424"></a>
+</p>
+<a name=""></a><pre>$ <b><kbd>sccs delta program.c</kbd></b>
+comments?</pre>
+<p>Comments should be meaningful, since you may return to the file one day.  </p>
+<p>You can extend the comment to an additional input line by preceding the NEWLINE with a backslash:</p>
+<a name=""></a><pre>$ <b><kbd>sccs delta program.c</kbd></b>
+comments? <b><kbd>corrected typo in widget(), \ 
+null pointer in n_crunch()</kbd></b>
+1.2
+5 inserted 
+3 deleted
+84 unchanged</pre>
+<p>
+<kbd>SCCS</kbd> responds by noting the <tt>SID</tt> of the new version, and the numbers of lines inserted, deleted and unchanged.  Changed lines count as lines deleted and inserted.  <kbd>SCCS</kbd> removes the working copy.  You can retrieve a read-only version using <kbd>sccs get</kbd>.  </p>
+<p>Think ahead before checking in a version.  Creating deltas after each minor edit can become excessive.  On the other hand, leaving files checked out for so long that you forget about them can inconvenience others.  </p>
+<p>It is important to check in all changed files before compiling or installing a module for general use.  A good technique is to:</p>
+<a name=""></a><ul>
+<li>
+<p>Edit the files you need.</p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Make all necessary changes and tests.</p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Compile and debug the files until you are satisfied.</p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Check them in, retrieve read-only copies with get.</p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>Recompile the module.</p>
+
+</li>
+</ul>
+<a name="sccs-10"></a><h3 class="sol">Retrieving a Version: <kbd>sccs get</kbd>     
+</h3>
+<a name="sccs-ix425"></a><a name="sccs-ix426"></a><a name="sccs-ix427"></a><a name="sccs-ix428"></a><p>To get the most recent version of a file, use the command: </p>
+<a name=""></a><pre>sccs get filename</pre>
+<p>For example: </p>
+<a name=""></a><pre>$ <b><kbd>sccs get program.c</kbd></b>
+1.2
+86</pre>
+<p>retrieves <kbd>program.c</kbd>, and reports the version number and the number of lines retrieved.  The retrieved copy of <kbd>program.c</kbd> has permissions set to read-only.  </p>
+<p>Do not change this copy of the file, since <kbd>SCCS</kbd> does <b>not</b> create a new delta unless the file has been checked out.  If you force changes into the retrieved copy, you may lose them the next time someone performs an <kbd>sccs get</kbd> or an <kbd>sccs edit</kbd> on the file.  </p>
+<a name="sccs-11"></a><h3 class="sol">Reviewing Pending Changes: <kbd>sccs diffs</kbd>     
+</h3>
+<a name="sccs-ix429"></a><a name="sccs-ix430"></a><a name="sccs-ix431"></a><a name="sccs-ix432"></a><p>Changes made to a checked-out version, which are not yet checked in, are said to be <b>pending</b>.  When editing a file, you can find out what your pending changes are using <kbd>sccs diffs</kbd>.  The <kbd>diffs</kbd> subcommand uses <tt>diff(1)</tt> to compare your working copy with the most recently checked-in version.  <a name="sccs-ix433"></a> <a name="sccs-ix434"></a>
+</p>
+<a name=""></a><pre>$ <b><kbd>sccs diffs program.c</kbd></b>
+------ program.c ------ 
+37c37 
+&lt;		      if (((cmd_p - cmd) + 1) == l_lim) { 
+--- 
+&gt;	      	if (((cmd_p - cmd) - 1) == l_lim) { </pre>
+<p>Most of the options to <kbd>diff</kbd> can be used.  To invoke the <kbd><b>-c</b></kbd> option to <kbd>diff</kbd>, use the <kbd><b>-C</b></kbd> argument to <kbd>sccs diffs</kbd>.  </p>
+<a name="sccs-12"></a><h3 class="sol">Deleting Pending Changes: <kbd>sccs unedit</kbd>     
+</h3>
+<a name="sccs-ix435"></a><a name="sccs-ix436"></a><a name="sccs-ix437"></a><a name="sccs-ix438"></a><p>
+<kbd>sccs unedit</kbd> backs out pending changes.  This comes in handy if you damage the file while editing it and want to start over. <kbd>unedit</kbd> removes the checked-out version, unlocks the history file, and retrieves a read-only copy of the most recent version checked in.  After using <kbd>unedit</kbd>, it is as if you had not checked out the file at all.  To resume editing, use <kbd>sccs edit</kbd> to check the file out again.  (See also <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dht/index.html#sccs-24575">"Repairing a Writable Copy: <kbd>sccs get -k -G</kbd>       "</a>.) </p>
+<a name="sccs-13"></a><h3 class="sol">Combining <kbd>delta</kbd> and <kbd>get</kbd>: <kbd>sccs delget</kbd> 
+</h3>
+<p>
+<kbd>sccs delget</kbd> combines the actions of <kbd>delta</kbd> and <kbd>get</kbd>.  It checks in your changes and then retrieves a read-only copy of the new version.  However, if <kbd>SCCS</kbd> encounters an error during the <kbd>delta</kbd>, it does not perform the <kbd>get</kbd>.  When processing a list of file names, <kbd>delget</kbd> applies all the deltas it can, and if errors occur, omits all of the get actions.  </p>
+<a name="sccs-14"></a><h3 class="sol">Combining <kbd>delta</kbd> and <kbd>edit</kbd>: <kbd>sccs deledit</kbd>     
+</h3>
+<a name="sccs-ix439"></a><a name="sccs-ix440"></a><a name="sccs-ix441"></a><a name="sccs-ix442"></a><p>
+<kbd>sccs deledit</kbd> performs a delta followed by an <kbd>edit</kbd>.  You can use this to check in a version and immediately resume editing.  </p>
+<a name="sccs-15"></a><h3 class="sol">Retrieving a Version by SID: <kbd>sccs get -r</kbd>     
+</h3>
+<a name="sccs-ix443"></a><a name="sccs-ix444"></a><a name="sccs-ix445"></a><a name="sccs-ix446"></a><p>The <kbd><b>-r</b></kbd> option allows you to specify the <tt>SID</tt> to retrieve: </p>
+<a name=""></a><pre>$ <b><kbd>sccs get -r1.1 program.c</kbd></b>
+1.1
+87 </pre>
+<a name="sccs-16"></a><h3 class="sol">Retrieving a Version by Date and Time: <kbd>sccs get -c</kbd>     
+</h3>
+<a name="sccs-ix447"></a><a name="sccs-ix448"></a><a name="sccs-ix449"></a><a name="sccs-ix450"></a><p>In some cases, you do not know the <tt>SID</tt> of the delta you want, but you<kbd></kbd> do know the date on (or before) it was checked in.  You can retrieve the latest version checked in before a given date and time using the <kbd><b>-c</b></kbd> option and a date-time argument of the form: </p>
+<a name=""></a><pre>-cyy [mm [dd [hh [mm [ss ]]]]]</pre>
+<p>For example: </p>
+<a name=""></a><pre>$ <b><kbd>sccs get -c880722120000 program.c</kbd></b>
+1.2
+86</pre>
+<p>retrieves whatever version was current as of July 22, 1988 at 12:00 noon.  Trailing fields can be omitted (defaulting to their highest legal value), and punctuation can be inserted in the obvious places; for example, the above line could be written as: </p>
+<a name=""></a><pre><b><kbd>sccs get -c"88/07/22 12:00:00" program.c</kbd></b>
+</pre>
+<hr><b>Note - </b><p>Year 2000 issue. <kbd>SCCS</kbd> continues to use a two-digit year representation in the date format. Sun has adopted the proposed specification (XCU5) from the X/Open group that states that values of "yy" from 69 through 99 are to be interpreted as 1969 through 1999 respectively, and values of "yy" from 00 through 68 are to be interpreted as 2000 through 2068 respectively. </p>
+<hr>
+<a name="sccs-24575"></a><h3 class="sol">Repairing a Writable Copy: <kbd>sccs get -k -G</kbd>       
+</h3>
+<a name="sccs-ix451"></a><a name="sccs-ix452"></a><a name="sccs-ix453"></a><a name="sccs-ix454"></a><a name="sccs-ix455"></a><a name="sccs-ix456"></a><p>Without checking out a new version, <tt>sccs get -k -Gfilename</tt> retrieves a writable copy of the text, and places it in the file specified by `<kbd><b>-G</b></kbd>'.  This can be useful when you want to replace or repair a damaged working copy using <kbd>diff</kbd> and your editor.  </p>
+<a name="sccs-15316"></a><h2 class="sol">Incorporating Version-Dependent Information by Using ID Keywords    </h2>
+<a name="sccs-ix457"></a><a name="sccs-ix458"></a><a name="sccs-ix459"></a><p>As mentioned above, <kbd>SCCS</kbd> allows you to include version-dependent information in a checked-in version through the use of <b>ID keywords</b>.  These keywords, which you insert in the file, are automatically replaced by the corresponding information when you check in your changes.  <kbd>SCCS</kbd> <tt>ID</tt> keywords take the form: </p>
+<a name=""></a><pre>%C%</pre>
+<p>where <var>C</var> is an uppercase letter.  </p>
+<p>For instance, <tt>%I%</tt> expands to the <tt>SID</tt> of the most recent delta.  <tt>%W%</tt> includes the filename, the <tt>SID</tt>, and the unique string <tt>@(#)</tt> in the file.  This string is searched for by the <kbd>what</kbd> command in both text and binary files (allowing you to see from which source versions a file or program was built).  The <tt>%G%</tt> keyword expands to the date of the latest delta.  Other <tt>ID</tt> keywords and the strings they expand to are listed in <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di3/index.html#sccs-16839">Table 5-1</a>.</p>
+<hr><b>Note - </b><p>Defining a string in this way allows version information to be compiled into the C object file.  If you use this technique to put <tt>ID</tt> keywords into header (<kbd>.h</kbd>) files, use a different variable in each header file.  This prevents errors from attempts to redefine the (static) variables.</p>
+<hr>
+<p>  To include version dependent information in a C program, use a line such as: </p>
+<a name=""></a><pre>static char SccsId[ ] = "%W%\t%G%";</pre>
+<p>If the file were named <kbd>program.c</kbd>, this line would expand to the following when version 1.2 is retrieved: </p>
+<a name=""></a><pre>static char SccsId[ ] = "@(#)program.c 1.2 08/29/80";</pre>
+<p>Since the string is defined in the compiled program, this technique allows you to include source-file information within the compiled program, which the <kbd>what</kbd> command can report: </p>
+<a name=""></a><pre>$ <b><kbd>cd /usr/ucb</kbd></b>
+$ <b><kbd>what sccs </kbd></b>
+sccs
+sccs.c 1.13 88/02/08 SMI</pre>
+<p>For shell and similar scripts, you can include <tt>ID</tt> keywords within comments: </p>
+<a name=""></a><pre>#	%W%		%G% 
+.  .  .</pre>
+<p>If you check in a version containing <b>expanded</b> keywords, the version-dependent information will no longer be updated.  To alert you to this situation, <kbd>SCCS</kbd> gives you the warning: </p>
+<a name=""></a><pre>No Id Keywords (cm7)</pre>
+<p>when a <kbd>get</kbd>, <kbd>edit</kbd>, or <kbd>create</kbd> finds no <tt>ID</tt> keywords.  <a name="sccs-ix460"></a>
+</p>
+<a name="sccs-17"></a><h2 class="sol">Making Inquiries </h2>
+<p>The following subcommands are useful for inquiring about the status of a file or its history.  </p>
+<a name="sccs-18"></a><h3 class="sol">Seeing Which Version Has Been Retrieved: The <kbd>what</kbd> Command  </h3>
+<a name="sccs-ix461"></a><p>Since <kbd>SCCS</kbd> allows you (or others) to retrieve any version in the file history, there is no guarantee that a working copy present in the directory reflects the version you want.  The <kbd>what</kbd> command scans files for <kbd>SCCS</kbd> <tt>ID</tt> keywords.  It also scans binary files for keywords, allowing you to see from which source versions a program was compiled.  </p>
+<a name=""></a><pre>$ <b><kbd>what program.c program </kbd></b>
+program.c:
+      program.c 1.1 88/07/05 SMI; 
+program: 
+     	program.c 1.1 88/07/05 SMI;</pre>
+<p>In this case, the file contains a working copy of version 1.1.  </p>
+<a name="sccs-19"></a><h3 class="sol">Determining the Most Recent Version: sccs get -g     </h3>
+<a name="sccs-ix462"></a><a name="sccs-ix463"></a><a name="sccs-ix464"></a><a name="sccs-ix465"></a><p>To see the <tt>SID</tt> of the latest delta, you can use <tt>sccs get -g</tt>: </p>
+<a name=""></a><pre>$ <b><kbd>sccs get -g program.c</kbd></b>
+1.2</pre>
+<p>In this case, the most recent delta is 1.2.  Since this is more recent than the version reflected by <kbd>what</kbd> in the example above, you would probably want to use <kbd>get</kbd> for the new version.  </p>
+<a name="sccs-20"></a><h3 class="sol">Determining Who Has a File Checked Out: <kbd>sccs info</kbd>    
+</h3>
+<a name="sccs-ix466"></a><a name="sccs-ix467"></a><a name="sccs-ix468"></a><p>To find out what files are being edited, type: </p>
+<a name=""></a><pre>sccs info</pre>
+<p>This subcommand displays a list of all the files being edited, along with other information, such as the name of the user who checked out the file.  Similarly, you can use </p>
+<a name=""></a><pre>sccs check</pre>
+<p>which silently returns a non-zero exit status if anything is being edited.  This can be used within a <kbd>makefile</kbd> to force <tt>make(1S)</tt> to halt if it should find that a source file is checked out.  </p>
+<p>If you know that all the files you have checked out are ready to be checked in, you can use the following to process them all: </p>
+<a name=""></a><pre>sccs delta 'sccs tell -u'</pre>
+<p>
+<kbd>tell</kbd> lists only the names of files being edited, one per line.  With the <kbd><b>-u</b></kbd> option, <kbd>tell</kbd> reports only those files checked out to you.  If you supply a username as an argument to <kbd><b>-u</b></kbd>, <kbd>sccs tell</kbd> reports only the files checked out to that user.  </p>
+<a name="sccs-21"></a><h3 class="sol">Displaying Delta Comments: <kbd>sccs prt</kbd>    
+</h3>
+<a name="sccs-ix469"></a><a name="sccs-ix470"></a><a name="sccs-ix471"></a><p>
+<kbd>sccs prt</kbd> produces a listing of the version log, also referred to as the <b>delta table</b>, which includes the <tt>SID</tt>, time and date of creation, and the name of the user who checked in each version, along with the number of lines inserted, deleted, and unchanged, and the commentary: </p>
+<a name=""></a><pre>$ <b><kbd>sccs prt program.c</kbd></b>
+D 1.2		80/08/29 12:35:31						pers		2	1	00005/00003/00084 
+corrected typo in widget(), 
+null pointer in n_crunch()
+
+D 1.1		79/02/05 00:19:31						zeno		1	0	00087/00000/00000 
+date and time created 80/06/10 00:19:31 by zeno</pre>
+<p>To display only the most recent entry, use the -y option.  </p>
+<a name="sccs-22"></a><h3 class="sol">Updating a Delta Comment: <kbd>sccs cdc</kbd>    
+</h3>
+<a name="sccs-ix472"></a><a name="sccs-ix473"></a><a name="sccs-ix474"></a><p>If you forget to include something important in a comment, you can add the missing information using: </p>
+<a name=""></a><pre>sccs cdc -r sid</pre>
+<p>The delta must be the most recent (or the most recent in its branch, see <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di1/index.html">"Branches  "</a>).  Also, you must either be the user who checked the delta in, or you must own and have permission to write on both the history file and the <kbd>SCCS</kbd> subdirectory.  When you use <kbd>cdc</kbd>, <kbd>SCCS</kbd> prompts for your comments and inserts the new comment you supply: </p>
+<a name=""></a><pre>$ <b><kbd>sccs cdc -r1.2 program.c</kbd></b>
+comments? <b><kbd>also taught get_in() to handle control chars</kbd></b>
+</pre>
+<p>The new commentary, as displayed by <kbd>prt</kbd>, looks like this: </p>
+<a name=""></a><pre>$ <b><kbd>sccs prt program.c</kbd></b>
+D 1.2		80/08/29 12:35:31							pers		2	1	00005/00003/00084
+also taught get_in() to handle control chars 
+*** CHANGED *** 88/08/02 14:54:45 pers
+corrected typo in widget(),
+null pointer in n_crunch()
+
+D 1.1		79/02/05 00:19:31 						zeno		1	0	00087/00000/00000 
+date and time created 80/06/10 00:19:31 by zeno </pre>
+<a name="sccs-23"></a><h3 class="sol">Comparing Checked-In Versions: <kbd>sccs sccsdiff</kbd>     
+</h3>
+<a name="sccs-ix475"></a><a name="sccs-ix476"></a><a name="sccs-ix477"></a><a name="sccs-ix478"></a><p>To compare two checked-in versions, use the following to see the differences between delta 1.1 and delta 1.2. </p>
+<a name=""></a><pre>$ <b><kbd>sccs sccsdiff -r1.1 -r1.2 program.c</kbd></b>
+</pre>
+<a name="sccs-24"></a><h3 class="sol">Displaying the Entire History: sccs get -m -p     </h3>
+<a name="sccs-ix479"></a><a name="sccs-ix480"></a><a name="sccs-ix481"></a><a name="sccs-ix482"></a><p>If you want to see a listing of all changes made to the file and the delta in which each was made, you can use the <kbd><b>-m</b></kbd> and <kbd><b>-p</b></kbd> options to get: </p>
+<a name=""></a><pre>$ <b><kbd>sccs get -m -p program.c</kbd></b>
+1.2 
+1.2 #define L_LEN 256 
+1.1
+1.1 #include &lt;stdio.h&gt;
+1.1
+.  .  .  
+84</pre>
+<p>To find out what lines are associated with a particular delta, you can pipe the output through <kbd>grep(1V)</kbd>: </p>
+<a name=""></a><pre>$ <b><kbd>sccs get -m -p program.c | grep '^1.2'</kbd></b>
+</pre>
+<p>You can also use <kbd><b>-p</b></kbd> by itself to send the retrieved version to the standard output, rather than to the file.  </p>
+<a name="sccs-25"></a><h3 class="sol">Creating Reports: sccs prs -d       </h3>
+<a name="sccs-ix483"></a><a name="sccs-ix484"></a><a name="sccs-ix485"></a><a name="sccs-ix486"></a><a name="sccs-ix487"></a><a name="sccs-ix488"></a><p>You can use the <kbd>prs</kbd> subcommand with the <kbd><b>-d</b></kbd> <var>dataspec</var> option to derive reports about files under <kbd>SCCS</kbd> control.  The <b>dataspec</b> argument offers a rich set of <b>data keywords</b> that correspond to portions of the history file.  Data keywords take the form: </p>
+<a name=""></a><pre>:X :</pre>
+<p>and are listed in <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di3/index.html#sccs-16251">Table 5-3</a>.  There is no limit to the number of times a data keyword can appear in the <b>dataspec</b> argument.  A valid <b>dataspec</b> argument is a (quoted) string consisting of text and data keywords. <kbd>prs</kbd> replaces each recognized keyword with the appropriate value from the history file.  </p>
+<p>The format of a data keyword value is either simple, in which case the expanded value is a simple string, or multiline, in which case the expansion includes <tt>RETURN</tt> characters.  </p>
+<p>A <tt>TAB</tt> is specified by `<tt>\t</tt>' and a <tt>RETURN</tt> by `<tt>\n</tt>'.  </p>
+<p>Here are some examples: </p>
+<a name=""></a><pre>$ <b><kbd>sccs prs -d"Users and/or user IDs for :F: are:\n:UN:" program.c </kbd></b>
+Users and/or user IDs for s.program.c are:
+zeno
+pers
+$ <b><kbd>sccs prs -d"Newest delta for :M:: :I:.  Created :D: by :P:." -r program.c </kbd></b>
+Newest delta for program.c: 1.3.  Created 88/07/22 by zeno.</pre>
+<a name="sccs-26"></a><h2 class="sol">Deleting Committed Changes </h2>
+<a name="sccs-27"></a><h3 class="sol">Replacing a Delta: sccs fix     </h3>
+<a name="sccs-ix489"></a><a name="sccs-ix490"></a><a name="sccs-ix491"></a><a name="sccs-ix492"></a><p>Occasionally, a delta is checked in that contains small bugs, such as typographical errors, that need correcting but that do not require entries in the file audit trail.  Or, perhaps the comment for a delta is incomplete or in error, even when the text is correct.  In either case, you can make additional updates and replace the version log entry for the most recent delta using <kbd>sccs fix</kbd>: </p>
+<a name=""></a><pre>$ <b><kbd>sccs fix -r 1.2 program.c</kbd></b>
+</pre>
+<p>This checks out version 1.2 of <kbd>program.c.</kbd>  When you check the file back in, the current changes replaces delta 1.2 in the history file, and <kbd>SCCS</kbd> prompts for a (new) comment.  You must supply an <tt>SID</tt> with <kbd><b>-r</b></kbd>.  Also, the delta that is specified must be a leaf (most recent) delta.  </p>
+<p>Although the previously-checked-in delta 1.2 is effectively deleted, <kbd>SCCS</kbd> retains a record of it, marked as deleted, in the history file.  </p>
+<p>Before using <kbd>sccs fix</kbd> it is a good idea to make a copy of the current version.  </p>
+<a name="sccs-28"></a><h3 class="sol">Removing a Delta: sccs rmdel     </h3>
+<a name="sccs-ix493"></a><a name="sccs-ix494"></a><a name="sccs-ix495"></a><a name="sccs-ix496"></a><p>To remove all traces of the most recent delta, you can use the <kbd>rmdel</kbd> subcommand.  You must specify the <tt>SID</tt> using <kbd><b>-r</b></kbd>.  In most cases, using <kbd>fix</kbd> is preferable to <kbd>rmdel</kbd>, since <kbd>fix</kbd> preserves a record of "deleted" delta, while <kbd>rmdel</kbd> does not (refer to <kbd>sccs rmdel(1)</kbd> for more information).</p>
+<a name="sccs-29"></a><h3 class="sol">Reverting to an Earlier Version    </h3>
+<a name="sccs-ix497"></a><a name="sccs-ix498"></a><a name="sccs-ix499"></a><p>To retrieve a writable copy of an earlier version, use <tt>get -k</tt>.  This can be useful when you need to back track past several deltas.  </p>
+<p>To use an earlier delta as the basis for creating a new one: </p>
+<a name="sccs-proc-30"></a><ol type="1">
+<a name="sccs-step-31"></a>
+<li>
+<p>Check out the file as you normally would (using <kbd>sccs</kbd> <kbd>edit</kbd>).  </p>
+
+</li>
+<a name="sccs-step-32"></a>
+<li>
+<p>Retrieve a writable copy of an earlier "good" version (giving it a different file name) using <kbd>get</kbd> <kbd><b>-k</b></kbd>: </p>
+
+<a name=""></a>
+<pre>sccs get -k -r sid -G<var>oldname filename</var>
+</pre>
+
+<p>The <kbd><b>-G</b></kbd><var>oldname filename</var> option specifies the name of the newly retrieved version.  </p>
+
+</li>
+<a name="sccs-step-33"></a>
+<li>
+<p>Replace the current version with the older "good" version: </p>
+
+<a name=""></a>
+<pre></pre>
+
+<p>mv <var>oldname filename</var>
+</p>
+
+</li>
+<a name="sccs-step-34"></a>
+<li>
+<p>Check the file back in.  </p>
+
+<p>In some cases, it may be simpler just to exclude certain deltas.  Or refer to <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di1/index.html">"Branches  "</a> for information on how to use <kbd>SCCS</kbd> to manage divergent sets of updates to a file.  </p>
+
+</li>
+</ol>
+<a name="sccs-93550"></a><h3 class="sol">Excluding Deltas from a Retrieved Version     </h3>
+<a name="sccs-ix500"></a><a name="sccs-ix501"></a><a name="sccs-ix502"></a><a name="sccs-ix503"></a><p>Suppose that the changes that were made in delta 1.3 aren't applicable to the next version, 1.4.  When you retrieve the file for editing, you can use the -x option to <b>exclude</b> delta 1.3 from the working copy: </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit -x1.3 program.c</kbd></b>
+</pre>
+<p>When you check in delta 1.5, that delta will include the changes made in delta 1.4, but not those from delta 1.3.  In fact, you can exclude a list of deltas by supplying a comma-separated list to -x, or a range of deltas, separated with a dash.  For example, if you want to exclude 1.3 and 1.4, you could use: </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit -x1.3,1.4 program.c</kbd></b>
+</pre>
+<p>or </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit -x1.3-1.4 program.c</kbd></b>
+</pre>
+<p>In this example <kbd>SCCS</kbd> excludes the range of deltas from 1.3 to the current highest delta in release 1: </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit -x 1.3-1 program.c</kbd></b>
+</pre>
+<p>In certain cases when using <kbd><b>-x</b></kbd> there will be conflicts between versions; for example, it may be necessary to both include and delete a particular line.  If this happens, <kbd>SCCS</kbd> displays a message listing the range of lines affected.  Examine these lines carefully to see if the version <kbd>SCCS</kbd> derived is correct.  </p>
+<p>Since each delta (in the sense of "a set of changes") can be excluded at will, it is most useful to include a related set of changes within each delta.  </p>
+<a name="sccs-35"></a><h3 class="sol">Combining Versions: sccs comb     </h3>
+<a name="sccs-ix504"></a><a name="sccs-ix505"></a><a name="sccs-ix506"></a><a name="sccs-ix507"></a><p>The <kbd>comb</kbd> subcommand generates a Bourne shell script that, when run, constructs a new history file in which selected deltas are combined or eliminated.  This can be useful when disk space is at a premium.  </p>
+<hr><b>Note - </b><p>In combining several deltas, the comb-generated script destroys a portion of the file's version log, including comments.  </p>
+<hr>
+<p>The <kbd><b>-p</b></kbd><var>sid</var> option indicates the oldest delta to preserve in the reconstruction.  Another option, </p>
+<a name=""></a><pre>-c <var>sid-list</var>
+</pre>
+<p>allows you to specify a list of deltas to include.  <var>sid-list</var> is a comma-separated list; you can specify a range between two <tt>SID</tt>s by separating them with a dash ('<tt>-</tt>') in the list.  <kbd><b>-p</b></kbd> and <kbd><b>-c</b></kbd> are mutually exclusive.  The <kbd><b>-o</b></kbd> option attempts to minimize the number of deltas in the reconstruction.  </p>
+<p>The <kbd><b>-s</b></kbd> option produces a script that compares the size of the reconstruction with that of the original.  The comparison is given as a percentage of the original the reconstruction would occupy, based on the number of blocks in each.  </p>
+<hr><b>Note - </b><p>When using <kbd>comb</kbd>, it is a good idea to keep a copy of the original history file on hand.  While <kbd>comb</kbd> is intended to save disk space, it does not always work.  In some cases, it is possible that the resulting history file might be larger than the original.  </p>
+<hr>
+<p>If no options are specified, <kbd>comb</kbd> preserves the minimum number of ancestors needed to preserve the changes made so far.  </p>
+<a name="6i9k05dhv"></a><h1 class="sol">Version Control for Binary Files </h1>
+<p>Although <kbd>SCCS</kbd> is typically used for source files containing <tt>ASCII</tt> text, this version of <kbd>SCCS</kbd> allows you to apply version control to <b>binary</b> files as well (files that contain <tt>NULL</tt> or control characters, or do not end with a <tt>NEWLINE</tt>. The binary files are encoded into an <tt>ASCII</tt> representation when checked in; working copies are decoded when retrieved. (See <kbd>uuencode(1C)</kbd> for details.)<a name="sccs-ix508"></a> <a name="sccs-ix509"></a>
+</p>
+<p>You can use <kbd>SCCS</kbd> to track changes to files such as icons, raster images, and screen fonts.  </p>
+<p>You can use <tt>sccs create -b</tt> to force <kbd>SCCS</kbd> to treat a file as a binary file.  When you use create or delta  for a binary file, you get the warning message: </p>
+<a name=""></a><pre>	Not a text file (ad31) </pre>
+<p>You may also get the message: </p>
+<a name=""></a><pre>	No id keywords (cm7) </pre>
+<p>These messages can be safely ignored.  Otherwise, everything proceeds as expected: </p>
+<a name=""></a><pre>$ <kbd>sccs create special.font</kbd>
+
+special.font: 
+Not a text file (ad31) 
+No id keywords (cm7) 
+1.1 
+20  
+No id keywords (cm7) 
+$ <kbd>sccs get special.font</kbd>
+1.1
+20 
+$ <kbd>file special.font SCCS/s.special.font</kbd>
+special.font:				vfont definition
+SCCS/s.special.font:	sccs </pre>
+<hr><b>Note - </b><p>Use <kbd>SCCS</kbd> to control the updates to source files, and make to compile objects consistently</p>
+<hr>
+<p>Because the encoded representation of a binary file can vary significantly between versions, history files for binary sources can grow at a much faster rate than those for ASCII sources.  However, using the same version control system for all source files makes dealing with them much easier.  </p>
+<a name="6i9k05di0"></a><h1 class="sol">Maintaining Source Directories   </h1>
+<a name="sccs-ix510"></a><a name="sccs-ix511"></a><p>When using <kbd>SCCS</kbd>, it is the history files, and not the working copies, that are the real source files.  </p>
+<a name="sccs-38"></a><h2 class="sol">Duplicate Source Directories   </h2>
+<a name="sccs-ix512"></a><a name="sccs-ix513"></a><p>If you are working on a project and want to create a duplicate set of sources for some private testing or debugging, you can create a symbolic link to the <kbd>SCCS</kbd> subdirectory in your private working directory: </p>
+<a name=""></a><pre>$ <b><kbd>cd /private/working/cmd.dir</kbd></b>
+$ <b><kbd>ln -s /usr/src/cmd/SCCS SCCS</kbd></b>
+</pre>
+<p>This enables you to retrieve a private (duplicate) set of working copies, of the source files using: </p>
+<a name=""></a><pre>	sccs get SCCS </pre>
+<p>While working in the duplicate directory, you can also check files in and out--just as you could if you were in the original directory.  </p>
+<a name="sccs-39"></a><h2 class="sol">SCCS and make   </h2>
+<a name="sccs-ix514"></a><a name="sccs-ix515"></a><p>
+<kbd>SCCS</kbd> is often used with <tt>make(1S)</tt> to maintain a software project.  <kbd>make</kbd> provides for automatic retrieval of source files.  (Other versions of <kbd>make</kbd> provide special rules that accomplish the same purpose.) It is also possible to retrieve earlier versions of all the source files, and to use <kbd>make</kbd> to rebuild earlier versions of the project: </p>
+<a name=""></a><pre>$ <b><kbd>mkdir old.release ; cd old.release</kbd></b>
+$ <b><kbd>ln -s ../SCCS SCCS</kbd></b>
+$ <b><kbd>sccs get -c"87/10/01" SCCS</kbd></b>
+SCCS/s.Makefile: 
+1.3 
+47
+.  .  .  
+$ <b><kbd>make</kbd></b>
+.  .  .  </pre>
+<p>As a general rule, no one should check in source files while a build is in progress.  When a project is about to be released, all files should be checked in before a build.  This ensures that the sources for a released project are stable.  </p>
+<a name="sccs-40"></a><h2 class="sol">Keeping SIDs Consistent Across Files </h2>
+<p>With some care, it is possible to keep the SIDs consistent across sources composed of multiple files.  The trick here is to edit all the files at once.  The changes can then be made to whatever files are necessary. Check in all the files (even those not changed).  This can be done fairly easily by specifying the <kbd>SCCS</kbd> subdirectory as the file name argument to both edit and delta: </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit SCCS</kbd></b>
+.  .  .  
+$ <b><kbd>sccs delta SCCS</kbd></b>
+</pre>
+<p>With the delta subcommand, you are prompted for comments only once; the comment is applied to all files being checked in.  To determine which files have changed, you can compare the "lines added, deleted, unchanged" fields in each file delta table.  </p>
+<a name="sccs-41"></a><h2 class="sol">Starting a New Release    </h2>
+<a name="sccs-ix516"></a><a name="sccs-ix517"></a><a name="sccs-ix518"></a><p>To create a new release of a program, specify the release number you want to create when you check out the file for editing, using the -r<var>n</var> option to edit; <var>n</var> is the new release number: </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit -r 2 program.c</kbd></b> 
+</pre>
+<p>In this case, when you use delta with the new version, it will be the first level delta in release 2, with SID 2.1.  To change the release number for all <kbd>SCCS</kbd> files in the directory, use: </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit -r 2 SCCS</kbd></b>
+</pre>
+<a name="sccs-42"></a><h2 class="sol">Temporary Files Used by SCCS    </h2>
+<a name="sccs-ix519"></a><a name="sccs-ix520"></a><a name="sccs-ix521"></a><p>When <kbd>SCCS</kbd> modifies an <kbd>s.file</kbd> (that is, a history file), it does so by writing to a temporary copy called an <kbd>x.file</kbd>.   When the update is complete, <kbd>SCCS</kbd> uses the <kbd>x.file</kbd> to overwrite the old <kbd>s.file</kbd>.  This ensures that the history file is not damaged when processing terminates abnormally.  The <kbd>x.file</kbd> is created in the same directory as the history file, is given the same permissions, and is owned by the effective user.  <a name="sccs-ix522"></a> <a name="sccs-ix523"></a> <a name="sccs-ix524"></a>
+</p>
+<p>To prevent simultaneous updates to an <kbd>SCCS</kbd> file, subcommands that update the history create a lock file, called a <kbd>z.file</kbd>,   which contains the <tt>PID</tt> of the process performing the update.  Once the update has completed, the <kbd>z.file</kbd> is removed.  The <kbd>z file</kbd> is created with mode 444 (read-only) in the directory containing the <kbd>SCCS</kbd> file, and is owned by the effective user.   <a name="sccs-ix525"></a> <a name="sccs-ix526"></a> <a name="sccs-ix527"></a> <a name="sccs-ix528"></a> <a name="sccs-ix529"></a>
+</p>
+<a name="6i9k05di1"></a><h1 class="sol">Branches  </h1>
+<a name="sccs-ix530"></a><p>You can think of the deltas applied to an<kbd>SCCS</kbd> file as the nodes of a tree; the root is the initial version of the file.  The root delta (node) is number `1.1' by default, and successor deltas (nodes) are named 1.2, 1.3, and so forth.  As noted earlier, these first two parts of the <tt>SID</tt> are the release and level numbers.  The naming of a successor to a delta proceeds by incrementing the level number.  You have also seen how to check out a new release when a major change to the file is made.  The new release number applies to all successor deltas as well, unless you specify a new level in a prior release.  </p>
+<p>Thus, the evolution of a particular file may be represented in the following figure: </p>
+<a name="sccs-fig-43"></a><h5 class="sol">Figure 5-1  Evolution of an SCCS File </h5><br><img alt="Graphic" title="Graphic" src="./index_files/sccs.fig715.epsi.gif" width="380" height="258"><p></p><p>This structure is called the trunk of the <kbd>SCCS</kbd> delta tree.  It represents the normal sequential development of an <kbd>SCCS</kbd> file; changes that are part of any given delta depend upon all the preceding deltas.  </p>
+<p>However, situations can arise when it is convenient to create an alternate branch on the tree.  For instance, consider a program that is in production use at version 1.3, and for which development work on release 2 is already in progress.  Thus, release 2 might already have some deltas.  </p>
+<p>Assume that a user reports a problem in version 1.3 which cannot wait until release 2 to be corrected.  The changes necessary to correct the problem will have to be applied as a delta to version 1.3.  This requires the creation of a new version, but one that is independent of the work being done for release 2.  The new delta thus occupies a node on a new branch of the tree.  </p>
+<p>The <tt>SID</tt> for a branch delta consists of four parts: the release and level numbers, and the <tt>branch</tt> and <tt>sequence</tt> numbers: </p>
+<a name=""></a><pre>release.level.branch.sequence</pre>
+<p>The <tt>branch</tt> number is assigned to each branch that is a descendant of a particular trunk delta; the first such branch is 1, the next one 2, and so on.  The <tt>sequence</tt> number is assigned, in order, to each delta on a particular branch.  Thus, 1.3.1.1 identifies the first delta of the first branch derived from delta 1.3, as shown in the following figure.  </p>
+<a name="sccs-fig-44"></a><h5 class="sol">Figure 5-2  Tree Structure with Branch Deltas</h5><br><img alt="Graphic" title="Graphic" src="./index_files/sccs.fig716.epsi.gif" width="380" height="258"><p></p><p>The concept of branching might be extended to any delta in the tree; the naming of the resulting deltas proceeds in the manner just illustrated.  The first two components of the name of a branch delta are always those of the ancestral trunk delta.  </p>
+<p>The branch component is assigned in the order of creation on the branch, independent of its location relative to the trunk.  Thus, a branch delta can always be identified as such from its name, and while the trunk delta can be identified from the branch delta name, it is <b>not</b> possible to determine the entire path leading from the trunk delta to the branch delta.  </p>
+<p>For example, if delta 1.3 has one branch emanating from it, all deltas on that branch will be named 1.3.1.<var>n</var>.  If a delta on this branch then has another branch emanating from it, all deltas on the new branch will be named 1.3.2.<var>n</var>.  </p>
+<p>The only information that may be derived from the name of delta 1.3.2.2 is that it is the second chronological delta on the second chronological branch whose trunk ancestor is delta 1.3. </p>
+<p>In particular, it is <b>not</b> possible to determine from the name of delta 1.3.2.2 all of the deltas between it and its trunk ancestor (1.3).  </p>
+<a name="sccs-fig-45"></a><h5 class="sol">Figure 5-3  Extending the Branching Concept  </h5><br><img alt="Graphic" title="Graphic" src="./index_files/sccs.fig714.epsi.gif" width="380" height="290"><p></p><p>Branch deltas allow the generation of arbitrarily complex tree structures.  It is best to keep the use of branches to a minimum.  </p>
+<a name="sccs-46"></a><h2 class="sol">Using Branches </h2>
+<p>You can use branches when you need to keep track of an alternate version developed in parallel, such as for bug fixes or experimental purposes. Before you can create a branch, however, you must enable the "<tt>branch</tt>" flag in the history file using the <kbd>sccs admin</kbd> command, as follows: </p>
+<a name=""></a><pre>$ <b><kbd>sccs admin -f b program.c</kbd></b>
+</pre>
+<p>The <kbd><b>-fb</b></kbd> option sets the <tt>b</tt> (branch) flag in the history file.  </p>
+<a name="sccs-47"></a><h3 class="sol">Creating a Branch Delta </h3>
+<p>To create a branch from delta 1.3 for <kbd>program.c</kbd>, you would use the <kbd>sccs edit</kbd> subcommand shown in the following figure: </p>
+<a name=""></a><pre>$ <b><kbd>sccs edit -r 1.3 -b program.c</kbd></b>
+</pre>
+<p>When you check in your edited version, the branch delta contains <tt>SID</tt> 1.3.1.1.  Subsequent deltas made from this branch are numbered 1.3.1.2, and so on.  </p>
+<a name="sccs-48"></a><h3 class="sol">Retrieving Versions from Branch Deltas </h3>
+<p>Branch deltas usually are not included in the version retrieved by <kbd>get</kbd>.  To retrieve a branch version (the version associated with a branch delta), you must specifically request it with the <kbd><b>-r</b></kbd> option.  If you omit the sequence number, as in the next example, <kbd>SCCS</kbd> retrieves the highest delta in the branch: </p>
+<a name=""></a><pre>$ <b><kbd>sccs get -r 1.3.1 program.c</kbd></b>
+1.3.1.1
+87</pre>
+<a name="sccs-49"></a><h3 class="sol">Merging a Branch Back into the Main Trunk </h3>
+<p>At some point, perhaps when you've finished with the experiment, you might want to introduce the experimental features into production.  But in the meantime, work may have progressed on the production version, in which case there may be incompatibilities between the branch version and the latest trunk version.  </p>
+<p>To help you sort this situation out, the <kbd><b>-i</b></kbd> option to <kbd>sccs edit</kbd> allows you to specify a list of deltas to include when you check out the file.  If any of the changes that were included result in conflicts, edit issues a warning message.  A conflict can arise if a line must be deleted to satisfy one delta, but inserted to satisfy another.  While it is up to you to resolve each conflict, knowing where they are is a big help.  <a name="sccs-ix531"></a>
+</p>
+<a name="6i9k05di2"></a><h1 class="sol">Administering SCCS Files   </h1>
+<a name="sccs-ix532"></a><a name="sccs-ix533"></a><p>By convention, history files and all temporary <kbd>SCCS</kbd> files reside in the <kbd>SCCS</kbd> subdirectory.  In addition to the standard file protection mechanisms, <kbd>SCCS</kbd> allows certain releases to be frozen, and access to releases to be restricted to certain users (see <tt>sccs admin(1)</tt> for details).  History files normally have permissions set to 444 (read-only for everyone), to prevent modification by utilities other than <kbd>SCCS</kbd>.  In general, it is not a good idea to edit the history files.  </p>
+<p>A history file should have just one link.  <kbd>SCCS</kbd> utilities update the history file by writing out a modified copy (<kbd>x.file</kbd>), then renaming the copy.  </p>
+<a name="sccs-51"></a><h2 class="sol">Interpreting Error Messages: <kbd>sccs help</kbd>      
+</h2>
+<a name="sccs-ix534"></a><a name="sccs-ix535"></a><a name="sccs-ix536"></a><a name="sccs-ix537"></a><a name="sccs-ix538"></a><p>The <kbd>help</kbd> subcommand displays information about <kbd>SCCS</kbd> error messages and utilities.  </p>
+<p>
+<kbd>help</kbd> normally expects either the name of an <kbd>SCCS</kbd> utility, or the code (in parentheses) from an <kbd>SCCS</kbd> error message.  If you supply no argument, help prompts for one.  The directory <kbd>/usr/ccs/lib/help</kbd> contains files with the text of the various messages <kbd>help</kbd> displays.  </p>
+<a name="sccs-52"></a><h2 class="sol">Altering History File Defaults: <kbd>sccs admin </kbd>    
+</h2>
+<a name="sccs-ix539"></a><a name="sccs-ix540"></a><a name="sccs-ix541"></a><a name="sccs-ix542"></a><p>A number of parameters that can be set using the <kbd>admin</kbd> command.  The most interesting of these are flags.  Flags can be added by using the <kbd><b>-f</b></kbd> option.  </p>
+<p>For example, the following command sets the d flag to the value 1: </p>
+<a name=""></a><pre>$ <b><kbd>sccs admin -f d1 program.c</kbd></b>
+</pre>
+<p>This flag can be deleted by using: </p>
+<a name=""></a><pre>$ <b><kbd>sccs admin -d d program.c</kbd></b>
+</pre>
+<p>The most useful flags are: </p>
+<a name=""></a><dl>
+<dt>
+<tt>b</tt>
+</dt>
+<dd>
+<p>Allow branches to be made using the <kbd><b>-b</b></kbd> option to <kbd>sccs edit</kbd> (see <a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di1/index.html">"Branches  "</a>).</p>
+
+</dd>
+</dl>
+<a name=""></a><dl>
+<dt>
+<tt>d</tt><var>SID</var>
+</dt>
+<dd>
+<p>Default SID to be used on an <kbd>sccs get</kbd> or <kbd>sccs edit</kbd> .  If this is just a release number it constrains the version to a particular release only.</p>
+
+</dd>
+</dl>
+<a name=""></a><dl>
+<dt>
+<tt>i</tt>
+</dt>
+<dd>
+<p>Give a fatal error if there are no <tt>ID</tt> keywords in a file.  This prevents a version from being checked in when the <tt>ID</tt> keywords are missing or expanded by mistake.</p>
+
+</dd>
+</dl>
+<a name=""></a><dl>
+<dt>
+<tt>y</tt>
+</dt>
+<dd>
+<p>The value of this flag replaces the <tt>%Y% ID</tt> keyword.</p>
+
+</dd>
+</dl>
+<a name=""></a><dl>
+<dt>
+<kbd><b>-t</b></kbd><var>file</var>
+</dt>
+<dd>
+<p>Stores descriptive text from <var>file</var> in the <kbd>s.file</kbd>.  This descriptive text might be the documentation or a design and implementation document.  Using the  <kbd><b>-t</b></kbd> option ensures that if the <kbd>s.file</kbd> is passed on to someone else, the documentation goes along with it.  If <var>file</var> is omitted, the descriptive text is deleted.  To see the descriptive text, use <tt>prt -t</tt>.</p>
+
+</dd>
+</dl>
+<p>The <kbd>sccs admin</kbd> command can be used safely any number of times on files.  A current version need not be retrieved for admin to work.  </p>
+<a name="sccs-53"></a><h2 class="sol">Validating the History File     </h2>
+<a name="sccs-ix543"></a><a name="sccs-ix544"></a><a name="sccs-ix545"></a><a name="sccs-ix546"></a><p>You can use the <kbd>val</kbd> subcommand to check certain assertions about a history file.  <kbd>val</kbd> always checks for the following conditions: </p>
+<a name=""></a><ul>
+<li>
+<p>Corrupted history file.  </p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>The history file can't be opened for reading</p>
+
+</li>
+</ul>
+<a name=""></a><ul>
+<li>
+<p>The file is not in <kbd>SCCS</kbd> history.</p>
+
+</li>
+</ul>
+<p>If you use the <kbd><b>-r</b></kbd> option, <kbd>val</kbd> checks to see if the indicated <tt>SID</tt> exists.  </p>
+<a name="sccs-54"></a><h2 class="sol">Restoring the History File     </h2>
+<a name="sccs-ix547"></a><a name="sccs-ix548"></a><a name="sccs-ix549"></a><a name="sccs-ix550"></a><p>In particularly bad circumstances, the history file itself can become corrupted,  usually by someone editing it.  Since the file contains a checksum, you will get errors every time you read a corrupted file.  To correct the checksum, use: </p>
+<a name=""></a><pre>$ <b><kbd>sccs admin -z program.c</kbd></b>
+</pre>
+<hr><b>Note - </b><p>When <kbd>SCCS</kbd> says that the history file is corrupted, it may indicate serious damage beyond an incorrect checksum.  Be careful to safeguard your current changes before attempting to correct a history file.   <a name="sccs-ix551"></a> <a name="sccs-ix552"></a>
+</p>
+<hr>
+<a name="6i9k05di3"></a><h1 class="sol">Reference Tables        </h1>
+<a name="sccs-ix553"></a><a name="sccs-ix554"></a><a name="sccs-ix555"></a><a name="sccs-ix556"></a><a name="sccs-ix557"></a><a name="sccs-ix558"></a><a name="sccs-ix559"></a><a name="sccs-16839"></a>Table 5-1  SCCS ID Keywords<table width="100%" cellpadding="10" cellspacing="0" border="2">
+<caption>
+<b></b>
+</caption>
+<thead>
+<tr>
+<th scope="col" align="center" valign="middle">
+<p>Keyword&nbsp;</p>
+</th><th scope="col" align="left" valign="bottom">
+<p>Expands to &nbsp;</p>
+</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top">
+<p>
+<tt>%Z%</tt>
+</p>
+</td><td align="left" valign="top">
+<p>
+<tt>@(#)</tt> (search string for the <kbd>what</kbd> command)</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top">
+<p>
+<tt>%M%</tt>
+</p>
+</td><td align="left" valign="top">
+<p>The current module (file) name&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top">
+<p>
+<tt>%I%</tt>
+</p>
+</td><td align="left" valign="top">
+<p>The highest <tt>SID</tt> applied</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top">
+<p>
+<tt>%W%</tt>
+</p>
+</td><td align="left" valign="top">
+<p>shorthand
+for: <tt>%Z%%M%</tt> tab %I%</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top">
+<p>
+<tt>%G%</tt>&gt;</p>
+</td><td align="left" valign="top">
+<p>The date of the delta corresponding to the <tt>%I%</tt> keyword</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top">
+<p>
+<tt>%R%</tt>
+</p>
+</td><td align="left" valign="top">
+<p>The current release number.&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top">
+<p>
+<tt>%Y%</tt>
+</p>
+</td><td align="left" valign="top">
+<p>The value of the <kbd><b>-t</b></kbd> flag (set by <kbd>sccs admin</kbd>).</p>
+</td>
+</tr>
+
+</tbody>
+</table>
+<p> 
+</p><a name="sccs-89956"></a>Table 5-2  SCCS Utility Commands<table width="100%" cellpadding="10" cellspacing="0" border="2">
+<caption>
+<b></b>
+</caption>
+<thead>
+<tr>
+<th scope="col" align="center" valign="middle" colspan="2">
+<pre>SCCS Utility Programs </pre>
+</th>
+</tr>
+
+<tr>
+<th scope="col" align="left" valign="bottom">
+<p>Command&nbsp;</p>
+</th><th scope="col" align="center" valign="bottom">
+<p>Refer to: &nbsp;</p>
+</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><kbd>admin</kbd></td><td align="left" valign="top"><tt>sccs-admin(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>cdc</kbd></td><td align="left" valign="top"><tt>sccs-cdc(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>comb</kbd></td><td align="left" valign="top"><tt>sccs-comb(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>delta</kbd></td><td align="left" valign="top"><tt>sccs-delta(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>get</kbd></td><td align="left" valign="top"><tt>sccs-get(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>help</kbd></td><td align="left" valign="top"><tt>sccs-help(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>prs</kbd></td><td align="left" valign="top"><tt>sccs-prs(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>prt</kbd></td><td align="left" valign="top"><tt>sccs-prt(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>rmdel</kbd></td><td align="left" valign="top"><tt>sccs-rmdel(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>sact</kbd></td><td align="left" valign="top"><tt>sccs-sact(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>sccsdiff</kbd></td><td align="left" valign="top"><tt>sccs-sccsdiff(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>unget</kbd></td><td align="left" valign="top"><tt>sccs-unget(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>val</kbd></td><td align="left" valign="top"><tt>sccs-val(1)</tt></td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><kbd>what</kbd></td><td align="left" valign="top"><tt>what(1)</tt></td>
+</tr>
+
+</tbody>
+</table>
+<p> 
+</p><a name="sccs-16251"></a>Table 5-3  Data Keywords for prs <kbd>-d</kbd><table width="100%" cellpadding="10" cellspacing="0" border="2">
+<caption>
+<b></b>
+</caption>
+<thead>
+<tr>
+<th scope="col" align="center" valign="middle">
+<p>Keyword&nbsp;</p>
+</th><th scope="col" align="center" valign="bottom">
+<p>Data Item&nbsp;</p>
+</th><th scope="col" align="left" valign="bottom">
+<p>File Section&nbsp;</p>
+</th><th scope="col" align="left" valign="bottom">
+<p>Value&nbsp;</p>
+</th><th scope="col" align="center" valign="middle">
+<p>Format&nbsp;</p>
+</th>
+</tr>
+
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><tt>:Dt:</tt></td><td align="left" valign="top">
+<p>Delta information&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:Dt: = :DT: :I: :D: :T: :P: :DS: :DP:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:DL:</tt></td><td align="justify" valign="top">
+<p>Delta line statistics&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:Li:/:Ld:/:Lu:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Li:</tt></td><td align="center" valign="top">
+<p>Lines inserted by Delta&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Ld:</tt></td><td align="justify" valign="top">
+<p>Lines deleted by Delta&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Lu:</tt></td><td align="left" valign="top">
+<p>Lines unchanged by Delta&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:DT:</tt></td><td align="left" valign="top">
+<p>Delta type&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>D or R</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:I:</tt></td><td align="left" valign="top">
+<p>SCCS ID string (SID)&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:Rf3:.:Lf3:.:Bf3:.:S:</tt></td><td align="center" valign="top">
+<p>Single
+line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:R:</tt></td><td align="left" valign="top">
+<p>Release number&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:L:</tt></td><td align="left" valign="top">
+<p>Level number&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:B:</tt></td><td align="left" valign="top">
+<p>Branch number&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:S:</tt></td><td align="left" valign="top">
+<p>Sequence number&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:D:</tt></td><td align="left" valign="top">
+<p>Date Delta created&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:Dy:/:Dm:/:Dd:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Dy:</tt></td><td align="left" valign="top">
+<p>Year Delta created&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Dm:</tt></td><td align="left" valign="top">
+<p>Month Delta created&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Dd:</tt></td><td align="left" valign="top">
+<p>Day Delta created&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:T:</tt></td><td align="left" valign="top">
+<p>Time Delta created&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:Th:::Tm:::Ts:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Th:</tt></td><td align="left" valign="top">
+<p>Hour Delta created&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Tm:</tt></td><td align="left" valign="top">
+<p>Minutes Delta created&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Ts:</tt></td><td align="left" valign="top">
+<p>Seconds Delta created&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:P:</tt></td><td align="left" valign="top">
+<p>Programmer who created Delta&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>logname</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:DS:</tt></td><td align="left" valign="top">
+<p>Delta sequence number&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:DP:</tt></td><td align="left" valign="top">
+<p>Predecessor Delta seq-no.  &nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>nnnn</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:DI:</tt></td><td align="left" valign="top">
+<p>Sequence number of deltas included, excluded, ignored &nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:Dn:/:Dx:/:Dg:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Dn:</tt></td><td align="left" valign="top">
+<p>Deltas included (seq #)&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:DS: :DS: .  .  .</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Dx:</tt></td><td align="left" valign="top">
+<p>Deltas excluded (seq #)&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:DS: :DS: .  .  .</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Dg:</tt></td><td align="left" valign="top">
+<p>Deltas ignored (seq #)&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><tt>:DS: :DS: .  .  .</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:MR:</tt></td><td align="left" valign="top">
+<p>MR numbers for delta&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:C:</tt></td><td align="left" valign="top">
+<p>Comments for delta&nbsp;</p>
+</td><td align="center" valign="top">
+<p> Delta Table&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:UN:</tt></td><td align="left" valign="top">
+<p>User names&nbsp;</p>
+</td><td align="center" valign="top">
+<p>User Names&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:FL:</tt></td><td align="left" valign="top">
+<p>Flag list&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Y:</tt></td><td align="left" valign="top">
+<p>Module type flag&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:MF:</tt></td><td align="left" valign="top">
+<p>MR validation flag&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>yes or no</tt></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:MP:</tt></td><td align="left" valign="top">
+<p>MR validation pgm name&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:KF:</tt></td><td align="left" valign="top">
+<p>Keyword error/warning flag&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>yes or no</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:BF:</tt></td><td align="left" valign="top">
+<p>Branch flag&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>yes or no</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:J:</tt></td><td align="left" valign="top">
+<p>Joint edit flag&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>yes or no</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:LK:</tt></td><td align="left" valign="top">
+<p>Locked releases&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>:R: .  .  .</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Q:</tt></td><td align="left" valign="top">
+<p>User defined keyword&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:M:</tt></td><td align="left" valign="top">
+<p>Module name&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Single
+line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:FB:</tt></td><td align="left" valign="top">
+<p>Floor boundary&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>:R:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:CB:</tt></td><td align="left" valign="top">
+<p>Ceiling boundary&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>:R:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Ds:</tt></td><td align="left" valign="top">
+<p>Default SID&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>:I:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:ND:</tt></td><td align="left" valign="top">
+<p>Null delta flag&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Flags&nbsp;</p>
+</td><td align="left" valign="top"><tt>yes or no</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:FD:</tt></td><td align="left" valign="top">
+<p>File descriptive text&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Comments&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:BD:</tt></td><td align="left" valign="top">
+<p>Body&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Body&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:GB:</tt></td><td align="left" valign="top">
+<p>Gotten body&nbsp;</p>
+</td><td align="center" valign="top">
+<p>Body&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Multiple line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:W:</tt></td><td align="left" valign="top">
+<p>A form of <kbd>what(1)</kbd> string</p>
+</td><td align="center" valign="top">
+<p>N/A&nbsp;</p>
+</td><td align="left" valign="top"><tt>:Z::M:\t:I:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:A:</tt></td><td align="left" valign="top">
+<p>A form of <kbd>what(1)</kbd> string</p>
+</td><td align="center" valign="top">
+<p>N/A&nbsp;</p>
+</td><td align="left" valign="top"><tt>:Z::Y: :M: :I::Z:</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:Z:</tt></td><td align="left" valign="top">
+<p>
+<kbd>what(1)</kbd> string delimiter</p>
+</td><td align="center" valign="top">
+<p>N/A&nbsp;</p>
+</td><td align="left" valign="top"><tt>@(#)</tt></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:F:</tt></td><td align="left" valign="top">
+<p>SCCS file name&nbsp;</p>
+</td><td align="center" valign="top">
+<p>N/A&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+<tr>
+<td align="left" valign="top"><tt>:PN:</tt></td><td align="left" valign="top">
+<p>SCCS file path name&nbsp;</p>
+</td><td align="center" valign="top">
+<p>N/A&nbsp;</p>
+</td><td align="left" valign="top"><var>text</var></td><td align="center" valign="top">
+<p>Single line&nbsp;</p>
+</td>
+</tr>
+
+</tbody>
+</table>
+<p> 
+</p>
+</div><div class="d8 d8v1" style="margin: 10px;"><div class="d8w1"><div class="d8w2"><div class="d8w3"><div class="d8w4"><ul><li class="d8left"><a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05dhc/index.html"><em>Previous</em>: Chapter 4 make Utility </a></li><li class="d8right"><a href="https://docs.oracle.com/cd/E19504-01/802-5880/6i9k05di4/index.html"><em>Next</em>: Chapter 6 m4 Macro Processor </a></li></ul></div></div></div></div></div><div class="a5 a5v0" id="a5">
+<ul>
+    <li class="copyright">© 2010, Oracle Corporation and/or its affiliates</li>
+</ul>
+</div>
+</div><script src="./index_files/ora_code_docs.js.download"></script><script src="./index_files/ora_code.js.download"></script></body></html>

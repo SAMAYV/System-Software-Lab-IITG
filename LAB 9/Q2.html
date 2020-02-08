@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Q2</title>
+		<script>
+			function input(){
+				var c = prompt('Enter Number')
+				if(isNaN(c)){
+					if(typeof c === 'string'){
+						alert('String')	
+						if(c.length===0)
+							alert('Length is zero')
+						else
+							alert('Length is non-zero')
+					}
+				}
+				else 
+					alert('Not A String')
+			}
+			input()
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+object= main.o single-player.o multi-player.o AI.o
+sources = *.c
+  include makefile $(CFLAGS)
+Quest : $(object)
+	gcc -o Quest $(object)
+%.d: %.c
+	@set -e; rm -f $@; \
+	$(CC) -M $(CPPFLAGS) $< > $@.$$$$; \
+	sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; \
+	rm -f $@.$$$$
+
+include $(sources:.c=.d)
+clean: 
+	rm Quest $(object)
+	@echo 'removed'
+clean1:
+	rm *.d
+	@echo 'deleted *.d'

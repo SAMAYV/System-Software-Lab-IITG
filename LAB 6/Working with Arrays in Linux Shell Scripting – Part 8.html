@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html class="js" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="alexaVerifyID" content="qqxQUyWSeUfqZOencfEoRM9vrVk">
+<meta name="msvalidate.01" content="E8C9208AD2F47ED874ED18E35FC370CE">
+<meta name="google-translate-customization" content="c567e5d7624a883b-609bf053fa02c58b-g01de0b1961de0feb-f">
+<meta property="article:publisher" content="https://facebook.com/tecmint">
+<link rel="profile" href="https://gmpg.org/xfn/11">
+<link rel="pingback" href="https://www.tecmint.com/xmlrpc.php">
+<title>Working with Arrays in Linux Shell Scripting – Part 8</title>
+<script src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/reactive_library.js"></script><script src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/osd.js"></script><script src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/show_ads_impl.js" id="google_shimpl"></script><script async="" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/analytics.js"></script><script type="text/javascript">document.documentElement.className = document.documentElement.className.replace("no-js","js");</script>
+
+<meta name="description" content="This article will help you in playing around with some shell scripts which make use of this concept of arrays.">
+<meta name="keywords" content="arrays in shell scripting,working with arrays in scripting,learn arrays in linux,shell scripting">
+<script type="application/ld+json" class="aioseop-schema">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.tecmint.com/#organization","url":"https://www.tecmint.com/","name":"Tecmint: Linux Howtos, Tutorials &amp; Guides","sameAs":[]},{"@type":"WebSite","@id":"https://www.tecmint.com/#website","url":"https://www.tecmint.com/","name":"Tecmint: Linux Howtos, Tutorials &amp; Guides","publisher":{"@id":"https://www.tecmint.com/#organization"}},{"@type":"WebPage","@id":"https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#webpage","url":"https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/","inLanguage":"en-US","name":"Working with Arrays in Linux Shell Scripting \u2013 Part 8","isPartOf":{"@id":"https://www.tecmint.com/#website"},"image":{"@type":"ImageObject","@id":"https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#primaryimage","url":"https://www.tecmint.com/wp-content/uploads/2014/04/Working-With-Arrays-in-Shell-Scripting.png","width":435,"height":321,"caption":"Working With Arrays in Shell Scripting"},"primaryImageOfPage":{"@id":"https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#primaryimage"},"datePublished":"2014-04-24T02:45:05+00:00","dateModified":"2015-01-07T06:54:39+00:00","description":"This article will help you in playing around with some shell scripts which make use of this concept of arrays."},{"@type":"Article","@id":"https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#article","isPartOf":{"@id":"https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#webpage"},"author":{"@id":"https://www.tecmint.com/author/anoopcs/#author"},"headline":"Working with Arrays in Linux Shell Scripting \u2013 Part 8","datePublished":"2014-04-24T02:45:05+00:00","dateModified":"2015-01-07T06:54:39+00:00","commentCount":"12","mainEntityOfPage":{"@id":"https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#webpage"},"publisher":{"@id":"https://www.tecmint.com/#organization"},"articleSection":"Bash Shell, shell scripting","image":{"@type":"ImageObject","@id":"https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#primaryimage","url":"https://www.tecmint.com/wp-content/uploads/2014/04/Working-With-Arrays-in-Shell-Scripting.png","width":435,"height":321,"caption":"Working With Arrays in Shell Scripting"}},{"@type":"Person","@id":"https://www.tecmint.com/author/anoopcs/#author","name":"Anoop C S","sameAs":[],"image":{"@type":"ImageObject","@id":"https://www.tecmint.com/#personlogo","url":"https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=96&d=blank&r=g","width":96,"height":96,"caption":"Anoop C S"}}]}</script>
+<link rel="canonical" href="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/a_011.html">
+
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides » Feed" href="https://feeds.feedburner.com/tecmint">
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides » Comments Feed" href="https://www.tecmint.com/comments/feed/">
+<link href="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/css_002.css" rel="stylesheet" type="text/css">
+<link rel="alternate" type="application/rss+xml" title="Tecmint: Linux Howtos, Tutorials &amp; Guides » Working with Arrays in Linux Shell Scripting – Part 8 Comments Feed" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/feed/">
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/fx9rk.css" media="all">
+<script src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/fx9rk.js" type="text/javascript"></script>
+
+
+<script type="text/javascript">
+/* <![CDATA[ */
+var ajaxurl = "https:\/\/www.tecmint.com\/wp-admin\/admin-ajax.php";
+var QBP_PUBLIC_GLOBALS = {"QBP_PUBLIC_NONCE":"3db7b8f392","USER_TYPE":"public","VISIBILITY_DATA":{"is_page":false,"is_post":true,"is_homepage":false,"is_archive":false,"is_custom_post_type":false,"id":6536}};
+/* ]]> */
+</script>
+<script src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/fx9rk_002.js" type="text/javascript"></script>
+
+<link rel="https://api.w.org/" href="https://www.tecmint.com/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.tecmint.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.tecmint.com/wp-includes/wlwmanifest.xml">
+<link rel="prev" title="Integrate Ubuntu 14.04 (Trusty Tahr) to Zentyal PDC (Primary Domain Controller) – Part 7" href="https://www.tecmint.com/integrate-ubuntu-14-04-to-zentyal-pdc/">
+<link rel="next" title="Installing FTP Server and Mapping FTP Directories in Zentyal PDC – Part 8" href="https://www.tecmint.com/installing-ftp-server-and-mapping-ftp-directories-in-zentyal-pdc-part-8/">
+<meta name="generator" content="WordPress 5.2.3">
+<link rel="shortlink" href="https://www.tecmint.com/?p=6536">
+<link rel="alternate" type="application/json+oembed" href="https://www.tecmint.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tecmint.com%2Fworking-with-arrays-in-linux-shell-scripting%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.tecmint.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.tecmint.com%2Fworking-with-arrays-in-linux-shell-scripting%2F&amp;format=xml">
+
+<meta property="og:image" content="https://www.tecmint.com/wp-content/uploads/2014/04/Working-With-Arrays-in-Shell-Scripting.png">
+
+
+<link rel="shortcut icon" href="https://www.tecmint.com/wp-content/themes/tecmint/images/favicon.ico">
+<!--[if lt IE 9]>
+<script src="https://www.tecmint.com/wp-content/themes/tecmint/js/ie/html5.js"></script>
+<script src="https://www.tecmint.com/wp-content/themes/tecmint/js/ie/selectivizr.js"></script>
+<![endif]-->
+<link rel="amphtml" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/amp/"><link rel="icon" href="https://www.tecmint.com/wp-content/uploads/2015/01/tecmint_square_logo.png" sizes="32x32">
+<link rel="icon" href="https://www.tecmint.com/wp-content/uploads/2015/01/tecmint_square_logo.png" sizes="192x192">
+<link rel="apple-touch-icon-precomposed" href="https://www.tecmint.com/wp-content/uploads/2015/01/tecmint_square_logo.png">
+<meta name="msapplication-TileImage" content="https://www.tecmint.com/wp-content/uploads/2015/01/tecmint_square_logo.png">
+<style type="text/css">
+/* Dynamic CSS: For no styles in head, copy and put the css below in your custom.css or child theme's style.css, disable dynamic styles */
+body { font-family: "Roboto Condensed", Arial, sans-serif; }
+.boxed #wrapper, .container-inner { max-width: 1280px; }
+.sidebar .widget { padding-left: 20px; padding-right: 20px; padding-top: 20px; }
+.search-expand,
+#nav-topbar.nav-container { background-color: #23588c; }
+@media only screen and (min-width: 720px) {
+#nav-topbar .nav ul { background-color: #23588c; }
+}			
+#header { background-color: #075b88; }
+@media only screen and (min-width: 720px) {
+#nav-header .nav ul { background-color: #075b88; }
+}			
+#nav-header.nav-container { background-color: #2f6dab; }
+@media only screen and (min-width: 720px) {
+#nav-header .nav ul { background-color: #2f6dab; }
+}			
+#footer-bottom { background-color: #2f6dab; }
+.site-title a img { max-height: 90px; }
+img { -webkit-border-radius: 2px; border-radius: 2px; }
+</style>
+<link rel="author" href="https://plus.google.com/107665449243972690526/posts">
+<script async="" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/adsbygoogle.js" type="text/javascript"></script>
+<script type="application/ld+json">
+{
+"@context": "http://schema.org",
+"@type": "WebSite",
+"url": "https://www.tecmint.com/",
+"potentialAction": {
+"@type": "SearchAction",
+"target": "https://www.tecmint.com/?s={search_term}",
+"query-input": "required name=search_term"
+}
+}
+</script>
+<script type="text/javascript">
+this.randomtip=function(){var e=jQuery("#tips li").length,t=Math.floor(Math.random()*e)+1;jQuery("#tips li:nth-child("+t+")").show()},jQuery(document).ready(function($){randomtip()});</script>
+<script data-cfasync="false" type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-33207530-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async="" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/adsbygoogle.js" type="text/javascript"></script>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-2601749019656699",
+enable_page_level_ads: true
+});
+</script>
+<link rel="preload" href="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/integrator_002.js" as="script"><script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/integrator_002.js"></script><link rel="preload" href="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/integrator.js" as="script"><script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/integrator.js"></script><link rel="preload" href="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/show_ads_impl.js" as="script"></head>
+<link id="qbp-fonts" href="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/css.css" rel="stylesheet" type="text/css"><div id="quickiebarpro-show-button" class="show-button-sticky-enabled show-button-placement-top" style="color: rgb(255, 255, 255); background: rgb(219, 68, 85) none repeat scroll 0% 0%; z-index: 100; display: none;"><div class="show-button" style="color:#FFFFFF;background:#DB4455;"><i class="fa fa-chevron-down"></i><i class="fa fa-chevron-up"></i></div></div><div id="quickiebarpro" class="qbp-5608da2674a31 qbp-1 qbp qbp-bar_height-skinny qbp-sticky-enabled qbp-placement-top qbp-attribution-hidden qbp-alignment-centered qbp-button_style-rounded qbp-close_button_visibility-onhover qbp-bar_type-basic " style="background: rgb(219, 68, 85) none repeat scroll 0% 0%; z-index: 100; display: block;"><div class="hover-background-overlay"></div><div class="wrap"><div class="qbp-wrap"><span id="qbp-bar-text" class="bar-text" style="color:#FFFFFF;font-family:Roboto Slab;font-weight:700;">Linux Foundation’s LFCS and LFCE Certification Preparation Guide ($79)</span><span id="qbp-bar-button" class="bar-button" style="color:#FFFFFF;background:#BF3B44;border-color:#FFFFFF;font-family:Montserrat;font-weight:400;">Get This Book &nbsp;<i class="fa fa-book"></i>&nbsp;</span><div id="qbp-bar-html" class="bar-html"></div><form id="qbp-subscribe-form" class="subscribe-form" onsubmit="return false;"><input id="qbp-subscribe-input" type="email" placeholder="Email" autocomplete="off"><div id="qbp-subscribe-button" style="color:#FFFFFF;background:#BF3B44;border-color:#FFFFFF;"><i class="fa fa-long-arrow-right"></i></div></form></div></div><div class="qbp-close-button"><i class="fa fa-times-circle-o"></i></div><a href="https://www.tecmint.com/linux-foundation-lfcs-lfce-certification-exam-book/" target="_blank" class="link-overlay" style=""></a><div class="qbp-close-bar"><i class="fa fa-chevron-up"></i></div></div><body data-rsssl="1" class="post-template-default single single-post postid-6536 single-format-standard col-2cl full-width topbar-enabled chrome s1-collapse s2-collapse" style="padding-top: 40px;">
+<div id="wrapper" style="height: auto !important;">
+<header id="header">
+<nav class="nav-container group" id="nav-topbar">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"></div>
+<div class="nav-wrap container"><ul id="menu-home" class="nav container-inner group"><li id="menu-item-334" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-334"><a href="https://www.tecmint.com/">Home</a></li>
+<li id="menu-item-10774" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10774"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/who-we-are/">About</a></li>
+<li id="menu-item-3912" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3912"><a title="Free Linux eBooks" target="_blank" rel="noopener noreferrer" href="http://tecmint.tradepub.com/category/information-technology-servers-and-linux-server-os/806/">Free eBooks</a></li>
+<li id="menu-item-17151" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17151"><a title="Discover and save on the best gear, gadgets, and software" target="_blank" rel="noopener noreferrer" href="https://deals.tecmint.com/">Deals</a></li>
+<li id="menu-item-18575" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18575"><a title="Support Us" href="https://www.tecmint.com/donate-to-tecmint/">Donate</a></li>
+<li id="menu-item-10775" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10775"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/submit-articles/">Join TecMint</a></li>
+<li id="menu-item-11736" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11736"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/linux-online-training-courses/">Linux Online Courses</a></li>
+<li id="menu-item-11907" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11907"><a title="Subscribe to Daily Updates" target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/subscribe-to-blog/">Subscribe</a></li>
+<li id="menu-item-13338" class="hosting menu-item menu-item-type-custom menu-item-object-custom menu-item-13338"><a title="Best Web Hosting Companies" target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/best-web-hosting-for-linux/">Linux Hosting</a></li>
+<li id="menu-item-24734" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24734"><a title="Linux Commands – A Beginners Cheat Sheet" target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/linux-commands-cheat-sheet/">A-Z Linux Commands</a></li>
+</ul></div>
+<div class="container">
+<div class="container-inner">
+<div class="toggle-search"><i class="fa fa-search"></i></div>
+<div class="search-expand">
+<div class="search-expand-inner">
+<form action="https://www.tecmint.com/search/" id="cse-search-box">
+<div>
+<input type="hidden" name="cx" value="partner-pub-2601749019656699:2173448976">
+<input type="hidden" name="cof" value="FORID:10">
+<input type="hidden" name="ie" value="UTF-8">
+<input type="text" class="search" name="q" size="20" style="background: rgb(255, 255, 255) url(&quot;https://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) no-repeat scroll left center; text-indent: 48px;" placeholder="Custom Search">
+<input type="submit" name="sa" value="Search">
+</div>
+<input name="siteurl" type="hidden" value="www.tecmint.com/working-with-arrays-in-linux-shell-scripting/"><input name="ref" type="hidden" value="www.google.com/"><input name="ss" type="hidden"></form>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/brand"></script>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<div class="container group">
+<div class="container-inner">
+<div class="group pad">
+<p class="site-title"><a href="https://www.tecmint.com/" rel="home"><img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/logo.png" alt="Tecmint: Linux Howtos, Tutorials &amp; Guides"></a></p>
+<div id="header-ads">
+<div id="text-17" class="widget widget_text"> <div class="textwidget">
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-2601749019656699" data-ad-slot="8210224606" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:728px;height:90px;" width="728" height="90" frameborder="0"></iframe></ins></ins></ins>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div> </div>
+</div>
+<nav class="nav-container group" id="nav-header">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"></div>
+<div class="nav-wrap container"><ul id="menu-header" class="nav container-inner group"><li id="menu-item-10770" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10770"><a href="https://www.tecmint.com/best-linux-distributions/">Linux Distro’s</a></li>
+<li id="menu-item-10771" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10771"><a href="https://www.tecmint.com/category/interview-questions/">Interview Questions</a></li>
+<li id="menu-item-20869" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-20869"><a href="https://www.tecmint.com/#">Programming</a>
+<ul class="sub-menu" style="display: none;">
+<li id="menu-item-10772" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-10772"><a title="Learn Linux Shell Scripting" href="https://www.tecmint.com/category/bash-shell/">Shell Scripting</a></li>
+<li id="menu-item-20870" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20870"><a href="https://www.tecmint.com/category/python/">Learn Python</a></li>
+<li id="menu-item-20871" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20871"><a href="https://www.tecmint.com/category/awk-command/">Learn Awk</a></li>
+</ul>
+</li>
+<li id="menu-item-10773" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-10773"><a href="https://www.tecmint.com/category/linux-commands/">Linux Commands</a></li>
+<li id="menu-item-14795" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14795"><a href="https://www.tecmint.com/tag/linux-tricks/">Linux Tricks</a></li>
+<li id="menu-item-19684" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-19684"><a href="https://www.tecmint.com/category/top-tools/">Best Linux Tools</a></li>
+<li id="menu-item-10443" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-10443"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/#">Certifications</a>
+<ul class="sub-menu" style="display: none;">
+<li id="menu-item-14880" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14880"><a href="https://www.tecmint.com/how-to-setup-and-configure-static-network-routing-in-rhel/">RHCE Exam</a></li>
+<li id="menu-item-11906" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11906"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/rhcsa-exam-reviewing-essential-commands-system-documentation/">RHCSA Exam</a></li>
+<li id="menu-item-10444" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10444"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/installing-network-services-and-configuring-services-at-system-boot/">LFCE Exam</a></li>
+<li id="menu-item-14793" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14793"><a href="https://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/">LFCS Exam</a></li>
+<li id="menu-item-34401" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-34401"><a title="Red Hat Ansible Exam Preparation Guide" target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/understand-core-components-of-ansible/">Ansible Exam</a></li>
+</ul>
+</li>
+<li id="menu-item-12399" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-has-children menu-item-12399"><a href="https://www.tecmint.com/#">Guides</a>
+<ul class="sub-menu" style="display: none;">
+<li id="menu-item-18564" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-18564"><a target="_blank" rel="noopener noreferrer" href="https://www.tecmint.com/install-docker-and-learn-containers-in-centos-rhel-7-6/">Docker Series</a></li>
+<li id="menu-item-17150" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-17150"><a href="https://www.tecmint.com/setup-postfix-mail-server-and-dovecot-with-mariadb-in-centos/">Postfix Mail</a></li>
+<li id="menu-item-15041" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-15041"><a href="https://www.tecmint.com/citrix-xenserver-installation-and-network-configuration-in-linux/">XenServer Series</a></li>
+<li id="menu-item-14794" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14794"><a href="https://www.tecmint.com/install-redhat-virtualization-rhev/">RHEV Series</a></li>
+<li id="menu-item-14805" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14805"><a href="https://www.tecmint.com/what-is-clustering-and-advantages-disadvantages-of-clustering-in-linux/">Clustering Series</a></li>
+<li id="menu-item-12400" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12400"><a href="https://www.tecmint.com/create-lvm-storage-in-linux/">LVM Series</a></li>
+<li id="menu-item-12402" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12402"><a href="https://www.tecmint.com/understanding-raid-setup-in-linux/">RAID Series</a></li>
+<li id="menu-item-12403" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12403"><a href="https://www.tecmint.com/install-and-configure-kvm-in-linux/">KVM Series</a></li>
+<li id="menu-item-12401" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12401"><a href="https://www.tecmint.com/create-centralized-secure-storage-using-iscsi-targetin-linux/">iSCSI Series</a></li>
+<li id="menu-item-12406" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12406"><a href="https://www.tecmint.com/install-zentyal-as-primary-domain-controller-and-integrate-windows-system/">Zentyal Series</a></li>
+<li id="menu-item-16084" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16084"><a href="https://www.tecmint.com/install-and-configure-ansible-automation-tool-in-linux/">Ansible Series</a></li>
+<li id="menu-item-16395" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16395"><a href="https://www.tecmint.com/install-and-configure-django-web-framework-in-centos-debian-ubuntu/">Django Series</a></li>
+<li id="menu-item-14603" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14603"><a href="https://www.tecmint.com/create-gui-applications-in-linux/">Create GUI Apps</a></li>
+</ul>
+</li>
+<li id="menu-item-14796" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-14796"><a href="https://www.tecmint.com/command-line-tools-to-monitor-linux-performance/">Monitoring Tools</a>
+<ul class="sub-menu" style="display: none;">
+<li id="menu-item-14797" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14797"><a href="https://www.tecmint.com/install-nagios-in-linux/">Nagios</a></li>
+<li id="menu-item-14798" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14798"><a href="https://www.tecmint.com/install-and-configure-zabbix-monitoring-on-debian-centos-rhel/">Zabbix</a></li>
+<li id="menu-item-14799" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14799"><a href="https://www.tecmint.com/install-cacti-network-monitoring-on-rhel-centos-6-3-5-8-and-fedora-17-12/">Cacti</a></li>
+<li id="menu-item-14800" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14800"><a href="https://www.tecmint.com/install-observium-in-centos/">Observium</a></li>
+<li id="menu-item-14801" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14801"><a href="https://www.tecmint.com/monitorix-a-lightweight-system-and-network-monitoring-tool-for-linux/">Monitorix</a></li>
+<li id="menu-item-14802" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14802"><a href="https://www.tecmint.com/install-collectd-and-collectd-web-to-monitor-server-resources-in-linux/">Collectd</a></li>
+<li id="menu-item-14803" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14803"><a href="https://www.tecmint.com/linux-performance-monitoring-with-collectl-tool/">Collectl</a></li>
+<li id="menu-item-14804" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-14804"><a href="https://www.tecmint.com/mysql-performance-monitoring/">MySQL Monitoring</a></li>
+</ul>
+</li>
+<li id="menu-item-20410" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-20410"><a title="Linux and WordPress Services" target="_blank" rel="noopener noreferrer" href="https://www.fosswork.com/">Support</a></li>
+</ul></div>
+</nav>
+</div>
+</div>
+</header>
+<div class="container" id="page" style="height: auto !important;">
+<div class="container-inner" style="height: auto !important;">
+<div class="main" style="height: auto !important;">
+<div class="main-inner group" style="height: auto !important; min-height: 0px !important;">
+<section class="content" style="height: auto !important;">
+<div class="page-title pad group">
+<ul class="meta-single group">
+<li class="category"><a href="https://www.tecmint.com/category/bash-shell/" rel="category tag">Bash Shell</a></li>
+<li class="comments"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comments"><i class="fa fa-comments-o"></i>12</a></li>
+</ul>
+</div>
+<div class="pad group" style="height: auto !important;">
+<article class="post-6536 post type-post status-publish format-standard has-post-thumbnail hentry category-bash-shell tag-shell-scripting" style="height: auto !important;">
+<div class="post-inner group" style="height: auto !important;">
+<h1 class="post-title">Working with Arrays in Linux Shell Scripting – Part 8</h1>
+<p class="post-byline">by <a href="https://www.tecmint.com/author/anoopcs/" title="Posts by Anoop C S" rel="author">Anoop C S</a> | Published: April 24, 2014 | 
+Last Updated: January 7, 2015 </p>
+<div class="add-box">
+
+<ins class="adsbygoogle" style="display: block; height: 90px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="2902592253" data-ad-format="link" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:862px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:862px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0px;width:862px;height:90px;" width="862" height="90" frameborder="0"></iframe></ins></ins></ins>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="clear"></div>
+<div id="exam_announcement">
+<i style="color:#28557a; font-size:20px;" class="fa fa-book"></i>
+<b>Download Your Free eBooks NOW</b> - <a target="_blank" style="text-decoration:underline;" href="https://www.tecmint.com/10-useful-free-linux-ebooks-for-newbies-and-administrators/">10 Free Linux eBooks for Administrators</a> | <a style="text-decoration:underline;" target="_blank" href="https://www.tecmint.com/free-linux-shell-scripting-books/">4 Free Shell Scripting eBooks</a>
+</div>
+<div class="clear"></div>
+<div class="ads-inner-mobile">
+<center>
+
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="9946480174" data-adsbygoogle-status="done"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0px;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+</div>
+<div class="clear"></div>
+<div class="entry " style="height: auto !important;">
+<div class="entry-inner" style="height: auto !important;">
+<p>We cannot imagine a programming language without the concept of 
+arrays. It doesn’t matter how they are implemented among various 
+languages. Instead arrays help us in consolidating data, similar or 
+different, under one symbolic name. </p>
+<div id="attachment_6539" style="width: 445px" class="wp-caption aligncenter"><a href="https://www.tecmint.com/wp-content/uploads/2014/04/Working-With-Arrays-in-Shell-Scripting.png"><img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2014/04/Working-With-Arrays-in-Shell-Scripting.png" aria-describedby="caption-attachment-6539" alt="Working With Arrays in Shell Scripting" class="size-full wp-image-6539" width="435" height="321"><noscript><img aria-describedby="caption-attachment-6539" src="https://www.tecmint.com/wp-content/uploads/2014/04/Working-With-Arrays-in-Shell-Scripting.png" alt="Working With Arrays in Shell Scripting" width="435" height="321" class="size-full wp-image-6539" /></noscript></a><p id="caption-attachment-6539" class="wp-caption-text">Working With Arrays in Shell Scripting</p></div>
+<p>Here as we are concerned about shell scripting, this article will 
+help you in playing around with some shell scripts which make use of 
+this concept of arrays.</p>
+<h3>Array Initialization and Usage</h3>
+<p>With newer versions of bash, it supports one-dimensional arrays. An array can be explicitly declared by the <em>declare</em> shell-builtin.</p>
+<pre>declare -a var  
+</pre>
+<p>But it is not necessary to declare array variables as above. We can insert individual elements to array directly as follows.</p>
+<pre>var[XX]=&lt;value&gt;
+</pre>
+<center style="padding-bottom: 20px;padding-top: 10px;"><ins class="adsbygoogle" style="display: block; height: 280px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="5590002574" data-ad-format="auto" data-full-width-responsive="true" data-adsbygoogle-status="done"><ins id="aswift_4_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:880px;background-color:transparent;"><ins id="aswift_4_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:880px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_4" name="aswift_4" style="left: 0px; position: absolute; top: 0px; border: 0px none; width: 880px; height: 280px; overflow: visible;" width="880" height="280" frameborder="0"></iframe></ins></ins></ins><script type="text/javascript">(adsbygoogle = window.adsbygoogle || []).push({});</script></center><p>where ‘XX’ denotes the array index. To dereference array elements use the curly bracket syntax, i.e.</p>
+<pre>${var[XX]}
+</pre>
+<p><strong style="color:red">Note</strong>: Array indexing always start with 0.</p>
+<p>Another convenient way of initializing an entire array is by using the pair of parenthesis as shown below.</p>
+<pre>var=( element1 element2 element3 . . . elementN )
+</pre>
+<p>There is yet another way of assigning values to arrays. This way of 
+initialization is a sub-category of the previously explained method.</p>
+<pre>array=( [XX]=&lt;value&gt; [XX]=&lt;value&gt; . . . )
+</pre>
+<p>We can also read/assign values to array during the execution time using the <em>read</em> shell-builtin.</p>
+<pre>read -a array
+</pre>
+<p>Now upon executing the above statement inside a script, it waits for 
+some input. We need to provide the array elements separated by space 
+(and not carriage return). After entering the values press enter to 
+terminate.</p>
+<p>To traverse through the array elements we can also use for loop.</p>
+<pre>for i in “${array[@]}”
+do
+	#access each element as $i. . .
+done 
+</pre>
+<p>The following script summarizes the contents of this particular section.</p>
+<pre>#!/bin/bash 
+
+array1[0]=one 
+array1[1]=1 
+echo ${array1[0]} 
+echo ${array1[1]} 
+
+array2=( one two three ) 
+echo ${array2[0]} 
+echo ${array2[2]} 
+
+array3=( [9]=nine [11]=11 ) 
+echo ${array3[9]} 
+echo ${array3[11]} 
+
+read -a array4 
+for i in "${array4[@]}" 
+do 
+	echo $i 
+done 
+
+exit 0
+</pre>
+<h4>Various Operations on Arrays</h4>
+<p>Many of the standard string operations work on arrays . Look at the 
+following sample script which implements some operations on arrays 
+(including string operations).</p>
+<pre>#!/bin/bash 
+
+array=( apple bat cat dog elephant frog ) 
+
+#print first element 
+echo ${array[0]} 
+echo ${array:0} 
+
+#display all elements 
+echo ${array[@]} 
+echo ${array[@]:0} 
+
+#display all elements except first one 
+echo ${array[@]:1} 
+
+#display elements in a range 
+echo ${array[@]:1:4} 
+
+#length of first element 
+echo ${#array[0]} 
+echo ${#array} 
+
+#number of elements 
+echo ${#array[*]} 
+echo ${#array[@]} 
+
+#replacing substring 
+echo ${array[@]//a/A} 
+
+exit 0
+</pre>
+<p>Following is the output produced on executing the above script.</p>
+<pre>apple 
+apple 
+apple bat cat dog elephant frog 
+apple bat cat dog elephant frog 
+bat cat dog elephant frog 
+bat cat dog elephant 
+5 
+5 
+6 
+6 
+Apple bAt cAt dog elephAnt frog
+</pre>
+<p>I think there is no significance in explaining the above script in 
+detail as it is self-explanatory. If necessary I will dedicate one part 
+in this series exclusively on string manipulations.</p>
+<h4>Command Substitution with Arrays</h4>
+<p>Command substitution assigns the output of a command or multiple 
+commands into another context. Here in this context of arrays we can 
+insert the output of commands as individual elements of arrays. Syntax 
+is as follows.</p>
+<pre>array=( $(command) )
+</pre>
+<p>By default the contents in the output of command separated by white 
+spaces are plugged into array as individual elements. The following 
+script list the contents of a directory, which are files with 755 
+permissions.</p>
+<pre>#!/bin/bash 
+
+ERR=27 
+EXT=0 
+
+if [ $# -ne 1 ]; then 
+	echo "Usage: $0 &lt;path&gt;" 
+	exit $ERR 
+fi 
+
+if [ ! -d $1 ]; then 
+	echo "Directory $1 doesn't exists" 
+	exit $ERR 
+fi 
+
+temp=( $(find $1 -maxdepth 1 -type f) ) 
+
+for i in "${temp[@]}" 
+do 
+	perm=$(ls -l $i) 
+	if [ `expr ${perm:0:10} : "-rwxr-xr-x"` -eq 10 ]; then 
+		echo ${i##*/} 
+	fi 
+done 
+
+exit $EXT
+</pre>
+<h4>Simulating Two-dimensional Arrays</h4>
+<p>We can easily represent a 2-dimensional matrix using a 1-dimensional array. In <em>row major order</em>
+ representation elements in each row of a matrix are progressively 
+stored in array indexes in a sequential manner. For an mXn matrix, 
+formula for the same can be written as.</p>
+<pre>matrix[i][j]=array[n*i+j]
+</pre>
+<p>Look at another sample script for adding 2 matrices and printing the resultant matrix.</p>
+<pre>#!/bin/bash 
+
+read -p "Enter the matrix order [mxn] : " t 
+m=${t:0:1} 
+n=${t:2:1} 
+
+echo "Enter the elements for first matrix" 
+for i in `seq 0 $(($m-1))` 
+do 
+	for j in `seq 0 $(($n-1))` 
+	do 
+		read x[$(($n*$i+$j))] 
+	done 
+done 
+
+echo "Enter the elements for second matrix" 
+for i in `seq 0 $(($m-1))` 
+do 
+	for j in `seq 0 $(($n-1))` 
+	do 
+		read y[$(($n*$i+$j))] 
+		z[$(($n*$i+$j))]=$((${x[$(($n*$i+$j))]}+${y[$(($n*$i+$j))]})) 
+	done 
+done 
+
+echo "Matrix after addition is" 
+for i in `seq 0 $(($m-1))` 
+do 
+	for j in `seq 0 $(($n-1))` 
+	do 
+		echo -ne "${z[$(($n*$i+$j))]}\t" 
+	done 
+	echo -e "\n" 
+done 
+
+exit 0 
+</pre>
+<p>Even though there are limitations for implementing arrays inside 
+shell scripting, it becomes useful in a handful of situations, 
+especially when we handle with command substitution. Looking from an 
+administrative point of view, the concept of arrays paved the way for 
+development of many background scripts in GNU/Linux systems.</p>
+<div class="social-sharing ">
+<span class="top before-sharebutton-text">Sharing is Caring...</span>
+<a onclick="if (!window.__cfRLUnblockHandlers) return false; return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="button-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.tecmint.com%2Fworking-with-arrays-in-linux-shell-scripting%2F" target="_blank">Share on Facebook</a><a onclick="if (!window.__cfRLUnblockHandlers) return false; return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="button-twitter" href="https://twitter.com/intent/tweet/?text=Working+with+Arrays+in+Linux+Shell+Scripting+%E2%80%93+Part+8&amp;url=https%3A%2F%2Fwww.tecmint.com%2Fworking-with-arrays-in-linux-shell-scripting%2F&amp;via=tecmint" target="_blank">Share on Twitter</a><a onclick="if (!window.__cfRLUnblockHandlers) return false; return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="button-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.tecmint.com%2Fworking-with-arrays-in-linux-shell-scripting%2F&amp;title=Working+with+Arrays+in+Linux+Shell+Scripting+%E2%80%93+Part+8" target="_blank">Share on Linkedin</a><a onclick="if (!window.__cfRLUnblockHandlers) return false; return ss_plugin_loadpopup_js(this);" rel="external nofollow" class="button-reddit" href="https://reddit.com/submit?url=https%3A%2F%2Fwww.tecmint.com%2Fworking-with-arrays-in-linux-shell-scripting%2F&amp;title=Working+with+Arrays+in+Linux+Shell+Scripting+%E2%80%93+Part+8" target="_blank">Share on Reddit</a> </div>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+</article>
+<div class="clear"></div>
+<div class="clear"></div>
+<div class="ads-inner-mobile">
+<center style="padding-top:30px;">
+
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 0px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="7807254572" data-adsbygoogle-status="done"><ins id="aswift_5_expand" style="display: inline-table; border: medium none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent;"><ins id="aswift_5_anchor" style="display: block; border: medium none; height: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; width: 300px; background-color: transparent; overflow: hidden; opacity: 0;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_5" name="aswift_5" style="left:0;position:absolute;top:0;border:0px;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center>
+</div>
+<div class="clear"></div>
+<div id="fosswork_support"><center><em><b style="color:#d80a0a;text-shadow: 0 1px 0 #fff;text-decoration:underline;"><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Linux and WordPress Support','FossWork')" href="https://www.fosswork.com/" target="_blank">Best Affordable Linux and WordPress Services For Your Business</a></b><br>Outsource Your Linux and WordPress Project and Get it Promptly Completed Remotely and Delivered Online.</em></center></div>
+<div class="clear"></div>
+<div class="after-post-box">
+<h2>If You Appreciate What We Do Here On TecMint, You Should Consider:</h2>
+<ol>
+<li>Stay Connected to: <strong><a target="_blank" rel="nofollow" href="https://bit.ly/1TP6lcM" title="Follow TecMint on Twitter">Twitter</a></strong> | <strong><a target="_blank" rel="nofollow" href="https://bit.ly/1rDYrdj" title="Like Us on Facebook">Facebook</a></strong> | <strong><a target="_blank" rel="nofollow" href="https://bit.ly/24J6lna" title="Join Us On Google+">Google Plus</a></strong></li>
+<li>Subscribe to our email updates: <strong><a target="_blank" rel="nofollow" href="https://bit.ly/2dhBpWQ" title="Subscribe to TecMint Email Updates">Sign Up Now</a></strong></li>
+<li>Get your own <strong><a target="_blank" rel="nofollow" title="WordPress Hosting" href="https://www.bluehost.com/track/tecmint/">self-hosted blog with a Free Domain</a></strong> at (<strong>$3.45/month</strong>).</li>
+<li>Become a Supporter - <strong><a target="_blank" href="https://www.tecmint.com/donate-to-tecmint/">Make a contribution via PayPal</a></strong></li><div style="text-align: center; width: 100%; height: auto; clear: none;" class="google-auto-placed ap_container"><ins style="display: block; margin: auto; background-color: transparent;" data-ad-format="auto" class="adsbygoogle adsbygoogle-noablate" data-ad-client="ca-pub-2601749019656699" data-adsbygoogle-status="done"><ins id="aswift_9_expand" style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:820px;background-color:transparent;"><ins id="aswift_9_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:820px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_9" name="aswift_9" style="left:0;position:absolute;top:0;border:0px;width:820px;height:200px;" width="820" height="200" frameborder="0"></iframe></ins></ins></ins></div>
+<li>Support us by <strong><a href="https://www.tecmint.com/linux-books-in-pdf-format/" target="_blank">purchasing our premium books</a></strong> in PDF format.</li>
+<li>Support us by taking our <strong><a rel="nofollow" target="_blank" href="https://deals.tecmint.com/search?utf8=%E2%9C%93&amp;query=linux">online Linux courses</a></strong></li>
+</ol>
+<p style="text-align: center;"><strong style=" color:#fe3300;font-size:20px;">We are thankful for your never ending support.</strong></p>
+</div>
+<div class="clear"></div>
+<p class="post-tags"><span>Tags:</span> <a href="https://www.tecmint.com/tag/shell-scripting/" rel="tag">shell scripting</a></p> <div class="author-bio">
+<div class="bio-avatar"><img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=128&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=256&amp;d=blank&amp;r=g 2x" class="avatar avatar-128 photo" width="128" height="128"><noscript><img alt='' src='https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=128&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=256&#038;d=blank&#038;r=g 2x' class='avatar avatar-128 photo' height='128' width='128' /></noscript></div>
+<p style="float:right; font-weight:600;"><a target="_blank" class="author-link" href="https://www.tecmint.com/author/anoopcs/" rel="author">View all Posts</a></p>
+<p class="bio-name">Anoop C S</p>
+<p class="bio-desc">I am basically a FOSS enthusiast interested in 
+working under GNU/Linux and system administration. Looking forward to 
+become a part of an open source initiative. Currently pursue Computer 
+Science &amp; Engineering.</p>
+<p><span style="font-size:20px;font-weight:400;color:#a2042e">Your name can also be listed here. Got a tip? <a style="text-decoration:underline;" target="_blank" href="https://www.tecmint.com/submit-articles/">Submit it here</a> to become an <b>TecMint</b> author.</span></p>
+<div class="clear"></div>
+</div>
+<div class="hr"></div>
+<div class="grid one-fourth">
+<a href="https://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/" target="_blank"><img alt="RedHat RHCE and RHCSA Certification Book" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/RedHat-RHCSA-RHCE-Exam-Study-Ebook.png" style="margin-right:10px;" width="200"></a>
+</div>
+<div class="grid one-fourth">
+<a href="https://www.tecmint.com/linux-foundation-lfcs-lfce-certification-exam-book/" target="_blank"><img alt="Linux Foundation LFCS and LFCE Certification Preparation Guide" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/Linux-Foundation-LFCS-LFCE-Certification-Ebook.png" width="200"></a>
+</div>
+<div class="grid one-fourth">
+<a href="https://deals.tecmint.com/sales/complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensuse?utm_source=tecmint.com&amp;utm_medium=referral&amp;utm_campaign=complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensu" rel="nofollow" target="_blank"><img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/Linux-System-Administrator-Course.png" style="margin-right:10px;" width="200"></a>
+</div>
+<div class="grid one-fourth last">
+<a href="https://deals.tecmint.com/sales/become-an-ethical-hacker-bonus-bundle?utm_source=tecmint.com&amp;utm_medium=referral&amp;utm_campaign=become-an-ethical-hacker-bonus-bundle_090216" rel="nofollow" target="_blank"><img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/Become-an-Ethical-Hacker.png" width="200"></a>
+</div>
+<div class="clear"></div>
+<div class="hr"></div>
+<ul class="post-nav group">
+<li class="next"><a href="https://www.tecmint.com/installing-ftp-server-and-mapping-ftp-directories-in-zentyal-pdc-part-8/" rel="next"><i class="fa fa-chevron-right"></i><strong>Next story</strong> <span>Installing FTP Server and Mapping FTP Directories in Zentyal PDC – Part 8</span></a></li>
+<li class="previous"><a href="https://www.tecmint.com/integrate-ubuntu-14-04-to-zentyal-pdc/" rel="prev"><i class="fa fa-chevron-left"></i><strong>Previous story</strong> <span>Integrate Ubuntu 14.04 (Trusty Tahr) to Zentyal PDC (Primary Domain Controller) – Part 7</span></a></li>
+</ul>
+<h4 class="heading">
+<i class="fa fa-hand-o-right"></i>You may also like...</h4>
+<ul class="related-posts group">
+<li class="related post-hover">
+<article class="post-23789 post type-post status-publish format-standard has-post-thumbnail hentry category-bash-shell tag-shell-scripting">
+<div class="post-thumbnail">
+<a href="https://www.tecmint.com/check-syntax-in-shell-script/" title="How to Perform Syntax Checking Debugging Mode in Shell Scripts">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2016/12/Enable-Syntax-Checking-in-Shell-Scripts.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Enable Syntax Checking in Shell Scripts" width="720" height="345"><noscript><img width="720" height="345" src="https://www.tecmint.com/wp-content/uploads/2016/12/Enable-Syntax-Checking-in-Shell-Scripts.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Enable Syntax Checking in Shell Scripts" /></noscript> </a>
+<a class="post-comments" href="https://www.tecmint.com/check-syntax-in-shell-script/#comments"><span><i class="fa fa-comments-o"></i>4</span></a>
+</div>
+<div class="related-inner">
+<h4 class="post-title">
+<a href="https://www.tecmint.com/check-syntax-in-shell-script/" rel="bookmark" title="How to Perform Syntax Checking Debugging Mode in Shell Scripts">How to Perform Syntax Checking Debugging Mode in Shell Scripts</a>
+</h4>
+<div class="post-meta group">
+<p class="post-date">10 Dec, 2016</p>
+</div>
+</div>
+</article>
+</li>
+<li class="related post-hover"><div style="text-align: center; width: 100%; height: auto; clear: none;" class="google-auto-placed"><ins style="display: block; margin: 10px auto; background-color: transparent; height: 600px;" data-ad-format="auto" class="adsbygoogle adsbygoogle-noablate" data-ad-client="ca-pub-2601749019656699" data-adsbygoogle-status="done"><ins id="aswift_10_expand" style="display:inline-table;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:293px;background-color:transparent;"><ins id="aswift_10_anchor" style="display:block;border:none;height:600px;margin:0;padding:0;position:relative;visibility:visible;width:293px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_10" name="aswift_10" style="left:0;position:absolute;top:0;border:0px;width:293px;height:600px;" width="293" height="600" frameborder="0"></iframe></ins></ins></ins></div>
+<article class="post-24492 post type-post status-publish format-standard has-post-thumbnail hentry category-bash-shell tag-learn-scripting">
+<div class="post-thumbnail">
+<a href="https://www.tecmint.com/write-custom-shell-functions-and-libraries-in-linux/" title="How To Write and Use Custom Shell Functions and Libraries">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2017/02/Write-Shell-Functions-in-Linux.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Write Shell Functions in Linux" width="720" height="340"><noscript><img width="720" height="340" src="https://www.tecmint.com/wp-content/uploads/2017/02/Write-Shell-Functions-in-Linux.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Write Shell Functions in Linux" /></noscript> </a>
+<a class="post-comments" href="https://www.tecmint.com/write-custom-shell-functions-and-libraries-in-linux/#comments"><span><i class="fa fa-comments-o"></i>2</span></a>
+</div>
+<div class="related-inner">
+<h4 class="post-title">
+<a href="https://www.tecmint.com/write-custom-shell-functions-and-libraries-in-linux/" rel="bookmark" title="How To Write and Use Custom Shell Functions and Libraries">How To Write and Use Custom Shell Functions and Libraries</a>
+</h4>
+<div class="post-meta group">
+<p class="post-date">7 Feb, 2017</p>
+</div>
+</div>
+</article>
+</li>
+<li class="related post-hover">
+<article class="post-31788 post type-post status-publish format-standard has-post-thumbnail hentry category-bash-shell category-terminals tag-bash-tips tag-commandline-tools tag-linux-tricks">
+<div class="post-thumbnail">
+<a href="https://www.tecmint.com/bash-it-control-shell-scripts-aliases-in-linux/" title="Bash-it – Bash Framework to Control Your Scripts and Aliases">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://www.tecmint.com/wp-content/uploads/2019/02/Bash-It-Manage-Scripts-and-Linux-Aliases.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Bash-It - Manage Scripts and Linux Aliases" width="720" height="340"><noscript><img width="720" height="340" src="https://www.tecmint.com/wp-content/uploads/2019/02/Bash-It-Manage-Scripts-and-Linux-Aliases.png" class="attachment-thumb-medium size-thumb-medium wp-post-image" alt="Bash-It - Manage Scripts and Linux Aliases" /></noscript> </a>
+<a class="post-comments" href="https://www.tecmint.com/bash-it-control-shell-scripts-aliases-in-linux/#comments"><span><i class="fa fa-comments-o"></i>1</span></a>
+</div>
+<div class="related-inner">
+<h4 class="post-title">
+<a href="https://www.tecmint.com/bash-it-control-shell-scripts-aliases-in-linux/" rel="bookmark" title="Bash-it – Bash Framework to Control Your Scripts and Aliases">Bash-it – Bash Framework to Control Your Scripts and Aliases</a>
+</h4>
+<div class="post-meta group">
+<p class="post-date">7 Feb, 2019</p>
+</div>
+</div>
+</article>
+</li>
+</ul>
+<section id="comments" class="themeform">
+<h3 class="heading">12 Responses</h3>
+<ul class="comment-tabs group">
+<li class="active"><a href="#commentlist-container"><i class="fa fa-comments-o"></i>Comments<span>12</span></a></li>
+<li><a href="#pinglist-container"><i class="fa fa-share"></i>Pingbacks<span>0</span></a></li>
+</ul>
+<div id="commentlist-container" class="comment-tab">
+<ol class="commentlist">
+<li class="comment even thread-even depth-1" id="comment-931079">
+<div id="div-comment-931079" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/0f7b1d192c830f05d210850edb6506dd?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/0f7b1d192c830f05d210850edb6506dd?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/0f7b1d192c830f05d210850edb6506dd?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/0f7b1d192c830f05d210850edb6506dd?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn">swww</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-931079">
+November 5, 2017 at 12:28 am </a>
+</div>
+<p>Good collection of examples, especially command output assigning is 
+nice. I wrote somewhat similar but more extensive article on arrays in 
+BASH. Check it out here: wojnowski.net.pl/main/index/arrays-in-bash.</p>
+<p>Regards</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=931079#respond" data-commentid="931079" data-postid="6536" data-belowelement="div-comment-931079" data-respondelement="respond" aria-label="Reply to swww">Reply</a></div>
+</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-898116">
+<div id="div-comment-898116" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/160964ac677bf474727de5f8fcf5f242?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/160964ac677bf474727de5f8fcf5f242?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/160964ac677bf474727de5f8fcf5f242?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/160964ac677bf474727de5f8fcf5f242?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn">kumar</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-898116">
+July 4, 2017 at 5:19 am </a>
+</div>
+<p>Hi,</p>
+<p>I want print only first and third element of the array.</p>
+<p>what is the <a href="https://www.tecmint.com/echo-command-in-linux/" target="_blank">echo command</a>?</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=898116#respond" data-commentid="898116" data-postid="6536" data-belowelement="div-comment-898116" data-respondelement="respond" aria-label="Reply to kumar">Reply</a></div>
+</div>
+</li>
+<li class="comment even thread-even depth-1 parent" id="comment-795801">
+<div id="div-comment-795801" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/8b567fb1215cbd86f4f53f7f01c02f36?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/8b567fb1215cbd86f4f53f7f01c02f36?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/8b567fb1215cbd86f4f53f7f01c02f36?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/8b567fb1215cbd86f4f53f7f01c02f36?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn"><a href="http://na/" rel="external nofollow" class="url">Gulab</a></cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-795801">
+June 27, 2016 at 7:04 pm </a>
+</div>
+<p>how to import multiple directory in array(run time log /var/log/ ) in runtime and check if directory is present or not ?</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=795801#respond" data-commentid="795801" data-postid="6536" data-belowelement="div-comment-795801" data-respondelement="respond" aria-label="Reply to Gulab">Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2" id="comment-801340">
+<div id="div-comment-801340" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn"><a href="https://openforums.wordpress.com/" rel="external nofollow" class="url">Anoop C S</a></cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-801340">
+July 22, 2016 at 11:56 am </a>
+</div>
+<p>Hi Gulab,</p>
+<p>Sorry for being late..Got stuck with some other work. I would assume 
+that by this time you might have found an answer to your question. 
+Anyway following is my pov.</p>
+<p>You can always insert elements into array by referring to the index 
+numbers as I have mentioned in the article. By run time if you mean to 
+have some kind of looping, then you could increment index number for the
+ array within the loop and insert elements one by one. Checking for 
+directory existence is not at all a complex task and you have various 
+methods to do so (easy way: use if conditional statement with test 
+expression parameter -d).</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=801340#respond" data-commentid="801340" data-postid="6536" data-belowelement="div-comment-801340" data-respondelement="respond" aria-label="Reply to Anoop C S">Reply</a></div>
+</div>
+</li>
+</ul>
+</li>
+<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-759117">
+<div id="div-comment-759117" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/b265129d195e135e9863a5c387dcd8b3?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/b265129d195e135e9863a5c387dcd8b3?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/b265129d195e135e9863a5c387dcd8b3?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/b265129d195e135e9863a5c387dcd8b3?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn">BV Naagabaabu</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-759117">
+March 12, 2016 at 4:47 pm </a>
+</div>
+<p>is there any way to change the default index value 0 of array to 1..</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=759117#respond" data-commentid="759117" data-postid="6536" data-belowelement="div-comment-759117" data-respondelement="respond" aria-label="Reply to BV Naagabaabu">Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-2 parent" id="comment-760087">
+<div id="div-comment-760087" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn"><a href="https://openforums.wordpress.com/" rel="external nofollow" class="url">Anoop C S</a></cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-760087">
+March 14, 2016 at 3:59 pm </a>
+</div>
+<p>Can you please specify the use case?</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=760087#respond" data-commentid="760087" data-postid="6536" data-belowelement="div-comment-760087" data-respondelement="respond" aria-label="Reply to Anoop C S">Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment even depth-3 parent" id="comment-761159">
+<div id="div-comment-761159" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/b265129d195e135e9863a5c387dcd8b3?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/b265129d195e135e9863a5c387dcd8b3?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/b265129d195e135e9863a5c387dcd8b3?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/b265129d195e135e9863a5c387dcd8b3?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn">BV Naagabaabu</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-761159">
+March 17, 2016 at 3:44 pm </a>
+</div>
+<p>actually we can access an array element like below</p>
+<p>array_name=(“name_1″,”name_2″,”name_3″,”name_4″,”name_5”)<br>
+echo array_name[0]</p>
+<p>the above echo command prints “name_1”</p>
+<p>but i would like to print name_1 by using below echo command<br>
+echo array_name[1]</p>
+<p>Here my intention is change the array default index value 0 to 1. so 
+that i can print first value of array by using array_name[1] instead of 
+using array_name[0]</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=761159#respond" data-commentid="761159" data-postid="6536" data-belowelement="div-comment-761159" data-respondelement="respond" aria-label="Reply to BV Naagabaabu">Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment odd alt depth-4 parent" id="comment-763281">
+<div id="div-comment-763281" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/481d735e26a159fc07d8c7ca60635a8c?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn"><a href="https://openforums.wordpress.com/" rel="external nofollow" class="url">Anoop C S</a></cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-763281">
+March 22, 2016 at 8:45 am </a>
+</div>
+<p>Sorry for the late reply:</p>
+<p>Some corrections to your example mentioned below:<br>
+* Your array initialization is wrong. I assume your intention was to initialize array as follows,<br>
+# array_name=(name_1 name_2 name_3 name_4 name_5)<br>
+Array elements are by default separated by one or more white spaces.</p>
+<p>* Your de-referencing of array elements is wrong. See the correct usage below,<br>
+# echo ${array_name[0]}</p>
+<p>Now coming to your question:<br>
+Yes, it is possible. You need to initialize the array by referencing the index as,<br>
+# array_name=([1]=name_1 name_2 name_3 name_4 name_5)<br>
+This means<br>
+array_name[1] = name_1<br>
+array_name[2] = name_2<br>
+array_name[3] = name_3<br>
+array_name[4] = name_4<br>
+array_name[5] = name_5</p>
+<p>Hope this solution is helpful.</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=763281#respond" data-commentid="763281" data-postid="6536" data-belowelement="div-comment-763281" data-respondelement="respond" aria-label="Reply to Anoop C S">Reply</a></div>
+</div>
+<ul class="children">
+<li class="comment even depth-5" id="comment-763471">
+<div id="div-comment-763471" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/99074478b157903e1fd7c403db71ab60?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/99074478b157903e1fd7c403db71ab60?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/99074478b157903e1fd7c403db71ab60?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/99074478b157903e1fd7c403db71ab60?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn"><a href="http://linux.tcube.in/" rel="external nofollow" class="url">BV Naagabaabu</a></cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-763471">
+March 22, 2016 at 11:44 pm </a>
+</div>
+<p>Thanks for your reply. I got it what exactly i want. Actually i’m 
+facing some issues while using arrays in for loop and while loop. In 
+those for and while loops the loop count is starting from 1, at that 
+time if i want to use an array inside that loop, then i need to increase
+ array index value to 1 manually. Now your solution solves this. Now i 
+can directly use array with in a loop which has loop count start from 1.
+ </p>
+<p>Thanks.</p>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="comment odd alt thread-even depth-1" id="comment-756256">
+<div id="div-comment-756256" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/e72620c84edec7c06d530cb60880117c?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/e72620c84edec7c06d530cb60880117c?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/e72620c84edec7c06d530cb60880117c?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/e72620c84edec7c06d530cb60880117c?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn">Syed Aqhib</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-756256">
+March 2, 2016 at 9:24 am </a>
+</div>
+<p>Excellent</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=756256#respond" data-commentid="756256" data-postid="6536" data-belowelement="div-comment-756256" data-respondelement="respond" aria-label="Reply to Syed Aqhib">Reply</a></div>
+</div>
+</li>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-638084">
+<div id="div-comment-638084" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/dec8a004fe26084d4d7e36abbc03f599?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/dec8a004fe26084d4d7e36abbc03f599?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/dec8a004fe26084d4d7e36abbc03f599?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/dec8a004fe26084d4d7e36abbc03f599?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn">skumar</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-638084">
+August 5, 2015 at 3:02 pm </a>
+</div>
+<p>Your examples are so good. Thanks.</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=638084#respond" data-commentid="638084" data-postid="6536" data-belowelement="div-comment-638084" data-respondelement="respond" aria-label="Reply to skumar">Reply</a></div>
+</div>
+</li>
+<li class="comment odd alt thread-even depth-1" id="comment-436707">
+<div id="div-comment-436707" class="comment-body">
+<div class="comment-author vcard">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/1x1.gif" data-lazy-src="https://secure.gravatar.com/avatar/edda49695bc70fcd922611aea6416e01?s=96&amp;d=blank&amp;r=g" alt="" srcset="https://secure.gravatar.com/avatar/edda49695bc70fcd922611aea6416e01?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/edda49695bc70fcd922611aea6416e01?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/edda49695bc70fcd922611aea6416e01?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> <cite class="fn">santosh loke</cite> <span class="says">says:</span> </div>
+<div class="comment-meta commentmetadata"><a href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#comment-436707">
+December 29, 2014 at 4:49 pm </a>
+</div>
+<p>nice to know the functionality of arrays.</p>
+<div class="reply"><a rel="nofollow" class="comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/?replytocom=436707#respond" data-commentid="436707" data-postid="6536" data-belowelement="div-comment-436707" data-respondelement="respond" aria-label="Reply to santosh loke">Reply</a></div>
+</div>
+</li>
+</ol>
+</div>
+<div id="respond" class="comment-respond">
+<h3 id="reply-title" class="comment-reply-title">Got something to say? Join the discussion. <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://www.tecmint.com/working-with-arrays-in-linux-shell-scripting/#respond" style="display:none;">Cancel reply</a></small></h3> <form action="https://www.tecmint.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+<p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> Required fields are marked <span class="required">*</span></p><p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" size="30" maxlength="245" required="required"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" size="30" maxlength="100" aria-describedby="email-notes" required="required"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" size="30" maxlength="200"></p>
+<p class="comment-form-cookies-consent"><input id="wp-comment-cookies-consent" name="wp-comment-cookies-consent" type="checkbox" value="yes"><label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label></p>
+<p class="comment-form-subscriptions"><label for="subscribe-reloaded"><input style="width:30px" type="checkbox" name="subscribe-reloaded" id="subscribe-reloaded" value="yes"> Notify me of followup comments via e-mail. You can also <a href="https://www.tecmint.com/comment-subscriptions/?srp=6536&amp;srk=0b81c0e99cc43eb9ade2ba1b6ab240b4&amp;sra=s&amp;srsrc=f">subscribe</a> without commenting.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="6536" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="671d714354"></p><p style="display: none;"></p> <input type="hidden" id="ak_js" name="ak_js" value="1570634701402"></form>
+</div>
+<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed</a>.</p>
+</section>
+</div>
+</section>
+<div class="sidebar s1">
+<a class="sidebar-toggle" title="Expand Sidebar"><i class="fa icon-sidebar-toggle"></i></a>
+<div class="sidebar-content">
+<div class="sidebar-top group">
+<span style="color:#002873; font-weight:600; font-size:20px;">I <i class="fa fa-heart col-love-l"></i> TecMint :</span>
+<ul class="social-links"><li><a rel="nofollow" class="social-tooltip" title="twitter" href="https://twitter.com/tecmint" target="Array"><i class="fa fa-twitter" style="color: #33ccff;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="facebook" href="https://www.facebook.com/TecMint" target="Array"><i class="fa fa-facebook" style="color: #3b5998;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Linkedin" href="https://www.linkedin.com/company/tecmint" target="Array"><i class="fa fa-linkedin" style="color: #1e73be;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Feedly" href="https://feedly.com/i/subscription/feed/https://www.tecmint.com/feed/" target="Array"><i class="fa fa-rss" style="color: #87c040;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Youtube" href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="Array"><i class="fa fa fa-youtube-square" style="color: #c4302b;"></i></a></li></ul> </div>
+<div id="text-23" class="widget widget_text"> <div class="textwidget"> <div style="background:#db4455;" class="message">
+<center><a href="https://www.tecmint.com/free-online-linux-learning-guide-for-beginners/" target="_blank" rel="noopener noreferrer"><span style="font-weight:bold;font-size:18px;"><i class="fa fa-linux"></i> BEGINNER'S GUIDE FOR LINUX <i class="fa fa-linux"></i></span> <span style="font-weight:bold;font-size:16px;">Start learning Linux in minutes</span> <i class="fa fa-arrow-right"></i></a>
+</center>
+</div></div>
+</div><div id="text-21" class="widget widget_text"> <div class="textwidget"><center>
+
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="7270921771" data-adsbygoogle-status="done"><ins id="aswift_6_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_6_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_6" name="aswift_6" style="left:0;position:absolute;top:0;border:0px;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center></div>
+</div><div id="text-25" class="widget widget_text"> <div class="textwidget"><div class="message"><center><a href="https://www.tecmint.com/vi-editor-usage/" target="_blank" rel="noopener noreferrer"><span style="font-weight:bold;font-size:17px;"><i class="fa fa-linux"></i> Vi/Vim Editor BEGINNER'S GUIDE <i class="fa fa-linux"></i></span> <span style="font-weight:bold;font-size:16px;">Learn vi/vim as a Full Text Editor</span> <i class="fa fa-file-text"></i>
+</a></center></div></div>
+</div><div id="text-24" class="widget widget_text"> <div class="textwidget">
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="8362602806" data-adsbygoogle-status="done"><ins id="aswift_7_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_7_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_7" name="aswift_7" style="left:0;position:absolute;top:0;border:0px;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+</div><div id="text-26" class="widget widget_text"> <div class="textwidget"><div class="message" style="background-color: #ab0619;"><center><span style="font-weight:bold;font-size:17px;"><i class="fa fa-linux"></i> Linux Foundation Certification <i class="fa fa-linux"></i></span> <span style="font-weight:bold;font-size:16px;">Exam Study Guide to <a style="text-decoration:underline;" target="_blank" href="https://www.tecmint.com/linux-foundation-lfcs-lfce-certification-exam-book/" rel="noopener noreferrer">LFCS and LFCE</a></span></center></div></div>
+</div><div id="alxtabs-3" class="widget widget_alx_tabs">
+<ul class="alx-tabs-nav group tab-count-2"><li class="alx-tab tab-popular active"><a href="#tab-popular" title="Popular Posts"><i class="fa fa-star"></i><span>Popular Posts</span></a></li><li class="alx-tab tab-comments"><a href="#tab-comments" title="Recent Comments"><i class="fa fa-comments-o"></i><span>Recent Comments</span></a></li></ul>
+<div class="alx-tabs-container">
+<ul id="tab-popular" class="alx-tab group " style="display: block;">
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/how-to-add-linux-host-to-nagios-monitoring-server/" rel="bookmark" title="How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin">How to Add Linux Host to Nagios Monitoring Server Using NRPE Plugin</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/install-nagios-in-linux/" rel="bookmark" title="How to Install Nagios 4.4.5 on RHEL/CentOS 8/7 and Fedora 30">How to Install Nagios 4.4.5 on RHEL/CentOS 8/7 and Fedora 30</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/install-cacti-network-monitoring-on-rhel-centos-fedora/" rel="bookmark" title="Install Cacti (Network Monitoring) on RHEL/CentOS 8/7 and Fedora 30">Install Cacti (Network Monitoring) on RHEL/CentOS 8/7 and Fedora 30</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/install-google-chrome-on-redhat-centos-fedora-linux/" rel="bookmark" title="How to Install Google Chrome 75 On RHEL/CentOS 7 and Fedora 30">How to Install Google Chrome 75 On RHEL/CentOS 7 and Fedora 30</a></p>
+</div>
+</li>
+<li>
+<div class="tab-item-inner group">
+<p class="tab-item-title"><a href="https://www.tecmint.com/install-ubuntu-alongside-with-windows-dual-boot/" rel="bookmark" title="How to Install Ubuntu Alongside With Windows 10 or 8 in Dual-Boot">How to Install Ubuntu Alongside With Windows 10 or 8 in Dual-Boot</a></p>
+</div>
+</li>
+</ul>
+<ul id="tab-comments" class="alx-tab group avatars-enabled" style="display: none;">
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/big-companies-and-devices-running-on-gnulinux/comment-page-2/#comment-1264518">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/c70e22adc76f65f128f710faaef62ed5.png" alt="" srcset="https://secure.gravatar.com/avatar/c70e22adc76f65f128f710faaef62ed5?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" style="display: block;" data-lazy-loaded="true" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/c70e22adc76f65f128f710faaef62ed5?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/c70e22adc76f65f128f710faaef62ed5?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Jack Garbo says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/big-companies-and-devices-running-on-gnulinux/comment-page-2/#comment-1264518">I assume you're talking 20 yrs ago when Linux was "difficult".</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/install-locate-command-to-find-files-in-centos/comment-page-1/#comment-1264464">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/98284157fb6c5546e7f5484f280b3c28.png" alt="" srcset="https://secure.gravatar.com/avatar/98284157fb6c5546e7f5484f280b3c28?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" style="display: block;" data-lazy-loaded="true" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/98284157fb6c5546e7f5484f280b3c28?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/98284157fb6c5546e7f5484f280b3c28?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Abdul Rashid says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/install-locate-command-to-find-files-in-centos/comment-page-1/#comment-1264464">Thank you</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/install-virtualbox-guest-additions-in-ubuntu/comment-page-2/#comment-1264248">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/083096d70ef0f99fb79f60c61e20f811.png" alt="" srcset="https://secure.gravatar.com/avatar/083096d70ef0f99fb79f60c61e20f811?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" style="display: block;" data-lazy-loaded="true" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/083096d70ef0f99fb79f60c61e20f811?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/083096d70ef0f99fb79f60c61e20f811?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Marcio Correa says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/install-virtualbox-guest-additions-in-ubuntu/comment-page-2/#comment-1264248">My bad! If you are using VirtualBox console window, you...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/install-virtualbox-guest-additions-in-ubuntu/comment-page-2/#comment-1264207">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/083096d70ef0f99fb79f60c61e20f811.png" alt="" srcset="https://secure.gravatar.com/avatar/083096d70ef0f99fb79f60c61e20f811?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" style="display: block;" data-lazy-loaded="true" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/083096d70ef0f99fb79f60c61e20f811?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/083096d70ef0f99fb79f60c61e20f811?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Marcio Correa says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/install-virtualbox-guest-additions-in-ubuntu/comment-page-2/#comment-1264207">Hey, Iskandar! There are no media automount in the ubuntu...</a></div>
+</div>
+</li>
+<li>
+<div class="tab-item-avatar">
+<a href="https://www.tecmint.com/recover-deleted-files-using-testdisk-in-linux/comment-page-1/#comment-1264147">
+<img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/7014c92b29929c92cf19a270629a4a70.png" alt="" srcset="https://secure.gravatar.com/avatar/7014c92b29929c92cf19a270629a4a70?s=192&amp;d=blank&amp;r=g 2x" class="avatar avatar-96 photo" style="display: block;" data-lazy-loaded="true" width="96" height="96"><noscript><img alt='' src='https://secure.gravatar.com/avatar/7014c92b29929c92cf19a270629a4a70?s=96&#038;d=blank&#038;r=g' srcset='https://secure.gravatar.com/avatar/7014c92b29929c92cf19a270629a4a70?s=192&#038;d=blank&#038;r=g 2x' class='avatar avatar-96 photo' height='96' width='96' /></noscript> </a>
+</div>
+<div class="tab-item-inner group">
+<div class="tab-item-name">Bill says:</div>
+<div class="tab-item-comment"><a href="https://www.tecmint.com/recover-deleted-files-using-testdisk-in-linux/comment-page-1/#comment-1264147">In Step 3, when I choose the Advanced option, the next...</a></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="text-27" class="widget widget_text"> <div class="textwidget"><center>
+<a target="_blank" href="https://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/" rel="noopener noreferrer"><img alt="RedHat RHCSA and RHCE Certification Exam Study Ebook" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/RedHat-RHCSA-RHCE-Exam.png"></a>
+</center></div>
+</div><div id="text-28" class="widget widget_text"> <div class="textwidget"><div class="message" style="background-color: #0d7c39;"><center><p style="font-weight:bold;font-size:18px;">Linux System Administrator Bundle with 7-Courses (96% off)</p>
+<p style="background-color: #03441d;margin:6px 35px;padding:10px;"><a rel="nofollow noopener noreferrer" target="_blank" href="https://deals.tecmint.com/sales/complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensuse?utm_source=tecmint.com&amp;utm_medium=referral&amp;utm_campaign=complete-linux-crash-course-includes-topics-on-red-hat-unix-kali-python-and-opensu&amp;_ga=1.95416024.550662903.1451974395" style="font-size:25px;font-weight:bold;">Add to Cart - $69</a></p>
+<p style="font-size:14px;font-weight:bold;"><i aria-hidden="true" class="fa fa-clock-o"></i> Ending In: 3 days
+</p></center></div>
+<div style="background-color: #f4403b;" class="message"><center><p style="font-weight:bold;font-size:18px;">Computer Hacker Professional Certification Course (96% Off)</p>
+<p style="background-color: #9d1815;margin:6px 35px;padding:10px;"><a style="font-size:25px;font-weight:bold;" href="https://deals.tecmint.com/sales/computer-hacker-professional-certification-package-2" target="_blank" rel="nofollow noopener noreferrer">Add to Cart - $59</a></p>
+<p style="font-size:14px;font-weight:bold;"><i class="fa fa-clock-o" aria-hidden="true"></i> Ending In: 4 days
+</p></center></div></div>
+</div><div id="text-4" class="widget widget_text"><h3>Linux eBooks</h3> <div class="textwidget"><ol class="custom-counter">
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Learn Linux in One Week','TecMint')" href="https://www.tecmint.com/learn-linux-in-one-week/" target="_blank" rel="noopener noreferrer">Introducing Learn Linux In One Week and Go from Zero to Hero</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','RedHat RHCE/RHCSA Guide','TecMint')" href="https://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/" target="_blank" rel="noopener noreferrer">RedHat RHCE/RHCSA Certification Preparation Guide</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Linux Foundation LFCS/LFCE Guide','TecMint')" href="https://www.tecmint.com/linux-foundation-lfcs-lfce-certification-exam-book/" target="_blank" rel="noopener noreferrer">Linux Foundations LFCS/LFCE Certification Guide</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Postfix Mail Server Setup','TecMint')" href="https://www.tecmint.com/postfix-mail-server-setup-linux-book/" target="_blank" rel="noopener noreferrer">Postfix Mail Server Setup Guide for Linux</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Ansible Setup Guide','TecMint')" href="https://www.tecmint.com/ansible-book-guide-for-linux/" target="_blank" rel="noopener noreferrer">Ansible Setup Guide for Linux</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Django Setup Guide','TecMint')" href="https://www.tecmint.com/django-web-framework-book/" target="_blank" rel="noopener noreferrer">Django Setup Guide for Linux</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Awk Guide for Beginners','TecMint')" href="https://www.tecmint.com/linux-awk-command-book-for-beginners/" target="_blank" rel="noopener noreferrer">Awk Getting Started Guide for Beginners</a></li>
+<li><a onclick="if (!window.__cfRLUnblockHandlers) return false; ga('send','event','Citrix XenServer Setup Guide','TecMint')" href="https://www.tecmint.com/citrix-xenserver-book-for-linux/" target="_blank" rel="noopener noreferrer">Citrix XenServer Setup Guide for Linux</a></li>
+</ol></div>
+</div><div id="text-29" class="widget widget_text"> <div class="textwidget"><div style="background-color: rgb(25, 67, 87); color: rgb(255, 255, 255); border-radius: 5px; text-align: center; padding: 10px;">
+<div class="follow-subscribe-social">
+<ul>
+<li><a href="https://twitter.com/tecmint" target="_blank" rel="noopener noreferrer"><i class="fa fa-twitter"></i></a></li>
+<li><a href="https://www.facebook.com/TecMint" target="_blank" rel="noopener noreferrer"><i class="fa fa-facebook"></i></a></li>
+<li><a href="https://plus.google.com/101049688653487009744" target="_blank" rel="noopener noreferrer"><i class="fa fa-google"></i></a></li>
+<li><a href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="_blank" rel="noopener noreferrer"><i class="fa fa-youtube"></i></a></li>
+<li><a href="https://www.linkedin.com/company/tecmint" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a></li>
+</ul>
+</div>
+<p style="font-weight: bold; font-size: 20px; margin-bottom: 10px; margin-top: 10px;">Never Miss Any Linux Tutorials, Guides, Tips and Free eBooks</p>
+<p>Join Our Community Of <strong style="color:#fff;font-weight:bold;">150,000+ Linux Lovers</strong> and get a weekly newsletter in your inbox</p>
+<p style="background-color: rgb(0, 0, 0); border-radius: 5px; padding: 6px;"><a style="font-size:20px;font-weight:bold;color:#fff;" href="http://subscribe.tecmint.com/newsletter" target="_blank" rel="nofollow noopener noreferrer">YES! SIGN ME UP</a></p></div></div>
+</div><div id="text-32" class="widget widget_text"> <div class="textwidget"><p><br>
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-2601749019656699" data-ad-slot="9838765188" data-adsbygoogle-status="done"><ins id="aswift_8_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_8_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_8" name="aswift_8" style="left:0;position:absolute;top:0;border:0px;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins><br>
+<script type="text/javascript">
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer id="footer">
+<section class="container" id="footer-ads">
+<div class="container-inner">
+<div id="text-30" class="widget widget_text"> <div class="textwidget"><p></p><center><script type="text/javascript">
+var total_images = 2;
+var random_number = Math.floor((Math.random()*total_images));
+var random_img = new Array();
+random_img[0] = '<a target="_blank" rel="nofollow noopener noreferrer" href="https://shareasale.com/r.cfm?b=1226423&#038;u=1260899&#038;m=59485&#038;urllink=&#038;afftrack="><img src="https://www.fossmint.com/wp-content/themes/fossmint/backupads/Linux-Foundation-LFCS-Certification.png"/></a>';
+random_img[1] = '<a target="_blank" rel="nofollow noopener noreferrer" href="https://shareasale.com/r.cfm?b=1226424&#038;u=1260899&#038;m=59485&#038;urllink=&#038;afftrack="><img src="https://www.fossmint.com/wp-content/themes/fossmint/backupads/Linux-Foundation-LFCE-Certification.png"/></a>';
+document.write(random_img[random_number]);
+</script><a target="_blank" rel="nofollow noopener noreferrer" href="https://shareasale.com/r.cfm?b=1226423&amp;u=1260899&amp;m=59485&amp;urllink=&amp;afftrack="><img src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/Linux-Foundation-LFCS-Certification.png"></a></center><p></p>
+</div>
+</div> </div>
+</section>
+<section class="container" id="footer-widgets">
+<div class="container-inner">
+<div class="pad group">
+<div class="footer-widget-1 grid one-third ">
+<div id="alxposts-3" class="widget widget_alx_posts">
+<h3>Linux Monitoring Tools</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/monitors-linux-server-performance-remotely-using-web-browser/" rel="bookmark" title="linux-dash: Monitors “Linux Server Performance” Remotely Using Web Browser">linux-dash: Monitors “Linux Server Performance” Remotely Using Web Browser</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/install-zabbix-on-rhel-8/" rel="bookmark" title="How to Install Zabbix on RHEL 8">How to Install Zabbix on RHEL 8</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/htop-vs-top-in-linux/" rel="bookmark" title="Will ‘Htop’ Replace Default ‘Top’ Monitoring Tool in Linux?">Will ‘Htop’ Replace Default ‘Top’ Monitoring Tool in Linux?</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/how-to-install-atop-to-monitor-logging-activity-of-linux-system-processes/" rel="bookmark" title="How to Install ‘atop’ to Monitor Logging Activity of Linux System Processes">How to Install ‘atop’ to Monitor Logging Activity of Linux System Processes</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/cloudstats-me-monitors-your-linux-servers-and-websites-from-the-cloud/" rel="bookmark" title="CloudStats.me – Monitors Your Linux Servers and Websites from the Cloud">CloudStats.me – Monitors Your Linux Servers and Websites from the Cloud</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-widget-2 grid one-third ">
+<div id="alxposts-4" class="widget widget_alx_posts">
+<h3>Linux Interview Questions</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/ls-interview-questions/" rel="bookmark" title="10 Useful ‘ls’ Command Interview Questions – Part 2">10 Useful ‘ls’ Command Interview Questions – Part 2</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/ftp-interview-questions-and-answers/" rel="bookmark" title="10 VsFTP (Very Secure File Transfer Protocol) Interview Questions and Answers">10 VsFTP (Very Secure File Transfer Protocol) Interview Questions and Answers</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/useful-random-linux-interview-questions-and-answers/" rel="bookmark" title="10 Useful Random Linux Interview Questions and Answers">10 Useful Random Linux Interview Questions and Answers</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/ssh-interview-questions/" rel="bookmark" title="10 Useful SSH (Secure Shell) Interview Questions and Answers">10 Useful SSH (Secure Shell) Interview Questions and Answers</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/10-useful-interview-questions-and-answers-on-linux-commands/" rel="bookmark" title="10 Useful Interview Questions and Answers on Linux Commands">10 Useful Interview Questions and Answers on Linux Commands</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="footer-widget-3 grid one-third last">
+<div id="alxposts-5" class="widget widget_alx_posts">
+<h3>Open Source Tools</h3>
+<ul class="alx-posts group ">
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/file-and-disk-encryption-tools-for-linux/" rel="bookmark" title="10 Best File and Disk Encryption Tools for Linux">10 Best File and Disk Encryption Tools for Linux</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/linux-command-line-editors/" rel="bookmark" title="My Favorite Command Line Editors for Linux – What’s Your Editor?">My Favorite Command Line Editors for Linux – What’s Your Editor?</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/best-remote-linux-desktop-sharing-software/" rel="bookmark" title="11 Best Tools to Access Remote Linux Desktop">11 Best Tools to Access Remote Linux Desktop</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/best-linux-boot-loaders/" rel="bookmark" title="4 Best Linux Boot Loaders">4 Best Linux Boot Loaders</a></p>
+</div>
+</li>
+<li>
+<div class="post-item-inner group">
+<p class="post-item-title"><a href="https://www.tecmint.com/best-rss-feed-readers-for-linux/" rel="bookmark" title="14 Best RSS Feed Readers for Linux in 2018">14 Best RSS Feed Readers for Linux in 2018</a></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<nav class="nav-container group" id="nav-footer">
+<div class="nav-toggle"><i class="fa fa-bars"></i></div>
+<div class="nav-text"></div>
+<div class="nav-wrap"><ul id="menu-footer" class="nav container group"><li id="menu-item-18572" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18572"><a href="https://www.tecmint.com/donate-to-tecmint/">Donate to TecMint</a></li>
+<li id="menu-item-10437" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10437"><a href="https://www.tecmint.com/contact-us/">Contact Us</a></li>
+<li id="menu-item-10442" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10442"><a href="https://www.tecmint.com/advertise/">Advertise on TecMint</a></li>
+<li id="menu-item-10441" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10441"><a href="https://www.tecmint.com/services/">Linux Services</a></li>
+<li id="menu-item-10435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10435"><a href="https://www.tecmint.com/copyright-policy/">Copyright Policy</a></li>
+<li id="menu-item-10436" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10436"><a href="https://www.tecmint.com/privacy-policy/">Privacy Policy</a></li>
+<li id="menu-item-13339" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13339"><a href="https://www.tecmint.com/career/">Career</a></li>
+<li id="menu-item-24288" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24288"><a href="https://www.tecmint.com/sponsored-post-guidelines-tecmint/">Sponsored Post</a></li>
+</ul></div>
+</nav>
+<section class="container" id="footer-bottom">
+<div class="container-inner">
+<a id="back-to-top" href="#"><i class="fa fa-angle-up"></i></a>
+<div class="pad group">
+<div class="grid one-half">
+<div id="copyright">
+<p>Tecmint: Linux Howtos, Tutorials &amp; Guides © 2019. All Rights Reserved.</p>
+<p>The material in this site cannot be republished either online or offline, without our permission.</p>
+<p>Hosting Sponsored by : <a style="font-weight:bold;color:yellow;" href="https://www.linode.com/?r=64ebb9f723fed8b32fda84b6594006df08ad24b6" target="_blank" rel="nofollow">Linode Cloud Hosting</a></p>
+</div>
+</div>
+<div class="grid one-half last">
+<ul class="social-links"><li><a rel="nofollow" class="social-tooltip" title="twitter" href="https://twitter.com/tecmint" target="Array"><i class="fa fa-twitter" style="color: #33ccff;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="facebook" href="https://www.facebook.com/TecMint" target="Array"><i class="fa fa-facebook" style="color: #3b5998;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Linkedin" href="https://www.linkedin.com/company/tecmint" target="Array"><i class="fa fa-linkedin" style="color: #1e73be;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Feedly" href="https://feedly.com/i/subscription/feed/https://www.tecmint.com/feed/" target="Array"><i class="fa fa-rss" style="color: #87c040;"></i></a></li><li><a rel="nofollow" class="social-tooltip" title="Youtube" href="https://www.youtube.com/channel/UCkiRkzdLvoGBtW_YArytJlQ" target="Array"><i class="fa fa fa-youtube-square" style="color: #c4302b;"></i></a></li></ul> </div>
+</div>
+</div>
+</section>
+</footer>
+</div>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/jquery_002.js"></script>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/light.js"></script>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/scripts.js"></script>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/jquery_003.js"></script>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/comment-reply.js"></script>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/jquery.js"></script>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/lazy-load.js"></script>
+<script type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/socialshare.js"></script>
+<script async="async" type="text/javascript" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/form.js"></script>
+<!--[if lt IE 9]>
+<script src="https://www.tecmint.com/wp-content/themes/tecmint/js/ie/respond.js"></script>
+<![endif]-->
+<div class="fixedBar">
+<div class="boxfloat">
+<ul id="tips">
+<li><a href="https://www.tecmint.com/51-useful-lesser-known-commands-for-linux-users/">51 Useful Lesser Known Commands for Linux Users</a></li>
+<li style="display: list-item;"><a href="https://www.tecmint.com/linux-server-hardening-security-tips/">25 Hardening Security Tips for Linux Servers</a></li>
+<li><a href="https://www.tecmint.com/60-commands-of-linux-a-guide-from-newbies-to-system-administrator/">60 Commands of Linux : A Guide from Newbies to System Administrator</a></li>
+<li><a href="https://www.tecmint.com/command-line-tools-to-monitor-linux-performance/">20 Command Line Tools to Monitor Linux Performance</a></li>
+<li><a href="https://www.tecmint.com/18-tar-command-examples-in-linux/">18 Tar Command Examples in Linux</a></li>
+<li><a href="https://www.tecmint.com/20-linux-yum-yellowdog-updater-modified-commands-for-package-mangement/">20 Linux YUM (Yellowdog Updater, Modified) Commands</a></li>
+<li><a href="https://www.tecmint.com/useful-basic-commands-of-apt-get-and-apt-cache-for-package-management/">25 Useful Basic Commands of APT-GET and APT-CACHE</a></li>
+<li><a href="https://www.tecmint.com/20-funny-commands-of-linux-or-linux-is-fun-in-terminal/">20 Funny Commands of Linux or Linux is Fun in Terminal</a></li>
+<li><a href="https://www.tecmint.com/red-hat-rhcsa-rhce-exam-certification-book/">Ebook: Introducing the RHCSA and RHCE Exam Preparation Guide</a></li>
+<li><a href="https://www.tecmint.com/sed-command-to-create-edit-and-manipulate-files-in-linux/">Preparation for the LFCS (Linux Foundation Certified SysAdmin) Exam</a></li>
+<li><a href="https://www.tecmint.com/installing-network-services-and-configuring-services-at-system-boot/">Preparation for the LFCE (Linux Foundation Certified Engineer) Exam</a></li>
+<li><a href="https://www.tecmint.com/10-useful-free-linux-ebooks-for-newbies-and-administrators/">10 Useful Free Linux eBooks for Newbies and Administrators</a></li>
+<li><a href="https://www.tecmint.com/free-linux-shell-scripting-books/">4 Free Shell Scripting eBooks for Newbies and Administrators</a></li>
+</ul>
+</div>
+</div>
+
+<ins class="adsbygoogle adsbygoogle-noablate" style="display: none !important;" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;" frameborder="0"></iframe></ins></ins></ins><iframe id="google_osd_static_frame_9819401169101" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe></body><iframe id="google_esf" name="google_esf" src="Working%20with%20Arrays%20in%20Linux%20Shell%20Scripting%20%E2%80%93%20Part%208_files/zrt_lookup.html" style="display: none;" data-ad-client="ca-pub-2601749019656699"></iframe></html>

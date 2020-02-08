@@ -1,0 +1,11 @@
+total 1084
+drwxr-xr-x 3 labpc labpc    4096 Oct 13 13:56 .
+drwxr-xr-x 4 labpc labpc    4096 Sep 30 10:45 ..
+-rw-rw-r-- 1 labpc labpc    1334 Oct 11 14:27 exam_question_1.py
+-rw-rw-r-- 1 labpc labpc     418 Oct 13 08:41 exam_question_2.py
+-rw-r--r-- 1 labpc labpc   60271 Oct 13 13:55 Hands-on Python.ipynb
+-rw-r--r-- 1 labpc labpc      26 Oct 13 13:10 hello.txt
+drwxr-xr-x 2 labpc labpc    4096 Oct 11 10:27 .ipynb_checkpoints
+-rw-r--r-- 1 labpc labpc       0 Oct 13 13:57 ls.txt
+-rw-rw-r-- 1 labpc labpc      33 Sep 28 10:19 script.py
+-rw-rw-r-- 1 labpc labpc 1016714 Oct 11 10:21 words.txt

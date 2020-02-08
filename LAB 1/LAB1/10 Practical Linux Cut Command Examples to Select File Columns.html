@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/css.css" media="screen, projection">
+<title>10 Practical Linux Cut Command Examples to Select File Columns</title>
+<meta name="description" content="Linux command cut is used for text processing. You can use this command to extract portion of text from a file by selecting columns. This tutorial provides">
+<meta name="robots" content="noodp, noydir">
+<link rel="canonical" href="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/a_004.html">
+<link rel="alternate" type="application/rss+xml" title="The Geek Stuff feed" href="https://www.thegeekstuff.com/feed/">
+<link rel="pingback" href="https://www.thegeekstuff.com/xmlrpc.php">
+
+<!-- All in One SEO Pack 2.2.6.2 by Michael Torbert of Semper Fi Web Design[296,365] -->
+<meta name="description" content="Linux command cut is used for text processing. You can use this command to extract portion of text from a file by selecting columns. This tutorial provides">
+
+<link rel="canonical" href="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/a_004.html">
+<!-- /all in one seo pack -->
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="The Geek Stuff » 10 Practical Linux Cut Command Examples to Select File Columns Comments Feed" href="https://www.thegeekstuff.com/2013/06/cut-command-examples/feed/">
+<link rel="https://api.w.org/" href="https://www.thegeekstuff.com/wp-json/">
+<link rel="alternate" type="application/json+oembed" href="https://www.thegeekstuff.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.thegeekstuff.com%2F2013%2F06%2Fcut-command-examples%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://www.thegeekstuff.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.thegeekstuff.com%2F2013%2F06%2Fcut-command-examples%2F&amp;format=xml">
+<link rel="shortcut icon" href="https://static.thegeekstuff.com/wp-content/uploads/2015/05/favicon.ico.gzip">
+<script src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/osd.js"></script><script src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/ca-pub-8090601437064582.js"></script><script src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/show_ads_impl.js" id="google_shimpl"></script><script src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/cbgapi.loaded_1" async=""></script><script src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/cbgapi.loaded_0" async=""></script><script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/a_002"></script><script charset="utf-8" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/button.js"></script><link rel="preload" href="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/integrator_002.js" as="script"><script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/integrator_002.js"></script><link rel="preload" href="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/integrator.js" as="script"><script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/integrator.js"></script><link rel="preload" href="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/show_ads_impl.js" as="script"><script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/inputtools.js"></script></head>
+<body class="template-single">
+<script type="text/javascript" async="" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/ga.js"></script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-5302569-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+<div class="container">
+	<div id="header" class="header">
+		<p id="logo"><a href="https://www.thegeekstuff.com/"><img src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/thegeekstuff.gif" alt="The Geek Stuff"></a>
+</p><div id="header_ad"><div id="header_ad1">
+<script async="" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/adsbygoogle.js"></script>
+<!-- TGS Logo Header -->
+<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-8090601437064582" data-ad-slot="4708993701" data-adsbygoogle-status="done"><ins id="aswift_0_expand" style="display:inline-table;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><ins id="aswift_0_anchor" style="display:block;border:none;height:90px;margin:0;padding:0;position:relative;visibility:visible;width:728px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;border:0px;width:728px;height:90px;" width="728" height="90" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div>
+	</div>
+	<span class="menu_control">≡ Menu</span>
+<ul id="menu-tgs-menu" class="menu"><li id="menu-item-15798" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-15798"><a href="https://www.thegeekstuff.com/">Home</a></li>
+<li id="menu-item-15797" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15797"><a href="https://www.thegeekstuff.com/linux-101-hacks-ebook/">Free eBook</a></li>
+<li id="menu-item-15805" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15805"><a href="https://www.thegeekstuff.com/best-of-the-blog/">Start Here</a></li>
+<li id="menu-item-15800" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15800"><a href="https://www.thegeekstuff.com/contact/">Contact</a></li>
+<li id="menu-item-15802" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15802"><a href="https://www.thegeekstuff.com/about/">About</a></li>
+</ul>
+	<div class="columns">
+		<div class="content">
+			<div id="post-12578" class="post_box grt top" itemscope="" itemtype="http://schema.org/Article">
+				<div class="headline_area">
+					<h1 class="headline" itemprop="name">10 Practical Linux Cut Command Examples to Select File Columns</h1>
+					<div class="byline small">
+						<span class="post_author_intro">by</span> <span class="post_author" itemprop="author">Balakrishnan Mariyappan</span>
+						<meta itemprop="datePublished" content="2013-06-06">
+						<meta itemprop="dateModified" content="2013-06-05">
+						<span class="post_date_intro">on</span> <span class="post_date" title="2013-06-06">June 6, 2013</span>
+					</div>
+				</div>
+				<div class="post_content" itemprop="articleBody">
+<div style="margin:7px 0px 6px 0px; padding:5px;">
+
+<div style="float:left; width=95px">
+<div style="position: absolute; width: 450px; left: -10000px;" id="___plusone_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" id="I0_1564569779488" name="I0_1564569779488" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/fastbutton.html" data-gapiattached="true" width="100%" frameborder="0"></iframe></div><g:plusone size="medium" data-gapiscan="true" data-onload="true" data-gapistub="true"></g:plusone>
+</div>
+
+<div style="float:left; padding:2px; width:90px"><iframe src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/like_002.html" scrolling="no" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true" frameborder="0"></iframe>
+</div>
+
+<div style="width=95px">
+<iframe id="twitter-widget-0" scrolling="no" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/tweet_button.html" frameborder="0"></iframe><script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/widgets.js"></script>
+</div>
+
+</div>
+<p>Linux command cut is used for text processing. You can use this 
+command to extract portion of text from a file by selecting columns.</p>
+<p>This tutorial provides few practical examples of cut command that you can use in your day to day command line activities.<br>
+<span id="more-12578"></span></p>
+<p>For most of the example, we’ll be using the following test file.</p>
+<pre>$ cat test.txt
+cat command for file oriented operations.
+cp command for copy files or directories.
+ls command to list out files and directories with its attributes.</pre>
+<h3>1. Select Column of Characters</h3>
+<p>To extract only a desired column from a file use -c option. The 
+following example displays 2nd character from each line of a file 
+test.txt</p>
+<pre>$ cut -c2 test.txt
+a
+p
+s</pre>
+<p>As seen above, the characters a, p, s are the second character from each line of the test.txt file.</p>
+<h3>2. Select Column of Characters using Range</h3>
+<p>Range of characters can also be extracted from a file by specifying 
+start and end position delimited with -. The following example extracts 
+first 3 characters of each line from a file called test.txt</p>
+<pre>$ cut -c1-3 test.txt
+cat
+cp
+ls</pre>
+<h3>3. Select Column of Characters using either Start or End Position</h3>
+<p>Either start position or end position can be passed to cut command with -c option.</p>
+    <center>
+      <div style="margin-left:2px; margin-top:10px; margin-bottom:10px; ">
+
+        <!-- AD BLOCK -->
+		
+<script async="" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/adsbygoogle.js"></script>
+<!-- TGS Inside Content -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-8090601437064582" data-ad-slot="8643685131" data-adsbygoogle-status="done"><ins id="aswift_1_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_1_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+        <!-- END AD BLOCK -->
+
+	  </div>
+    </center>
+
+
+<p>The following specifies only the start position before the ‘-‘. This 
+example extracts from 3rd character to end of each line from test.txt 
+file.</p>
+<pre>$ cut -c3- test.txt
+t command for file oriented operations.
+ command for copy files or directories.
+ command to list out files and directories with its attributes.</pre>
+<p>The following specifies only the end position after the ‘-‘. This 
+example extracts 8 characters from the beginning of each line from 
+test.txt file.</p>
+<pre>$ cut -c-8 test.txt
+cat comm
+cp comma
+ls comma</pre>
+<p>The entire line would get printed when you don’t specify a number before or after the ‘-‘ as shown below.</p>
+<pre>$ cut -c- test.txt
+cat command for file oriented operations.
+cp command for copy files or directories.
+ls command to list out files and directories with its attributes.</pre>
+<h3>4. Select a Specific Field from a File</h3>
+<p>Instead of selecting x number of characters, if you like to extract a
+ whole field, you can combine option -f and -d. The option -f specifies 
+which field you want to extract, and the option -d specifies what is the
+ field delimiter that is used in the input file.</p>
+<p>The following example displays only first field of each lines from 
+/etc/passwd file using the field delimiter : (colon). In this case, the 
+1st field is the username. The file</p>
+<pre>$ cut -d':' -f1 /etc/passwd
+root
+daemon
+bin
+sys
+sync
+games
+bala</pre>
+<h3>5. Select Multiple Fields from a File</h3>
+<p>You can also extract more than one fields from a file or stdout. 
+Below example displays username and home directory of users who has the 
+login shell as “/bin/bash”.</p>
+<pre>$ grep "/bin/bash" /etc/passwd | cut -d':' -f1,6
+root:/root
+bala:/home/bala</pre>
+<p>To display the range of fields specify start field and end field as 
+shown below. In this example, we are selecting field 1 through 4, 6 and 7</p>
+<pre>$ grep "/bin/bash" /etc/passwd | cut -d':' -f1-4,6,7
+root:x:0:0:/root:/bin/bash
+bala:x:1000:1000:/home/bala:/bin/bash</pre>
+<h3>6. Select Fields Only When a Line Contains the Delimiter</h3>
+<p>In our /etc/passwd example, if you pass a different delimiter other than : (colon), cut will just display the whole line.</p>
+<p>In the following example, we’ve specified the delimiter as | (pipe), 
+and cut command simply displays the whole line, even when it doesn’t 
+find any line that has | (pipe) as delimiter.</p>
+<pre>$ grep "/bin/bash" /etc/passwd | cut -d'|'  -f1
+root:x:0:0:root:/root:/bin/bash
+bala:x:1000:1000:bala,,,:/home/bala:/bin/bash</pre>
+<p>But, it is possible to filter and display only the lines that contains the specified delimiter using -s option.</p>
+<p>The following example doesn’t display any output, as the cut command 
+didn’t find any lines that has | (pipe) as delimiter in the /etc/passwd 
+file.</p>
+<pre>$ grep "/bin/bash" /etc/passwd | cut -d'|' -s -f1</pre>
+<h3>7. Select All Fields Except the Specified Fields</h3>
+<p>In order to complement the selection field list use option –complement.</p>
+<p>The following example displays all the fields from /etc/passwd file except field 7</p>
+<pre>$ grep "/bin/bash" /etc/passwd | cut -d':' --complement -s -f7
+root:x:0:0:root:/root
+bala:x:1000:1000:bala,,,:/home/bala</pre>
+<h3>8. Change Output Delimiter for Display</h3>
+<p>By default the output delimiter is same as input delimiter that we specify in the cut -d option.</p>
+<p>To change the output delimiter use the option –output-delimiter as 
+shown below. In this example, the input delimiter is : (colon), but the 
+output delimiter is # (hash).</p>
+<pre>$ grep "/bin/bash" /etc/passwd | cut -d':'  -s -f1,6,7 --output-delimiter='#'
+root#/root#/bin/bash
+bala#/home/bala#/bin/bash</pre>
+<h3>9. Change Output Delimiter to Newline</h3>
+<p>In this example, each and every field of the cut command output is 
+displayed in a separate line. We still used –output-delimiter, but the 
+value is $’\n’ which indicates that we should add a newline as the 
+output delimiter.</p>
+<pre>$ grep bala /etc/passwd | cut -d':' -f1,6,7 --output-delimiter=$'\n'
+bala
+/home/bala
+/bin/bash</pre>
+<h3>10. Combine Cut with Other Unix Command Output</h3>
+<p>The power of cut command can be realized when you combine it with the stdout of some other Unix command.</p>
+<p>Once you master the basic usage of cut command that we’ve explained 
+above, you can wisely use cut command to solve lot of your text 
+manipulation requirements.</p>
+<p>The following example indicates how you can extract only useful information from the <a href="https://www.thegeekstuff.com/2011/04/ps-command-examples/">ps command</a>
+ output. We also showed how we’ve filtered the output of ps command 
+using grep and sed before the final output was given to cut command. 
+Here, we’ve used cut option -d and -f which we’ve explained in the above
+ examples.</p>
+<pre>$ ps axu | grep python | sed 's/\s\+/ /g' | cut -d' ' -f2,11-
+2231 /usr/bin/python /usr/lib/unity-lens-video/unity-lens-video
+2311 /usr/bin/python /usr/lib/unity-scope-video-remote/unity-scope-video-remote
+2414 /usr/bin/python /usr/lib/ubuntuone-client/ubuntuone-syncdaemon
+2463 /usr/bin/python /usr/lib/system-service/system-service-d
+3274 grep --color=auto python</pre>
+<div style="margin:7px 0px 3px 0px; padding:5px; background:#F2F0E8">
+
+<div style="float:left; width=95px">
+<div style="position: absolute; width: 450px; left: -10000px;" id="___plusone_1"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" id="I1_1564569779492" name="I1_1564569779492" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/fastbutton_002.html" data-gapiattached="true" width="100%" frameborder="0"></iframe></div><g:plusone size="medium" data-gapiscan="true" data-onload="true" data-gapistub="true"></g:plusone>
+</div>
+
+<div style="float:left; width=95px">
+<iframe id="twitter-widget-1" scrolling="no" allowtransparency="true" class="twitter-share-button twitter-share-button-rendered twitter-tweet-button" style="position: static; visibility: visible; width: 60px; height: 20px;" title="Twitter Tweet Button" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/tweet_button_002.html" frameborder="0"></iframe><script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/widgets.js"></script>
+</div>
+
+<div style="float:left; padding:2px; width:90px"><iframe src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/like_002.html" scrolling="no" style="border:none; overflow:hidden; width:450px; height:21px;" allowtransparency="true" frameborder="0"></iframe>
+</div>
+
+<div style="padding:1px">
+&gt;&nbsp;<a href="#commentform" rel="nofollow">Add your comment</a>
+</div>
+
+</div>
+<h3>If you enjoyed this article, you might also like..</h3>
+<table>
+<tbody><tr>
+<td valign="top">
+<ol>
+<li><a href="https://www.thegeekstuff.com/2010/12/50-unix-linux-sysadmin-tutorials/">50 Linux Sysadmin Tutorials</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/">50 Most Frequently Used Linux Commands (With Examples)</a></li>
+<li><a href="https://www.thegeekstuff.com/2011/12/linux-performance-monitoring-tools/">Top 25 Best Linux Performance Monitoring and Debugging Tools</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/">Mommy, I found it! – 15 Practical Linux Find Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/linux-101-hacks-ebook/">Linux 101 Hacks 2nd Edition eBook</a>&nbsp;<img title="Linux 101 Hacks Book" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/free-small.png" alt="Linux 101 Hacks Book"></li>
+</ol>
+</td>
+<td>
+<ul>
+<li><a href="https://www.thegeekstuff.com/2010/01/awk-introduction-tutorial-7-awk-print-examples/">Awk Introduction – 7 Awk Print Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/10/unix-sed-tutorial-advanced-sed-substitution-examples/">Advanced Sed Substitution Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/03/8-essential-vim-editor-navigation-fundamentals/">8 Essential Vim Editor Navigation Fundamentals</a></li>
+<li><a href="https://www.thegeekstuff.com/2011/06/iptables-rules-examples/">25 Most Frequently Used Linux IPTables Rules Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/">Turbocharge PuTTY with 12 Powerful Add-Ons</a></li>
+</ul>
+</td>
+</tr>
+</tbody></table>
+<br>
+<center>
+<table id="booktable">
+<tbody><tr>
+<td>
+<a rel="nofollow" href="https://www.thegeekstuff.com/bash-101-hacks-ebook/"><img title="Bash 101 Hacks Book" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/bash-132.png" alt="Bash 101 Hacks Book"></a>
+</td>
+<td>
+<a rel="nofollow" href="https://www.thegeekstuff.com/sed-awk-101-hacks-ebook/"><img title="Sed and Awk 101 Hacks Book" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/sed-and-awk-132.png" alt="Sed and Awk 101 Hacks Book"></a>
+</td>
+<td>
+<a rel="nofollow" href="https://www.thegeekstuff.com/nagios-core-ebook/"><img title="Nagios Core 3 Book" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/nagios-core-132.png" alt="Nagios Core 3 Book"></a>
+</td>
+<td>
+<a rel="nofollow" href="https://www.thegeekstuff.com/vim-101-hacks-ebook/"><img title="Vim 101 Hacks Book" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/vim-101-hacks-132.png" alt="Vim 101 Hacks Book"></a>
+</td>
+</tr>
+</tbody></table>
+</center>
+<br>
+				</div>
+				<p class="post_tags" itemprop="keywords">
+					<span class="post_tags_intro">Tagged as:</span>
+					<a href="https://www.thegeekstuff.com/tag/bash-cut-command/" rel="tag">Bash Cut Command</a>,
+					<a href="https://www.thegeekstuff.com/tag/cut-command-line/" rel="tag">Cut Command Line</a>,
+					<a href="https://www.thegeekstuff.com/tag/cut-delimiter/" rel="tag">Cut Delimiter</a>,
+					<a href="https://www.thegeekstuff.com/tag/cut-delimiter-space/" rel="tag">Cut Delimiter Space</a>,
+					<a href="https://www.thegeekstuff.com/tag/cut-fields/" rel="tag">Cut Fields</a>,
+					<a href="https://www.thegeekstuff.com/tag/shell-cut-command/" rel="tag">Shell Cut Command</a>,
+					<a href="https://www.thegeekstuff.com/tag/unix-cut-command/" rel="tag">Unix Cut Command</a>
+				</p>
+			</div>
+			<div id="comments">
+				<p class="comments_intro"><span class="bracket">{</span> <span class="num_comments">36</span> comments… <a href="#commentform" rel="nofollow">add one</a> <span class="bracket">}</span></p>
+				<ul class="comment_list">
+					<li class="comment even thread-even depth-1" id="comment-787675">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Jalal Hajigholamali</span>
+							<span class="comment_date">June 6, 2013, 8:48 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-787675"><p>Hi,</p>
+<p>simple and very nice and useful article</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-787675" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-787832">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Bob</span>
+							<span class="comment_date">June 6, 2013, 9:41 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-787832"><p>Great article.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-787832" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-789994">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Srinivas Jupudi</span>
+							<span class="comment_date">June 7, 2013, 12:22 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-789994"><p>Nice Article</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-789994" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-790014">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">niraj</span>
+							<span class="comment_date">June 7, 2013, 12:28 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-790014"><p>Nice artical</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-790014" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-792525">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Erlo</span>
+							<span class="comment_date">June 7, 2013, 1:07 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-792525"><p>Linux/Unix
+ has lots of nice little utilities :o) I was not aware of cut, I have 
+always used awk for these things. awk combined with sed is a kind of 
+swiss pocket knife.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-792525" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-793812">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">xlob</span>
+							<span class="comment_date">June 7, 2013, 8:01 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-793812"><p>Thanks for article.<br>
+@Erlo For substitution awk can use gsub internal command instead of pipe into sed ?</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-793812" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-834351">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">ASHOK</span>
+							<span class="comment_date">July 4, 2013, 10:01 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-834351"><p>I wish to extract specific data from a line<br>
+I mean<br>
+Input : OA.jsp?page=/hello/abc/123/a23/sam/store/web/helloworld&amp;xyz=YES<br>
+Output: OA.jsp?page=/hello/abc/123/a23/sam/store/web/helloworld</p>
+<p>&amp; should act as delimiter. The length of the link may change.<br>
+What ever the link I pass the data before &amp; should display.</p>
+<p>How it is possible?</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-834351" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-915825">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">John Joseph</span>
+							<span class="comment_date">September 4, 2013, 1:11 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-915825"><p>Well written and it has been useful for me. Thank you.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-915825" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-996818">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Sandeep</span>
+							<span class="comment_date">October 23, 2013, 10:55 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-996818"><p>Hi<br>
+Please can you do me favor. I need a script to get the information of all hosts running on network like.<br>
+Name =Home user<br>
+Disk usage space =<br>
+Disk Available space =<br>
+Disk Total space =<br>
+IP Address =</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-996818" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1049557">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Nitin</span>
+							<span class="comment_date">November 21, 2013, 4:19 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1049557"><p>Dear Ashok,</p>
+<p>You can use the below script for your required O/P:</p>
+<p>cat input.txt | cut -d’&amp;’ -f1</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1049557" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-1284306">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Amani Musomba</span>
+							<span class="comment_date">February 19, 2014, 11:39 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1284306"><p>One of the best articles I have found on the cut command..<br>
+Thanks for posting this..</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1284306" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1383649">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">sushil</span>
+							<span class="comment_date">March 23, 2014, 11:17 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1383649"><p>With this command $ cut -c- test.txt<br>
+I am not getting any out.<br>
+Iam using fedora 19</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1383649" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-1411236">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Deiveegaraja</span>
+							<span class="comment_date">March 31, 2014, 5:48 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1411236"><p>Thanks..</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1411236" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1662538">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Maniraja</span>
+							<span class="comment_date">May 9, 2014, 11:51 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-1662538"><p>Hi Sushil,</p>
+<p>we need to mention the range while using cut with -c option.<br>
+like cut -c 1,5 test.txt.and cut -c 5- test.txt.</p>
+<p>In the first e.g it will print the first five characters of each line.<br>
+In the second one, it will print the characters from 5 to the end of the line of each line.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-1662538" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-2625622">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Deepak Jadli</span>
+							<span class="comment_date">October 27, 2014, 5:49 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-2625622"><p>It’s a proper and perfect docs 🙂<br>
+Thanks</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-2625622" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-2641282">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Devi Killada</span>
+							<span class="comment_date">October 28, 2014, 11:53 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-2641282"><p>Just 
+now I was trying to google the practical examples of cut, got your blog.
+ Revised all commands at once. Thanks for posting Bala.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-2641282" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-2757162">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">tony</span>
+							<span class="comment_date">November 5, 2014, 5:18 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-2757162"><p>I have a little problem how would i solve this? its an assignment for school</p>
+<p>Your current directory is sample_dir. Display cars2 sorted numerically by the 4th field:</p>
+<p>i understand i need to use the cut command just don’t know how</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-2757162" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-2830244">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">saurabh</span>
+							<span class="comment_date">November 10, 2014, 8:52 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-2830244"><p>Simple and effective article.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-2830244" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-3890554">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Hafiz Muhammad Shafiq</span>
+							<span class="comment_date">March 11, 2015, 7:14 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-3890554"><p>find before first space and count<br>
+cat hdfs-info.log | grep USE_CrawlData | cut -d ‘ ‘ -f1 | awk ‘{ sum += $1 } END { print sum }’</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-3890554" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4002442">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">venkatesh</span>
+							<span class="comment_date">April 7, 2015, 1:00 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4002442"><p>nice article,good stuff !</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4002442" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4180777">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">soumyak</span>
+							<span class="comment_date">May 31, 2015, 9:22 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4180777"><p>Suppose i have a file called test.txt and within that files contents are like below<br>
+abc123defghij<br>
+345abckhhvds<br>
+mnggjabc74r2<br>
+here i want to print ony abc (like below) , how can we do this?<br>
+abc<br>
+abc<br>
+abc</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4180777" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4279821">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Sumit</span>
+							<span class="comment_date">June 25, 2015, 12:51 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4279821"><p>How to select one hole column?</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4279821" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4383906">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">MikeC</span>
+							<span class="comment_date">August 7, 2015, 6:20 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4383906"><p>Great 
+article.  I’ve been using awk when cut would often do the trick for me 
+far more simply.  Probably a simple one here but, where you set 
+delimiter -d’x’ … I can set a space and that works fine.  But what if 
+there are one or more spaces between fields.  Seems the -f varies by 
+number of spaces it hits.  Wondering if it be smart enough to delimit on
+  ‘ ‘+ or something like that.  Thanks,</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4383906" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4432321">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">suranjan</span>
+							<span class="comment_date">August 27, 2015, 4:43 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4432321"><p>Very useful “Thank You”</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4432321" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4451565">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Alex</span>
+							<span class="comment_date">September 3, 2015, 7:00 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4451565"><p>Hi, the question is: may I pipe output of cut to another cut?<br>
+I use UnxUtils under windows 7 and when I tries to redirect the output of the first cut to the second I get next notification<br>
+grep -E “” file.txt | cut -d ‘ ‘ -f 2- | cut -d ‘ ‘ -f 3<br>
+cut: only one type of list may be specified<br>
+Try ‘cut –help’ for more information.<br>
+Thanks</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4451565" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4655206">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Vinod Jakhar</span>
+							<span class="comment_date">December 29, 2015, 6:46 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4655206"><p>So simple, So useful, Thanks</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4655206" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4659891">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">ashish</span>
+							<span class="comment_date">January 2, 2016, 6:28 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4659891"><p>Hi , </p>
+<p>thanks for this , this was very simple and easy to understand<br>
+this is useful in our daily tasks which we do as admin</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4659891" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4677528">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Mani</span>
+							<span class="comment_date">January 20, 2016, 4:31 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4677528"><p>Great … helped me a lot to understand the delimiter 🙂</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4677528" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4677577">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Mani</span>
+							<span class="comment_date">January 20, 2016, 6:11 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4677577"><p>Great , it helped me a lot to understand specially delimiter 🙂</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4677577" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4696227">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">JVJ</span>
+							<span class="comment_date">February 7, 2016, 5:45 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4696227"><p>To get IP Address from ifconfig command using cut,</p>
+<p> /sbin/ifconfig |grep Bcast|cut -d’:’ -f2|cut -d’ ‘ -f1</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4696227" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4765985">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Praylin</span>
+							<span class="comment_date">March 28, 2016, 12:20 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4765985"><p>Hey Ramesh,<br>
+Thanks for this article. It is much simple and helpful for understanding the cut command.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4765985" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4803292">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Niraj</span>
+							<span class="comment_date">May 12, 2016, 1:23 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4803292"><p>Help full information of cut command</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4803292" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4814160">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">oldefoxx</span>
+							<span class="comment_date">May 23, 2016, 2:41 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4814160"><p>Itit 
+possible to retain just the last field when the delimiter is space (-d’ 
+“) and there are an unknown number of spaces before the last term?  I 
+know that awk has a last field number reference, but cut is so much 
+simpler in my mind.  I did find that repeated cuts using pipe | works, 
+but that is the really hard way to get it done.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4814160" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4916535">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">FX</span>
+							<span class="comment_date">February 10, 2017, 5:33 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4916535"><p>Very good article. Thanks !</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4916535" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment even thread-even depth-1" id="comment-4919045">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">corey lawson</span>
+							<span class="comment_date">February 15, 2017, 2:49 pm</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4919045"><p>This would be cool to get working in Windows, using the gnuwin32 versions of those Unix command line utilities.<br>
+But I fear that Window’s close-but-no-cigar world of the CMD shell would
+ require all sorts of command line noddle bending to work. CMD’s quoting
+ rules are difficult enough to wrestle with compared to Unix/Linux 
+shells.<br>
+Loading the bash shell for Windows 10 isn’t really an option for me right now, either.</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4919045" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+					<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-4944445">
+						<div class="comment_head">
+							<span class="avatar"></span>
+							<span class="comment_author">Rahul</span>
+							<span class="comment_date">April 7, 2017, 3:42 am</span>
+						</div>
+						<div class="comment_text grt" id="comment-body-4944445"><p>–output-delimiter=’#’</p>
+						</div>
+						<div class="comment_footer">
+							<a class="comment_permalink" href="#comment-4944445" title="permalink to this comment" rel="nofollow">Link</a>
+						</div>
+</li><!-- #comment-## -->
+				</ul>
+				<form id="commentform" method="post" action="https://www.thegeekstuff.com/wp-comments-post.php">
+					<a rel="nofollow" id="cancel-comment-reply-link" href="https://www.thegeekstuff.com/2013/06/cut-command-examples/#respond" style="display:none;">Cancel reply</a>
+					<p class="comment_form_title">Leave a Comment</p>
+					<p id="comment_form_name">
+						<label for="author">Name</label>
+						<input type="text" id="author" class="input_text" name="author" tabindex="1">
+					</p>
+					<p id="comment_form_email">
+						<label for="email">Email</label>
+						<input type="text" id="email" class="input_text" name="email" tabindex="2">
+					</p>
+					<p id="comment_form_url">
+						<label for="url">Website</label>
+						<input type="text" id="url" class="input_text" name="url" tabindex="3">
+					</p>
+					<p id="comment_form_comment">
+						<label for="comment">Comment</label>
+						<textarea name="comment" id="comment" class="input_text" tabindex="4" rows="6"></textarea>
+					</p>
+					<p id="comment_form_submit">
+						<input type="submit" id="submit" class="input_submit" name="submit" tabindex="5" value="Submit">
+					</p>
+<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="841cf37e3f"></p>
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input type="checkbox" name="subscribe" id="subscribe" value="subscribe" style="width: auto;">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+<p style="display: none;"></p><input type="hidden" name="comment_post_ID" value="12578" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+				<input type="hidden" id="ak_js" name="ak_js" value="1564569779497"></form>
+			</div>
+			<div class="prev_next">
+				<p class="next_post">Next post: <a href="https://www.thegeekstuff.com/2013/06/cpan-force-install-perl-module/" rel="next">How to Force Install a Perl Module using CPAN</a></p>
+				<p class="previous_post">Previous post: <a href="https://www.thegeekstuff.com/2013/06/buffer-overflow/" rel="prev">Buffer Overflow Attack Explained with a C Program Example</a></p>
+			</div>
+		</div>
+		<div class="sidebar">
+<div class="widget widget_text" id="text-21">			<div class="textwidget"><a title="Subscribe via RSS" href="https://www.thegeekstuff.com/feed" rel="nofollow">RSS</a>&nbsp; | &nbsp;<a title="Subscribe via Email" href="https://feedburner.google.com/fb/a/mailverify?uri=TheGeekStuff&amp;loc=en_US" rel="nofollow">Email</a>&nbsp; | &nbsp;<a title="Follow us on Twitter" href="https://twitter.com/thegeekstuff" rel="nofollow">Twitter</a>&nbsp; | &nbsp;<a title="Become a fan" href="https://www.facebook.com/thegeekstuff" rel="nofollow">Facebook</a>&nbsp; | &nbsp;<a title="Follow us on Google+" href="https://plus.google.com/112493711428194838421/posts">Google+</a>
+<br><br>
+<form action="https://www.thegeekstuff.com/search" id="cse-search-box">
+  <div>
+    <input type="hidden" name="cx" value="005666763606120661560:zkmegbt_djm">
+    <input type="hidden" name="cof" value="FORID:10">
+    <input type="hidden" name="ie" value="UTF-8">
+    <input style="background: rgb(255, 255, 255) url(&quot;https://www.google.com/cse/static/images/1x/googlelogo_lightgrey_46x16dp.png&quot;) no-repeat scroll left center; text-indent: 48px;" type="text" name="q" size="30" placeholder="Custom Search">
+    <input style="border-color:#CCCCCC #999999 #999999 #CCCCCC; border-style:double; border-width:1px; overflow:visible;" type="submit" name="sa" value="Search">
+  </div>
+<input name="siteurl" type="hidden" value="www.thegeekstuff.com/2013/06/cut-command-examples/"><input name="ref" type="hidden"><input name="ss" type="hidden"></form>
+<script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/jsapi"></script>
+<script type="text/javascript">google.load("elements", "1", {packages: "transliteration"});</script><script src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/a" type="text/javascript"></script><link href="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/transliteration.css" type="text/css" rel="stylesheet"><script src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/transliteration.js" type="text/javascript"></script>
+<script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/t13n"></script>
+<script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/brand"></script>
+<br></div>
+		</div><div class="widget widget_text" id="text-3">			<div class="textwidget"><script async="" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/adsbygoogle.js"></script>
+<!-- TGS Side Bar -->
+<ins class="adsbygoogle" style="display: inline-block; width: 300px; height: 250px;" data-ad-client="ca-pub-8090601437064582" data-ad-slot="9054077260" data-adsbygoogle-status="done"><ins id="aswift_2_expand" style="display:inline-table;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><ins id="aswift_2_anchor" style="display:block;border:none;height:250px;margin:0;padding:0;position:relative;visibility:visible;width:300px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_2" name="aswift_2" style="left:0;position:absolute;top:0;border:0px;width:300px;height:250px;" width="300" height="250" frameborder="0"></iframe></ins></ins></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<br></div>
+		</div><div class="widget widget_text" id="text-4"><p class="widget_title">EBOOKS</p>			<div class="textwidget"><ul>
+<li><img title="Linux 101 Hacks Book" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/free-small.png" alt="Linux 101 Hacks Book">&nbsp;<a href="https://www.thegeekstuff.com/linux-101-hacks-ebook/">Linux 101 Hacks 2nd Edition eBook</a> - Practical Examples to Build a Strong Foundation in Linux</li>
+<li><a href="https://www.thegeekstuff.com/bash-101-hacks-ebook/">Bash 101 Hacks eBook</a> - Take Control of Your Bash Command Line and Shell Scripting</li>
+<li><a href="https://www.thegeekstuff.com/sed-awk-101-hacks-ebook/">Sed and Awk 101 Hacks eBook</a> - Enhance Your UNIX / Linux Life with Sed and Awk</li>
+<li><a href="https://www.thegeekstuff.com/vim-101-hacks-ebook/">Vim 101 Hacks eBook</a> - Practical Examples for Becoming Fast and Productive in Vim Editor</li>
+<li><a href="https://www.thegeekstuff.com/nagios-core-ebook/">Nagios Core 3 eBook</a> - Monitor Everything, Be Proactive, and Sleep Well</li>
+</ul></div>
+		</div><div class="widget widget_text" id="text-22">			<div class="textwidget"><iframe src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/likebox.html" scrolling="no" style="border:none; overflow:hidden; height:258px;" allowtransparency="true" frameborder="0"></iframe></div>
+		</div><div class="widget widget_text" id="text-17"><p class="widget_title">POPULAR POSTS</p>			<div class="textwidget"><ul>
+<li><a href="https://www.thegeekstuff.com/dslr-accessories/">15 Essential Accessories for Your Nikon or Canon DSLR Camera</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/01/12-amazing-and-essential-linux-books-to-enrich-your-brain-and-library/">12 Amazing and Essential Linux Books To Enrich Your Brain and Library</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/12/50-unix-linux-sysadmin-tutorials/">50 UNIX / Linux Sysadmin Tutorials</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/11/50-linux-commands/">50 Most Frequently Used UNIX / Linux Commands (With Examples)</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/08/gtd-getting-things-done/">How To Be Productive and Get Things Done Using GTD</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/03/30-things-to-do-when-you-are-bored-and-have-a-computer/">30 Things To Do When you are Bored and have a Computer</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/09/linux-file-system-structure/">Linux Directory Structure (File System Structure) Explained with Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/06/15-practical-crontab-examples/">Linux Crontab: 15 Awesome Cron Job Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/03/15-practical-unix-grep-command-examples/">Get a Grip on the Grep! – 15 Practical Grep Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/07/linux-ls-command-examples/">Unix LS Command: 15 Practical Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/08/15-examples-to-master-linux-command-line-history/">15 Examples To Master Linux Command Line History</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/08/bug-tracking-system/">Top 10 Open Source Bug Tracking System</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/01/vi-and-vim-macro-tutorial-how-to-record-and-play/">Vi and Vim Macro Tutorial: How To Record and Play</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/03/15-practical-linux-find-command-examples/">Mommy, I found it! -- 15 Practical Linux Find Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/07/best-gmail-tips-and-tricks/">15 Awesome Gmail Tips and Tricks</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/06/expertise-in-google-search/">15 Awesome Google Search Tips and Tricks</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/08/raid-levels-tutorial/">RAID 0, RAID 1, RAID 5, RAID 10 Explained with Diagrams</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/01/15-practical-unix-linux-top-command-examples/">Can You Top This? 15 Practical Linux Top Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/09/top-5-best-network-monitoring-tools/">Top 5 Best System Monitoring Tools</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/06/top-5-best-linux-os-distributions/">Top 5 Best Linux OS Distributions</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/06/how-to-monitor-remote-linux-host-using-nagios-30/">How To Monitor Remote Linux Host using Nagios 3.0</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/01/awk-introduction-tutorial-7-awk-print-examples/">Awk Introduction Tutorial – 7 Awk Print Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/09/rsync-command-examples/">How to Backup Linux? 15 rsync Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/09/the-ultimate-wget-download-guide-with-15-awesome-examples/">The Ultimate Wget Download Guide With 15 Awesome Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/07/top-5-best-linux-text-editors/">Top 5 Best Linux Text Editors</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/08/tcpdump-command-examples/">Packet Analyzer: 15 TCPDUMP Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/06/bash-array-tutorial/">The Ultimate Bash Array Tutorial with 15 Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/">3 Steps to Perform SSH Login Without Password Using ssh-keygen &amp; ssh-copy-id</a></li>
+<li><a href="https://www.thegeekstuff.com/2009/10/unix-sed-tutorial-advanced-sed-substitution-examples/">Unix Sed Tutorial: Advanced Sed Substitution Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2010/03/netstat-command-examples/">UNIX / Linux: 10 Netstat Command Examples</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/06/the-ultimate-guide-for-creating-strong-passwords/">The Ultimate Guide for Creating Strong Passwords</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/08/6-steps-to-secure-your-home-wireless-network/">6 Steps to Secure Your Home Wireless Network</a></li>
+<li><a href="https://www.thegeekstuff.com/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/">Turbocharge PuTTY with 12 Powerful Add-Ons</a></li>
+</ul></div>
+		</div><div class="widget widget_text" id="text-19"><p class="widget_title">CATEGORIES</p>			<div class="textwidget"><ul>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/linux/">Linux Tutorials</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/vim-2/">Vim Editor</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/sed/">Sed Scripting</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/awk/">Awk Scripting</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/bash-2/">Bash Shell Scripting</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/nagios-2/">Nagios Monitoring</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/openssh-2/">OpenSSH</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/iptables/">IPTables Firewall</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/apache/">Apache Web Server</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/mysql/">MySQL Database</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/perl/">Perl Programming</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/google/">Google Tutorials</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/ubuntu/">Ubuntu Tutorials</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/postgresql/">PostgreSQL DB</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/hello-world/">Hello World Examples</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/c-programming/">C Programming</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/c-plus-plus/">C++ Programming</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/dell-2/">DELL Server Tutorials</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/oracle/">Oracle Database</a></li>
+<li><a rel="nofollow" href="https://www.thegeekstuff.com/category/vmware/">VMware Tutorials</a></li>
+</ul></div>
+		</div><div class="widget widget_text" id="text-20">			<div class="textwidget"><div style="position: absolute; width: 450px; left: -10000px;" id="___person_0"><iframe ng-non-bindable="" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" id="I2_1564569779496" name="I2_1564569779496" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/person.html" data-gapiattached="true" width="100%" frameborder="0"></iframe></div><g:person href="https://plus.google.com/112493711428194838421" data-rel="author" layout="landscape" data-gapiscan="true" data-onload="true" data-gapistub="true"></g:person></div>
+		</div>		</div>
+	</div>
+	<div class="footer">
+<div id="footer_widgets" class="columns_3">
+	<div class="one-third sidebar first">
+<div class="widget widget_text" id="text-7"><h4 class="widget_title">About The Geek Stuff</h4>			<div class="textwidget"><br>
+<img class="float" title="Ramesh Natarajan" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/ramesh-small.gif" alt="Linux 101 Hacks Book">
+My name is <strong>Ramesh Natarajan</strong>. I will be posting 
+instruction guides, how-to, troubleshooting tips and tricks on Linux, 
+database, hardware, security and web. My focus is to write articles that
+ will either teach you or help you resolve a problem. Read more about <a href="https://www.thegeekstuff.com/about/">Ramesh Natarajan</a> and the blog.</div>
+		</div>	</div>
+	<div class="one-third sidebar">
+<div class="widget widget_text" id="text-9"><h4 class="widget_title">Contact Us</h4>			<div class="textwidget"><br>
+<strong>Email Me :</strong>
+Use this <a href="https://www.thegeekstuff.com/contact" rel="nofollow">Contact Form</a>
+ to get in touch me with your comments, questions or suggestions about 
+this site. You can also simply drop me a line to say hello!.
+<br><br>
+<a title="Follow us on Google+" href="https://plus.google.com/112493711428194838421/posts">Follow us on Google+</a>
+<br><br>
+<a title="Follow us on Twitter" href="https://twitter.com/thegeekstuff" rel="nofollow">Follow us on Twitter</a>
+<br><br>
+<a href="https://www.facebook.com/thegeekstuff" rel="nofollow">Become a fan on Facebook</a>&nbsp;&nbsp;</div>
+		</div>	</div>
+	<div class="one-third sidebar last">
+<div class="widget widget_text" id="text-8"><h4 class="widget_title">Support Us</h4>			<div class="textwidget"><br>
+Support this blog by purchasing one of my ebooks.
+<br><br>
+<a rel="nofollow" href="https://www.thegeekstuff.com/bash-101-hacks-ebook/">Bash 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="https://www.thegeekstuff.com/sed-awk-101-hacks-ebook/">Sed and Awk 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="https://www.thegeekstuff.com/vim-101-hacks-ebook/">Vim 101 Hacks eBook</a>
+<br><br>
+<a rel="nofollow" href="https://www.thegeekstuff.com/nagios-core-ebook/">Nagios Core 3 eBook</a></div>
+		</div>	</div>
+	<div style="clear:both;"></div>
+</div>
+		<p class="attribution">Copyright © 2008–2018 Ramesh Natarajan. All rights reserved  | <a href="https://www.thegeekstuff.com/copyright">Terms of Service</a></p>
+	</div>
+</div>
+<script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/comment-reply.gzip"></script>
+<script async="async" type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/form.gzip"></script>
+<script type="text/javascript">
+(function(){
+	var classes = document.getElementsByClassName('menu_control');
+	for (i = 0; i < classes.length; i++) {
+		classes[i].onclick = function() {
+			var menu = this.nextElementSibling;
+			if (/show_menu/.test(menu.className))
+				menu.className = menu.className.replace('show_menu', '').trim();
+			else
+				menu.className += ' show_menu';
+		};
+	}
+})();
+</script>
+<noscript><style type="text/css" scoped>.menu { display: block; }</style></noscript>
+<script type="text/javascript" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/plusone.js" gapi_processed="true"></script>
+
+
+
+<iframe scrolling="no" allowtransparency="true" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/widget_iframe.html" title="Twitter settings iframe" style="display: none;" frameborder="0"></iframe><iframe name="oauth2relay808389271" id="oauth2relay808389271" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/postmessageRelay.html" style="width: 1px; height: 1px; position: absolute; top: -100px;" tabindex="-1" aria-hidden="true"></iframe><ins class="adsbygoogle adsbygoogle-noablate" style="display: none !important;" data-adsbygoogle-status="done"><ins id="aswift_3_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><ins id="aswift_3_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;"><iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_3" name="aswift_3" style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;" frameborder="0"></iframe></ins></ins></ins><iframe id="rufous-sandbox" scrolling="no" allowtransparency="true" allowfullscreen="true" style="position: absolute; visibility: hidden; display: none; width: 0px; height: 0px; padding: 0px; border: medium none;" title="Twitter analytics iframe" frameborder="0"></iframe><iframe id="google_osd_static_frame_7359603660595" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;"></iframe></body><iframe id="google_esf" name="google_esf" src="10%20Practical%20Linux%20Cut%20Command%20Examples%20to%20Select%20File%20Columns_files/zrt_lookup.html" style="display: none;" data-ad-client="ca-pub-8090601437064582"></iframe></html>
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+Content Delivery Network via Amazon Web Services: CloudFront: static.thegeekstuff.com
+
+ Served from: www.thegeekstuff.com @ 2019-07-31 04:15:14 by W3 Total Cache -->

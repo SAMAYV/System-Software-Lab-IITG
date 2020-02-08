@@ -1,0 +1,23 @@
+1.  (a)
+2.  (b)
+
+3.  %.o: %.c
+	$(COMP) -c $< -IHfiles -o $@
+
+4.  include /root/admin/vars.mk
+5.  '.PHONY : clean all' or '.PHONY : all clean'
+6.  'list 19' or 'l 19'
+7.  gdb main core
+8.  'watch loopy == 934' or 'watch loopy > 933'
+9.  disable 2
+10.  (a)
+11.  (d)
+12.  sccs cdc -r10.5 utils.c
+13.  sccs get $@
+14.  sccs edit -x5.7-5.8 factorial.c
+15.  sccs unedit mild.c
+16.  git checkout -b dev
+17.  bcad
+18.  Untracked
+19.  git log --author="lazy-lotus" --oneline
+20.  git pull origin2

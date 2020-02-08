@@ -1,0 +1,16 @@
+CFLAGS: -I.
+object: main.o single-player.o multi-player.o AI.o
+Quest : $(object)
+	gcc -o Quest $(object)
+AI.o: AI.c
+	gcc -c AI.c
+single-player.o: AI.h single-player.c
+	gcc -c single-player.c $(CFLAGS)
+multi-player.o: multi-player.c
+	gcc -c multi-player.c
+main.o: main.c defs.h
+	gcc -c main.c $(CFLAGS)
+clean: 
+	rm Quest $(object)
+	@echo 'removed'
+
