@@ -1,17 +1,16 @@
-MAKESHELL = /bin/bash
+CFLAGS=-I.
 object= main.o single-player.o multi-player.o AI.o
-INCLUDE = include
-VPATH= include:samay
-vpath %.h $(INCLUDE)
-vpath %.c samay
-Quest: $(object)
+Quests.c: $(object)
 	gcc -o Quest $(object)
-	@echo 'making of quest is completed'
+	@echo $@ 
+	@echo $%
+	@echo $<
+	@echo $?
+	@echo $*
+.PHONY: clean samay Quest1
+clean: 
+	rm Quest $(object)
+	@echo 'removed'
+samay: 
+	@echo 'samay'
 
-%.o: %.c defs.h AI.h
-	gcc -c $< -I$(INCLUDE)
-
-.PHONY=clean
-clean:
-	rm *.o 
-	@echo 'remove'
